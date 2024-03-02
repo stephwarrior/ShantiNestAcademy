@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div><RouterLink to="/accueil">Accueil</RouterLink>/ Services</div>
+    <div><RouterLink to="/">Accueil</RouterLink>/ Services</div>
     <div class="blocService" v-for="(service, index) in services" :key="index">
       <h1>{{ service.name }}</h1>
       <img :src="service.img" alt="pas image" />

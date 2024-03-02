@@ -6,12 +6,14 @@
 
 <script>
 import SiteEntete from "./components/SiteEntete.vue";
+//import PageAccueil from "./pages/PageAccueil.vue";
 import SitePiedDePage from "./components/SitePiedDePage.vue";
 
 export default {
   name: "App",
   components: {
     SiteEntete,
+    // PageAccueil,
     SitePiedDePage,
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div><RouterLink to="/accueil">Accueil</RouterLink>/ Connexion</div>
+  <div><RouterLink to="/">Accueil</RouterLink>/ Connexion</div>
   <main></main>
 </template>
 <script>

@@ -1,8 +1,6 @@
 <template>
   <main>
-    <div class="test">
-      <RouterLink to="/accueil">Accueil</RouterLink>/ Boutique
-    </div>
+    <div class="test"><RouterLink to="/">Accueil</RouterLink>/ Boutique</div>
     <div>{{ nombre }} items</div>
     <div v-for="(item, index) in items" :key="index" class="blocItems">
       <img alt="pas image" />

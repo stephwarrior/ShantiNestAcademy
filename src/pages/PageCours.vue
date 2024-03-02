@@ -1,4 +1,5 @@
 <template>
+  <div><RouterLink to="/">Accueil</RouterLink>/ Connexion</div>
   <main></main>
 </template>
 <script>

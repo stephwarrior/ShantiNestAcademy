@@ -1,5 +1,5 @@
 <template>
-  <div><RouterLink to="/accueil">Accueil</RouterLink>/ Erreur 404</div>
+  <div><RouterLink to="/">Accueil</RouterLink>/ Erreur 404</div>
   <main>
     <h1>Erreur 404</h1>
     <p>La page que vous cherchez n'existe pas.</p>

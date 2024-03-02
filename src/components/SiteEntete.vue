@@ -4,7 +4,7 @@
       <SiteLogo />
       <div class="navbar-menu">
         <ul class="blocLiensMenu" v-show="MenuDesktopActive">
-          <li><RouterLink to="/accueil">Accueil</RouterLink></li>
+          <li><RouterLink to="/">Accueil</RouterLink></li>
           <li><RouterLink to="/cours">Cours</RouterLink></li>
           <li><RouterLink to="/services">Service</RouterLink></li>
           <li>
@@ -23,7 +23,7 @@
     <input type="text" />
     <ul>
       <li v-for="(lien, index) in liens" :key="index">
-        <RouterLink to="/accueil">{{ lien.nom }}</RouterLink>
+        <RouterLink to="/">{{ lien.nom }}</RouterLink>
       </li>
       <!-- <li><RouterLink to="/cours">Cours</RouterLink></li>
       <li><RouterLink to="/services">Service</RouterLink></li>

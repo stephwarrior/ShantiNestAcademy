@@ -19,7 +19,7 @@ const routes = [
     component: PageConnexion,
   },
   {
-    path: "/accueil",
+    path: "/",
     name: "accueil",
     component: PageAccueil,
   },

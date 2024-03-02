@@ -1,5 +1,5 @@
 <template>
-  <div><RouterLink to="/accueil">Accueil</RouterLink>/ Horaires et Tarifs</div>
+  <div><RouterLink to="/">Accueil</RouterLink>/ Horaires et Tarifs</div>
   <main></main>
 </template>
 <script>
