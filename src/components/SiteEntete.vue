@@ -4,13 +4,9 @@
       <SiteLogo />
       <div class="navbar-menu">
         <ul class="blocLiensMenu" v-show="MenuDesktopActive">
-          <li><RouterLink to="/">Accueil</RouterLink></li>
-          <li><RouterLink to="/cours">Cours</RouterLink></li>
-          <li><RouterLink to="/services">Service</RouterLink></li>
-          <li>
-            <RouterLink to="/HoraireTarifs">Horaire et Tarifs</RouterLink>
+          <li v-for="(lien, index) in liensMenu" :key="index">
+            <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
           </li>
-          <li><RouterLink to="/boutique">Boutique</RouterLink></li>
         </ul>
       </div>
 
@@ -22,14 +18,9 @@
   <div class="menu-mobile" v-if="!MenuMobileActive">
     <input type="text" />
     <ul>
-      <li v-for="(lien, index) in liens" :key="index">
-        <RouterLink to="/">{{ lien.nom }}</RouterLink>
+      <li v-for="(lien, index) in liensMenu" :key="index">
+        <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
       </li>
-      <!-- <li><RouterLink to="/cours">Cours</RouterLink></li>
-      <li><RouterLink to="/services">Service</RouterLink></li>
-      <li><RouterLink to="/HoraireTarifs">Horaire et Tarifs</RouterLink></li>
-      <li><RouterLink to="/boutique">Boutique</RouterLink></li>-->
-      <!-- <li><RouterLink to="/contact">Nous Rejoindre</RouterLink></li>-->
     </ul>
   </div>
 </template>
@@ -43,12 +34,11 @@ export default {
       MenuMobileActive: true,
       MenuDesktopActive: false,
       liensMenu: [
-        { nom: "Accueil", url: "/accueil" },
+        { nom: "Accueil", url: "/" },
         { nom: "Cours", url: "/cours" },
         { nom: "Service", url: "/services" },
         { nom: "Horaire et Tarifs", url: "/HoraireTarifs" },
         { nom: "Boutique", url: "/boutique" },
-        { nom: "Nous Rejoindre", url: "/contact" },
       ],
       components: {
         SiteLogo,
