@@ -1,4 +1,8 @@
 <template>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Kotta+One:regular" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:regular,700,800" rel="stylesheet" />
+  </head>
   <SiteEntete />
   <router-view />
   <SitePiedDePage />

@@ -92,9 +92,11 @@ export default {
   margin: 0 30px;
   text-decoration: none;
 }
-.blocLiensMenu > li > a {
+.blocLiensMenu > li > a,
+.menu-mobile ul li a {
   color: white;
   text-decoration: none;
+  font-family: "Kotta One", sans-serif;
 }
 
 .menu-mobile {
@@ -134,8 +136,6 @@ export default {
   margin: 20px 0;
 }
 .menu-mobile ul li a {
-  color: white;
-  text-decoration: none;
   font-size: clamp(0.1rem, -0.2581rem + 8.3871vw, 2.5rem);
 }
 
