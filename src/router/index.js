@@ -7,8 +7,6 @@ import PageErreur from "../pages/PageErreur.vue";
 import HoraireTarifs from "../pages/HoraireTarifs.vue";
 import PageServices from "../pages/PageServices.vue";
 
-//import AboutPage from "../views/AboutPage.vue";
-
 const routes = [
   {
     path: "/boutique",

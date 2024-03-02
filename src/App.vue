@@ -7,7 +7,6 @@
 <script>
 import SiteEntete from "./components/SiteEntete.vue";
 import SitePiedDePage from "./components/SitePiedDePage.vue";
-//import PageAccueil from "./pages/PageAccueil.vue";
 
 export default {
   name: "App",
@@ -26,9 +25,4 @@ body {
   background-color: #faf6ff;
   color: white;
 }
-/**HEADER */
-
-/**MAIN */
-
-/**FOOTER */
 </style>

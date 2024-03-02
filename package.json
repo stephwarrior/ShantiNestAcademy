@@ -31,8 +31,13 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "@babel/eslint-parser"
+      "parser": "@babel/eslint-parser",
+      "requireConfigFile": false,
+      "sourceType": "module"
     },
+    "plugins": [
+      "vue"
+    ],
     "rules": {}
   },
   "browserslist": [
