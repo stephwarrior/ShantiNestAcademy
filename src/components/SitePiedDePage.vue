@@ -17,19 +17,14 @@
         <div class="contactInfo">
           <div class="courrier"><SiteIcones name="email" />{{ courriel }}</div>
           <div class="adresse"><SiteIcones name="adresse" />{{ adresse }}</div>
-          <div class="telephone">
-            <SiteIcones name="telephone" /> {{ telephone }}
-          </div>
+          <div class="telephone"><SiteIcones name="telephone" /> {{ telephone }}</div>
         </div>
       </div>
       <div class="zoneServices" v-show="largeurEcran > 768">
         <h3>{{ sousTitreFooterDeux }}</h3>
         <ul>
-          <li><router-link to="/services">Carrière</router-link></li>
-          <li><router-link to="/boutique">Boutique</router-link></li>
-          <li><router-link to="/services">location Salles</router-link></li>
-          <li>
-            <router-link to="/HoraireTarifs">Horaires et Tarifs</router-link>
+          <li v-for="(lien, index) in liensMenu" :key="index">
+            <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
           </li>
         </ul>
       </div>
@@ -51,6 +46,12 @@ export default {
       adresse: "10450 Rue Lavallé, H1C 3T4",
       telephone: "514-123-4567",
       largeurEcran: window.innerWidth,
+      liensMenu: [
+        { nom: "Carrière", url: "/services" },
+        { nom: "Boutique", url: "/boutique" },
+        { nom: "Location Salles", url: "/services" },
+        { nom: "Horaire et Tarifs", url: "/HoraireTarifs" },
+      ],
     };
   },
   mounted() {
