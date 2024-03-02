@@ -1,4 +1,3 @@
-// src/router/index.js pour Vue 3
 import { createRouter, createWebHistory } from "vue-router";
 import PageBoutique from "../pages/PageBoutique.vue";
 import PageConnexion from "../pages/PageConnexion.vue";

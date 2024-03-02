@@ -47,15 +47,11 @@ export default {
 
 .slide {
   flex: 0 0 100%;
-  height: auto; /* Ajustez la hauteur comme nécessaire */
+  height: auto;
 }
 
 img {
   width: 50vw;
   height: 100%;
-}
-
-fofo {
-  background-color: red;
 }
 </style>
