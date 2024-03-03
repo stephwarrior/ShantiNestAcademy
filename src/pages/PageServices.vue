@@ -31,8 +31,6 @@ export default {
 };
 </script>
 <style scoped>
-main {
-}
 .blocService {
   display: flex;
   flex-direction: column;

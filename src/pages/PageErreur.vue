@@ -16,9 +16,6 @@ export default {};
 </script>
 
 <style scoped>
-main {
-}
-
 .erreur404 :not(.erreur404 div) {
   text-align: center;
   padding-top: 50px;

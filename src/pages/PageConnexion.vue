@@ -6,7 +6,4 @@
 <script>
 export default {};
 </script>
-<style scoped>
-main {
-}
-</style>
+<style scoped></style>

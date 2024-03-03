@@ -27,8 +27,6 @@ export default {
 };
 </script>
 <style scoped>
-main {
-}
 .blocItems {
   display: flex;
   flex-direction: column;

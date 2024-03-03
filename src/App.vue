@@ -32,7 +32,7 @@ body {
 }
 main {
   padding: 5.5rem 2rem;
-  height: 100vh;
+  height: 300vh; /* Pour tester le pied de page */
   color: var(--couleurTexte);
 }
 * {

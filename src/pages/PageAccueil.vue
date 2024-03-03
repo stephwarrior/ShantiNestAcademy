@@ -42,8 +42,6 @@ export default {
 };
 </script>
 <style scoped>
-main {
-}
 .temoignage {
   display: flex;
   flex-direction: column;
