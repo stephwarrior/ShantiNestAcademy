@@ -24,9 +24,13 @@ export default {
 <style>
 body {
   box-sizing: border-box;
+  width: 100vw;
   margin: 0;
   padding: 0;
   background-color: #faf6ff;
   color: white;
+}
+* {
+  text-decoration: none;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
-  <div><RouterLink to="/">Accueil</RouterLink>/ Connexion</div>
-  <main></main>
+  <main>
+    <div><RouterLink to="/">Accueil</RouterLink>/ Connexion</div>
+  </main>
 </template>
 <script>
 export default {};

@@ -3,9 +3,9 @@ import PageBoutique from "../pages/PageBoutique.vue";
 import PageConnexion from "../pages/PageConnexion.vue";
 import PageAccueil from "../pages/PageAccueil.vue";
 import PageCours from "../pages/PageCours.vue";
-import PageErreur from "../pages/PageErreur.vue";
 import HoraireTarifs from "../pages/HoraireTarifs.vue";
 import PageServices from "../pages/PageServices.vue";
+import PageErreur from "../pages/PageErreur.vue";
 
 const routes = [
   {
@@ -29,11 +29,6 @@ const routes = [
     component: PageCours,
   },
   {
-    path: "/erreur404",
-    name: "erreur404",
-    component: PageErreur,
-  },
-  {
     path: "/HoraireTarifs",
     name: "HoraireTarifs",
     component: HoraireTarifs,
@@ -42,6 +37,11 @@ const routes = [
     path: "/services",
     name: "services",
     component: PageServices,
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "erreur404",
+    component: PageErreur,
   },
 ];
 

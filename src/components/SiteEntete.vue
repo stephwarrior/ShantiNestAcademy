@@ -14,15 +14,15 @@
         <span class="navbar-toggler-icon">&#9776;</span>
       </button>
     </nav>
+    <div class="menu-mobile" v-if="!MenuMobileActive">
+      <input type="text" />
+      <ul>
+        <li v-for="(lien, index) in liensMenu" :key="index">
+          <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
+        </li>
+      </ul>
+    </div>
   </header>
-  <div class="menu-mobile" v-if="!MenuMobileActive">
-    <input type="text" />
-    <ul>
-      <li v-for="(lien, index) in liensMenu" :key="index">
-        <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
-      </li>
-    </ul>
-  </div>
 </template>
 <script>
 import SiteLogo from "./SiteLogo.vue";
@@ -36,8 +36,8 @@ export default {
       liensMenu: [
         { nom: "Accueil", url: "/" },
         { nom: "Cours", url: "/cours" },
-        { nom: "Service", url: "/services" },
-        { nom: "Horaire et Tarifs", url: "/HoraireTarifs" },
+        { nom: "Services", url: "/services" },
+        { nom: "Horaires et Tarifs", url: "/HoraireTarifs" },
         { nom: "Boutique", url: "/boutique" },
       ],
       components: {
@@ -65,9 +65,8 @@ export default {
 </script>
 <style scoped>
 .header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 100vw;
+  position: fixed;
   background-color: #937fbc;
 }
 .navbar {
@@ -90,12 +89,10 @@ export default {
 }
 .blocLiensMenu > li {
   margin: 0 30px;
-  text-decoration: none;
 }
 .blocLiensMenu > li > a,
 .menu-mobile ul li a {
   color: white;
-  text-decoration: none;
   font-family: "Kotta One", sans-serif;
 }
 
@@ -108,7 +105,7 @@ export default {
   width: 70vw;
   height: 100vh;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 2;
