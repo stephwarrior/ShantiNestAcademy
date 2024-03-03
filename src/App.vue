@@ -30,7 +30,13 @@ body {
   background-color: #faf6ff;
   color: white;
 }
+main {
+  padding: 5.5rem 2rem;
+  height: 100vh;
+  color: #644a9d;
+}
 * {
   text-decoration: none;
+  list-style: none;
 }
 </style>

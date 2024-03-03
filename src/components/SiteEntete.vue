@@ -13,15 +13,15 @@
       <button class="navbar-toggler" @click="toggleMenu">
         <span class="navbar-toggler-icon">&#9776;</span>
       </button>
+      <div class="menu-mobile" v-if="!MenuMobileActive">
+        <input type="text" />
+        <ul>
+          <li v-for="(lien, index) in liensMenu" :key="index">
+            <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <div class="menu-mobile" v-if="!MenuMobileActive">
-      <input type="text" />
-      <ul>
-        <li v-for="(lien, index) in liensMenu" :key="index">
-          <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
-        </li>
-      </ul>
-    </div>
   </header>
 </template>
 <script>
@@ -66,8 +66,9 @@ export default {
 <style scoped>
 .header {
   width: 100vw;
-  position: fixed;
   background-color: #937fbc;
+  z-index: 2;
+  position: fixed;
 }
 .navbar {
   display: flex;
@@ -108,7 +109,6 @@ export default {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 2;
 }
 
 .menu-mobile input {
@@ -153,7 +153,16 @@ ul .navbar-toggler {
 .navbar-toggler-icon {
   color: white;
 }
-
+.navbar-toggler-fixe {
+  position: fixed;
+  color: white;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+}
+button.navbar-toggler {
+  color: white;
+}
 .navbar-menu {
   display: none;
 }

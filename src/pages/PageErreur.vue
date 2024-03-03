@@ -17,9 +17,7 @@ export default {};
 
 <style scoped>
 main {
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
+  color: #644a9d;
 }
 
 .erreur404 :not(.erreur404 div) {

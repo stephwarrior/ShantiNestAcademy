@@ -3,11 +3,14 @@
     <div class="zoneFooter">
       <div class="test" v-show="largeurEcran > 768">
         <SiteLogo />
-        <p>{{ NomLogo }}</p>
+        <div>
+          <p>ShantiNest</p>
+          <p>Academy</p>
+        </div>
       </div>
 
       <div class="zoneContact">
-        <h3>{{ sousTitreFooterUn }}</h3>
+        <h2>{{ sousTitreFooterUn }}</h2>
         <div class="iconeRS">
           <SiteIcones name="facebook"></SiteIcones>
           <SiteIcones name="twitter"></SiteIcones>
@@ -21,7 +24,7 @@
         </div>
       </div>
       <div class="zoneServices" v-show="largeurEcran > 768">
-        <h3>{{ sousTitreFooterDeux }}</h3>
+        <h2>{{ sousTitreFooterDeux }}</h2>
         <ul>
           <li v-for="(lien, index) in liensMenu" :key="index">
             <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
@@ -39,7 +42,6 @@ import SiteIcones from "./SiteIcones.vue";
 export default {
   data() {
     return {
-      NomLogo: "Shanti Nest Academy",
       sousTitreFooterUn: "Nous Joindre",
       sousTitreFooterDeux: "Services",
       courriel: "shantinestacademy@hotmail.com",
@@ -73,12 +75,17 @@ export default {
   },
 };
 </script>
+
 <style scoped>
+/** /////////////////////////////ZONE FOOTER//////////////////////////// */
 footer {
   width: 100vw;
-  height: 30vh;
   background-color: #937fbc;
+  padding-top: 2rem;
+  position: relative;
+  bottom: 0;
   text-align: center;
+  font-family: "Nanum Myeongjo", sans-serif;
 }
 .zoneFooter {
   display: flex;
@@ -86,27 +93,16 @@ footer {
   align-items: center;
 }
 
-.copyright {
-  width: 100vw;
-  border-top: 1px solid;
-  padding: 0.5em 0 0;
-  position: inherit;
-  bottom: 0;
+/** /////////////////////////////ZONE CONTACT//////////////////////////// */
+/** LOGO */
+.test .logoSNA > svg {
+  width: 15vw;
+  height: auto;
 }
-
-.zoneContact,
-.zoneServices {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.test p {
+  font-size: 1.5rem;
 }
-
-.zoneServices ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
+/** ICONES */
 .iconeRS {
   display: flex;
   margin: 0;
@@ -114,10 +110,50 @@ footer {
   fill: white;
 }
 .iconeRS > * {
-  margin: 0 15px;
+  margin: 0 1rem 0 0;
 }
 
-.contactInfo > div {
+/** NOUS JOINDRE */
+.contactInfo div {
   display: flex;
+  align-items: flex-end;
+  margin: 0.6rem 1rem auto 0;
+}
+/** /////////////////////////////ZONE SERVICES//////////////////////////// */
+
+/** SERVICES */
+.zoneServices ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
+  padding: 0;
+}
+.zoneServices ul li {
+  margin: 0.6rem 1rem auto 0;
+  font-size: 1rem;
+}
+.zoneServices ul li a {
+  color: white;
+}
+
+/** /////////////////////////////ZONE CONTACT ET SERVICES//////////////////////////// */
+.zoneContact,
+.zoneServices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/** /////////////////////////////ZONE COPYRIGHT//////////////////////////// */
+.copyright {
+  width: 100vw;
+  border-top: 1px solid;
+  padding: 0.5em 0;
+  margin: 2rem 0 0;
+}
+/** /////////////////////////////ZONE TOUT//////////////////////////// */
+h2 {
+  font-family: "Kotta One", sans-serif;
 }
 </style>

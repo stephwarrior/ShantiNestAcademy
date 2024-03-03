@@ -43,9 +43,6 @@ export default {
 </script>
 <style scoped>
 main {
-  width: 100vw;
-  height: 100vh;
-  background-color: pink;
 }
 .temoignage {
   display: flex;
