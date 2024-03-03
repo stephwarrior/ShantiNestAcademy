@@ -27,16 +27,22 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: #faf6ff;
+  background-color: var(--couleurArriereplan);
   color: white;
 }
 main {
   padding: 5.5rem 2rem;
   height: 100vh;
-  color: #644a9d;
+  color: var(--couleurTexte);
 }
 * {
   text-decoration: none;
   list-style: none;
+}
+:root {
+  --couleurPrincipale: #937fbc;
+  --couleurTexte: #644a9d;
+  --couleurTertiaire: #f5f5f5;
+  --couleurArriereplan: #faf6ff;
 }
 </style>

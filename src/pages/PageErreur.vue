@@ -17,7 +17,6 @@ export default {};
 
 <style scoped>
 main {
-  color: #644a9d;
 }
 
 .erreur404 :not(.erreur404 div) {

@@ -32,7 +32,6 @@ export default {
 </script>
 <style scoped>
 main {
-  color: #644a9d;
 }
 .blocService {
   display: flex;
