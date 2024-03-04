@@ -1,5 +1,13 @@
 <template>
   <head>
+    <!--Liens pour fonts icon-->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    />
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" />
+    <!--Liens pour fonts principale-->
     <link href="https://fonts.googleapis.com/css?family=Kotta+One:regular" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:regular,700,800" rel="stylesheet" />
   </head>
@@ -41,6 +49,9 @@ main {
 * {
   text-decoration: none;
   list-style: none;
+}
+p {
+  font-family: "Nanum Myeongjo", sans-serif;
 }
 :root {
   --couleurPrincipale: #937fbc;
