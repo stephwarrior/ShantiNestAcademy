@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div><RouterLink to="/">Accueil</RouterLink>/ Services</div>
+    <v-breadcrumbs :items="items"></v-breadcrumbs>
     <div class="blocService" v-for="(service, index) in services" :key="index">
       <h1>{{ service.name }}</h1>
       <img :src="service.img" alt="pas image" />
@@ -24,6 +24,17 @@ export default {
           name: "Formation des cours",
           description:
             "Lorem ipsumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat",
+        },
+      ],
+      items: [
+        {
+          title: "Accueil",
+          desactive: false,
+          href: "/",
+        },
+        {
+          title: "Services",
+          desactive: true,
         },
       ],
     };

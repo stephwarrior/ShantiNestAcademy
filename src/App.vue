@@ -18,6 +18,9 @@ export default {
     SiteEntete,
     SitePiedDePage,
   },
+  mounted() {
+    console.log(this.$vuetify.display.mobile);
+  },
 };
 </script>
 
