@@ -1,9 +1,23 @@
 <template>
   <main>
-    <div><RouterLink to="/">Accueil</RouterLink>/ Cours</div>
+    <v-breadcrumbs :items="items"></v-breadcrumbs>
   </main>
 </template>
 <script>
-export default {};
+export default {
+  data: () => ({
+    items: [
+      {
+        title: "Accueil",
+        desactive: false,
+        href: "/",
+      },
+      {
+        title: "Cours",
+        desactive: true,
+      },
+    ],
+  }),
+};
 </script>
 <style scoped></style>

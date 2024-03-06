@@ -1,5 +1,5 @@
 <template>
-  <div class="logoSNA" v-html="logo"></div>
+  <RouterLink to="/"><v-icon class="logoSNA" v-html="logo"></v-icon></RouterLink>
 </template>
 
 <script>

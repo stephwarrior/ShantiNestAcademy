@@ -39,8 +39,7 @@ export default {
 main {
   height: 100vh;
 }
-.v-container {
-}
+
 .tester {
   display: flex;
   flex-direction: column;
@@ -61,8 +60,5 @@ main {
 .erreur404 p {
   font-size: 16px;
   margin-bottom: 20px;
-}
-
-.v-breadcrumbs {
 }
 </style>

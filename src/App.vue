@@ -43,7 +43,7 @@ body {
 }
 main {
   padding: 5.5rem 2rem;
-  height: 300vh; /* Pour tester le pied de page */
+  height: 300vh;
   color: var(--couleurTexte);
 }
 * {
@@ -58,5 +58,6 @@ p {
   --couleurTexte: #644a9d;
   --couleurTertiaire: #f5f5f5;
   --couleurArriereplan: #faf6ff;
+  --fontPrincipaleUn: "Kotta One", sans-serif;
 }
 </style>
