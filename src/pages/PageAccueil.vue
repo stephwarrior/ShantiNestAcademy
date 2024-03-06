@@ -14,15 +14,15 @@
       ></v-img>-->
     </v-parallax>
     <v-container>
-      <div class="aPropos">
-        <VariableGlobal />
-        <div>
-          <div>
-            <v-img :src="aPropos.img" aspect-ratio="1.4" class="grey lighten-2"></v-img>
-          </div>
+      <VariableGlobal />
+      <v-row class="aPropos">
+        <v-col cols="auto" sm="12" md="5" class="glee">
+          <v-img :src="aPropos.img" class="grey lighten-2"></v-img>
+        </v-col>
+        <v-col cols="auto" sm="auto" md="5">
           <p>{{ aPropos.description }}</p>
-        </div>
-      </div>
+        </v-col>
+      </v-row>
       <div class="equipes">
         <h1>Notre Équipe</h1>
         <p>
@@ -129,7 +129,7 @@ export default {
       aPropos: {
         img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
         description:
-          "Bienvenue à ShantiNest Academy, un sanctuaire de bien-être et d'apprentissage où chaque souffle et mouvement vous rapproche de votre moi intérieur. Fondée sur les principes de paix, d'harmonie et de croissance personnelle, notre académie est plus qu'un simple centre de yoga, de pilates et de méditation; c'est une communauté où les individus de tous horizons se rejoignent pour explorer, apprendre et se transformerAu cœur de ShantiNest Academy se trouve notre conviction profonde que le bien-être est un voyage holistique. Nous avons soigneusement conçu un environnement où chaque aspect de vous-même peut être nourri et revitalisé. Nos espaces, baignés de lumière naturelle et conçus avec des matériaux écologiques, sont des havres de paix qui invitent à la relaxation et à la réflexion dès l'instant où vous franchissez nos portes.Notre offre de cours est aussi variée que nos membres. Du yoga dynamique Vinyasa pour ceux qui cherchent à renforcer leur corps et leur esprit, au Pilates, concentré sur la tonification et l'équilibrage musculaire, en passant par des séances de méditation profonde pour ceux qui aspirent à une paix intérieure. Chaque classe est une invitation à explorer les limites de votre corps et à étendre les frontières de votre esprit.Mais ShantiNest Academy, c'est bien plus que des cours. C'est un lieu d'apprentissage continu où nous proposons des ateliers spécialisés, des retraites et des formations de professeur, tous dirigés par des instructeurs passionnés et expérimentés. Notre objectif est de fournir des outils et des connaissances qui vous permettront d'intégrer les pratiques de bien-être dans chaque aspect de votre vie.La communauté ShantiNest est au cœur de notre mission. Nous croyons fermement à la force de la communauté pour inspirer, encourager et soutenir. C'est pourquoi nous avons créé un espace où les membres peuvent se rencontrer, partager et grandir ensemble. Que ce soit à travers des événements communautaires, des séances de partage ou simplement en prenant un thé ensemble après une classe, nous cherchons à tisser des liens forts entre nos membres.L'engagement de ShantiNest Academy envers le développement durable est aussi profond que notre passion pour le bien-être. Nous adoptons des pratiques respectueuses de l'environnement dans tous les aspects de notre fonctionnement, de l'utilisation d'énergies renouvelables à la fourniture de produits locaux et écologiques dans notre café.Rejoindre ShantiNest Academy, c'est choisir de faire un pas vers une vie plus équilibrée, saine et consciente. Que vous soyez débutant ou avancé dans votre pratique, vous trouverez chez ShantiNest un espace pour évoluer à votre rythme, guidé par des professionnels bienveillants et une communauté soutenante.Nous vous invitons à découvrir ShantiNest Academy et à commencer votre voyage de transformation personnelle. Venez explorer ce que signifie vivre en harmonie avec soi-même et avec le monde autour de nous. Bienvenue dans notre famille. Bienvenue à ShantiNest Academy.",
+          "Bienvenue à ShantiNest Academy, un sanctuaire de bien-être et d'apprentissage où chaque souffle et mouvement vous rapproche de votre moi intérieur. Fondée sur les principes de paix, d'harmonie et de croissance personnelle, notre académie est plus qu'un simple centre de yoga, de pilates et de méditation; c'est une communauté où les individus de tous horizons se rejoignent pour explorer, apprendre et se transformerAu cœur de ShantiNest Academy se trouve notre conviction profonde que le bien-être est un voyage holistique.Nous avons soigneusement conçu un environnement où chaque aspect de vous-même peut être nourri et revitalisé. Nos espaces, baignés de lumière naturelle et conçus avec des matériaux écologiques, sont des havres de paix qui invitent à la relaxation et à la réflexion dès l'instant où vous franchissez nos portes.Notre offre de cours est aussi variée que nos membres. Du yoga dynamique Vinyasa pour ceux qui cherchent à renforcer leur corps et leur esprit, au Pilates, concentré sur la tonification et l'équilibrage musculaire, en passant par des séances de méditation profonde pour ceux qui aspirent à une paix intérieure. Chaque classe est une invitation à explorer les limites de votre corps et à étendre les frontières de votre esprit.Mais ShantiNest Academy, c'est bien plus que des cours.  ",
       },
       lesCours: [
         {
@@ -172,6 +172,23 @@ main {
   padding: 0;
   height: auto;
 }
+
+/*//////////////////A PROPOS////////////////////*/
+
+.aPropos {
+  justify-content: space-around;
+  padding: 5rem;
+}
+
+
+/*/ /////////////////EQUIPES////////////////////*/
+
+/*//////////////////LES COURS////////////////////*/
+
+
+/*/ /////////////////TEMPOIGNAGES////////////////////*/
+
+/*--------------CAROUSEL--------*/
 
 .v-card--reveal {
   bottom: 0;

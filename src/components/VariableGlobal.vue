@@ -17,6 +17,10 @@ export default {
 };
 </script>
 <style scoped>
+.sousTitres {
+  display: flex;
+  justify-content: center;
+}
 .blackpink {
   width: 100vw;
 }
