@@ -6,6 +6,9 @@ import PageCours from "../pages/PageCours.vue";
 import HoraireTarifs from "../pages/HoraireTarifs.vue";
 import PageServices from "../pages/PageServices.vue";
 import PageErreur from "../pages/PageErreur.vue";
+import CoursYoga from "@/pages/CoursYoga.vue";
+import CoursPilates from "@/pages/CoursPilates.vue";
+import CoursMeditation from "@/pages/CoursMeditation.vue";
 
 const routes = [
   {
@@ -37,6 +40,21 @@ const routes = [
     path: "/services",
     name: "services",
     component: PageServices,
+  },
+  {
+    path: "/yoga",
+    name: "yoga",
+    component: CoursYoga,
+  },
+  {
+    path: "/pilates",
+    name: "pilates",
+    component: CoursPilates,
+  },
+  {
+    path: "/meditation",
+    name: "meditation",
+    component: CoursMeditation,
   },
   {
     path: "/:catchAll(.*)",

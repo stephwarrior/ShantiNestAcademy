@@ -14,7 +14,8 @@
       ></v-img>-->
     </v-parallax>
     <v-container>
-      <VariableGlobal />
+      <!--------------ZONE A PROPOS----------------->
+      <VariableGlobal title="Qui sommes nous" />
       <v-row class="aPropos">
         <v-col cols="auto" sm="12" md="5" class="glee">
           <v-img :src="aPropos.img" class="grey lighten-2"></v-img>
@@ -23,8 +24,9 @@
           <p>{{ aPropos.description }}</p>
         </v-col>
       </v-row>
-      <div class="equipes">
-        <h1>Notre Équipe</h1>
+      <!--------------ZONE EQUIPES----------------->
+      <VariableGlobal title="Notre Équipe" />
+      <v-row class="equipes">
         <p>
           Au cœur de ShantiNest Academy se trouve une équipe unie par une passion commune pour le bien-être et
           l'épanouissement personnel. Notre groupe d'experts dévoués en yoga, pilates et méditation partage un objectif
@@ -40,50 +42,65 @@
             <v-card-actions>
               <v-btn color="teal-accent-4" variant="text" @click="reveal = true"> Voir plus </v-btn>
             </v-card-actions>
-
-            <v-expand-transition>
-              <v-card v-if="reveal" class="v-card--reveal" style="height: 100%">
-                <v-card-text class="pb-0">
-                  <p class="text-h4 text--primary">Origin</p>
-                  <p>
-                    late 16th century (as a noun denoting a place where alms were distributed): from medieval Latin
-                    eleemosynarius, from late Latin eleemosyna ‘alms’, from Greek eleēmosunē ‘compassion’
-                  </p>
-                </v-card-text>
-                <v-card-actions class="pt-0">
-                  <v-btn color="teal-accent-4" variant="text" @click="reveal = false"> Fermer </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-expand-transition>
           </v-card>
         </v-row>
-      </div>
-      <div class="lesCours">
-        <h1>Nos cours</h1>
+      </v-row>
+      <!--------------ZONE COURS----------------->
+      <VariableGlobal title="Nos cours " />
+      <v-row class="lesCours">
         <v-container>
-          <v-row v-for="(cours, index) in lesCours" :key="index">
-            <v-card class="d-flex flex-row mx-auto" width="500px">
-              <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover>{{
-                cours.cours
-              }}</v-img>
+          <v-row>
+            <!-- <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="12" md="4" lg="4">
+              <v-hover v-slot="{ hover, props }">
+                <v-card class="mx-auto" max-width="500px">
+                  <v-img
+                    class="imgCours"
+                    height="200px"
+                    src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                    cover
+                    v-bind="props"
+                  >
+                    <h1 class="titreCours">{{ cours.cours }}</h1>
+                    <v-btn
+                      class="attention d-none d-lg-flex"
+                      color="teal-accent-4"
+                      variant="text"
+                      @click="reveal = true"
+                    >
+                      Learn More
+                    </v-btn>
 
-              <v-expand-transition>
-                <v-card v-if="reveal" class="v-card--reveal">
-                  <v-card-text class="pb-0">
-                    <p class="text-h4 text--primary">Origin</p>
-                    <p>
-                      late 16th century (as a noun denoting a place where alms were distributed): from medieval Latin
-                      eleemosynarius, from late Latin eleemosyna ‘alms’, from Greek eleēmosunē ‘compassion’
-                    </p>
-                  </v-card-text>
-                </v-card>
-              </v-expand-transition>
-            </v-card>
+                    <v-expand-transition>
+                      <p
+                        v-if="hover"
+                        class="textCours d-none d-md-flex transition-fast-in-fast-out bg-black v-card--reveal"
+                        style="height: 100%"
+                      >
+                        {{ cours.desc }}
+                      </p>
+                      <v-btn class="d-none d-md-flex" color="teal-accent-4" variant="text" @click="reveal = true">
+                        voir plus...
+                      </v-btn>
+                    </v-expand-transition>
+                  </v-img>
+                </v-card></v-hover
+              ></v-col
+            >-->
+            <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="12" md="4" lg="4">
+              <v-card
+                class="testCart"
+                image="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
+              >
+                <h1>{{ cours.cours }}</h1>
+                <v-btn :to="cours.url" variant="outlined">Cliquez ici pour plus d'information</v-btn>
+              </v-card></v-col
+            >
           </v-row>
         </v-container>
-      </div>
-      <div class="temoignage">
-        <h1>Témoignages</h1>
+      </v-row>
+      <!--------------ZONE AVIS/COMMENTAIRES----------------->
+      <VariableGlobal title="Témoignages" />
+      <v-row class="temoignage">
         <v-carousel hide-delimiters>
           <v-carousel-item cover v-for="(commentaire, index) in commentaires" :key="index">
             <v-col cols="auto" height="500px">
@@ -102,7 +119,7 @@
             </v-col>
           </v-carousel-item>
         </v-carousel>
-      </div>
+      </v-row>
     </v-container>
   </main>
 </template>
@@ -135,14 +152,19 @@ export default {
         {
           cours: "Yoga",
           img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
+          desc: "Le yoga est une discipline qui allie le corps, l'esprit et l'âme. Il est une invitation à explorer les limites de votre corps et à étendre les frontières de votre esprit.",
+          url: "/yoga",
         },
         {
           cours: "Pilates",
           img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
+          desc: "Le Pilates est une méthode d'entraînement physique qui s'inspire du yoga, de la danse et de la gymnastique. Il est concentré sur la tonification et l'équilibrage musculaire.",
+          url: "/pilates",
         },
         {
           cours: "Méditation",
           img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
+          desc: "La méditation est une pratique qui consiste à entraîner l'esprit ou à induire un mode de conscience particulier. Elle est une invitation à explorer les limites de votre corps et à étendre les frontières de votre esprit.",
         },
       ],
       commentaires: [
@@ -160,10 +182,19 @@ export default {
         },
       ],
       reveal: false,
+      montrer: false,
     };
   },
   components: {
     VariableGlobal,
+  },
+  methods: {
+    naviguerVersCours(route) {
+      this.$router.push(route);
+    },
+    ouvrirModal(cours) {
+      cours.dialog = true;
+    },
   },
 };
 </script>
@@ -180,17 +211,56 @@ main {
   padding: 5rem;
 }
 
-
 /*/ /////////////////EQUIPES////////////////////*/
 
 /*//////////////////LES COURS////////////////////*/
-
-
-/*/ /////////////////TEMPOIGNAGES////////////////////*/
-
-/*--------------CAROUSEL--------*/
+.testCart {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: clamp(1.5rem, 0.7571rem + 1.2143vw, 3rem);
+  border-radius: 20px;
+}
+.testCart > .v-btn {
+}
+.testCart:hover {
+  background-color: blue;
+}
 
 .v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: 0.9;
+  position: absolute;
+  width: 100%;
+}
+/*.v-card--reveal {
+  bottom: 0;
+  opacity: 1 !important;
+  position: absolute;
+  width: 100%;
+}*/
+.textCours {
+  color: white;
+}
+.titreCours {
+  color: white;
+  font-size: 2.7rem;
+}
+.v-responsive__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/*/ /////////////////TEMPOIGNAGES////////////////////*/
+.infoCarte {
   bottom: 0;
   opacity: 1 !important;
   position: absolute;
@@ -210,4 +280,5 @@ main {
 .temoignage-carousel .v-carousel__item {
   height: 200px;
 }
+/*--------------CAROUSEL--------*/
 </style>

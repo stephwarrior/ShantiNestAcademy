@@ -42,8 +42,7 @@ body {
   color: white;
 }
 main {
-  padding: 5.5rem 2rem;
-  height: 300vh;
+  height: auto;
   color: var(--couleurTexte);
 }
 * {

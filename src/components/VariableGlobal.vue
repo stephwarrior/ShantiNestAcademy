@@ -1,19 +1,20 @@
 <template>
   <div class="sousTitres">
-    <div class="blackpink my-4 d-flex align-center justify-center subtitle-container">
+    <div class="my-4 d-flex align-center justify-center subtitle-container">
       <v-divider class="flex-grow-1"></v-divider>
-      <h1 class="leSt mx-4">{{ test.title }}</h1>
+      <h1 class="leSt mx-4">{{ title }}</h1>
       <v-divider class="flex-grow-1"></v-divider>
     </div>
   </div>
 </template>
 <script>
 export default {
-  data: () => ({
-    test: {
-      title: "Qui sommes nous?",
+  props: {
+    title: {
+      type: String,
+      default: "Insérez un sous-titre", // Fournir une valeur par défaut pour la prop title
     },
-  }),
+  },
 };
 </script>
 <style scoped>
@@ -21,7 +22,7 @@ export default {
   display: flex;
   justify-content: center;
 }
-.blackpink {
+.sousTitres div {
   width: 100vw;
 }
 
