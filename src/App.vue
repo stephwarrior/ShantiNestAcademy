@@ -44,13 +44,19 @@ body {
 main {
   height: auto;
   color: var(--couleurTexte);
+  padding-top: 7rem;
+}
+.v-container {
+  padding: 0;
+  margin: 0;
+  max-width: none;
 }
 * {
   text-decoration: none;
   list-style: none;
 }
 p {
-  font-family: "Nanum Myeongjo", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 :root {
   --couleurPrincipale: #937fbc;

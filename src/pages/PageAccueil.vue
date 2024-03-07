@@ -15,24 +15,24 @@
     </v-parallax>
     <v-container>
       <!--------------ZONE A PROPOS----------------->
-      <VariableGlobal title="Qui sommes nous" />
+      <SousTitres title="Qui sommes nous" />
       <v-row class="aPropos">
-        <v-col cols="auto" sm="12" md="5" class="glee">
+        <v-col cols="12" lg="6" class="glee">
           <v-img :src="aPropos.img" class="grey lighten-2"></v-img>
         </v-col>
-        <v-col cols="auto" sm="auto" md="5">
+        <v-col cols="12" lg="6">
           <p>{{ aPropos.description }}</p>
         </v-col>
       </v-row>
       <!--------------ZONE EQUIPES----------------->
-      <VariableGlobal title="Notre Équipe" />
+      <SousTitres title="Notre Équipe" />
       <v-row class="equipes">
         <p>
           Au cœur de ShantiNest Academy se trouve une équipe unie par une passion commune pour le bien-être et
           l'épanouissement personnel. Notre groupe d'experts dévoués en yoga, pilates et méditation partage un objectif
           : vous accompagner vers une meilleure version de vous-même.
         </p>
-        <v-row v-for="(employee, index) in lesEmployees" :key="index">
+        <v-col v-for="(employee, index) in lesEmployees" :key="index">
           <v-card class="mx-auto" max-width="200">
             <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover></v-img>
 
@@ -43,14 +43,12 @@
               <v-btn color="teal-accent-4" variant="text" @click="reveal = true"> Voir plus </v-btn>
             </v-card-actions>
           </v-card>
-        </v-row>
+        </v-col>
       </v-row>
       <!--------------ZONE COURS----------------->
-      <VariableGlobal title="Nos cours " />
+      <SousTitres title="Nos cours " />
       <v-row class="lesCours">
-        <v-container>
-          <v-row>
-            <!-- <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="12" md="4" lg="4">
+        <!-- <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="12" md="4" lg="4">
               <v-hover v-slot="{ hover, props }">
                 <v-card class="mx-auto" max-width="500px">
                   <v-img
@@ -86,20 +84,18 @@
                 </v-card></v-hover
               ></v-col
             >-->
-            <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="12" md="4" lg="4">
-              <v-card
-                class="testCart"
-                image="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
-              >
-                <h1>{{ cours.cours }}</h1>
-                <v-btn :to="cours.url" variant="outlined">Cliquez ici pour plus d'information</v-btn>
-              </v-card></v-col
-            >
-          </v-row>
-        </v-container>
+        <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" md="4" lg="4">
+          <v-card
+            class="testCart"
+            image="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
+          >
+            <h1>{{ cours.cours }}</h1>
+            <v-btn :to="cours.url" variant="outlined">Voir plus...</v-btn>
+          </v-card></v-col
+        >
       </v-row>
       <!--------------ZONE AVIS/COMMENTAIRES----------------->
-      <VariableGlobal title="Témoignages" />
+      <SousTitres title="Témoignages" />
       <v-row class="temoignage">
         <v-carousel hide-delimiters>
           <v-carousel-item cover v-for="(commentaire, index) in commentaires" :key="index">
@@ -125,7 +121,7 @@
 </template>
 <script>
 //import UnCarousel from "../components/UnCarousel.vue";
-import VariableGlobal from "@/components/VariableGlobal.vue";
+import SousTitres from "@/components/SousTitres.vue";
 
 export default {
   data() {
@@ -186,7 +182,7 @@ export default {
     };
   },
   components: {
-    VariableGlobal,
+    SousTitres,
   },
   methods: {
     naviguerVersCours(route) {
@@ -203,19 +199,22 @@ main {
   padding: 0;
   height: auto;
 }
+.v-container {
+  padding: 0;
+}
 
 /*//////////////////A PROPOS////////////////////*/
 
 .aPropos {
   justify-content: space-around;
-  padding: 5rem;
+  padding: 1rem 2rem;
 }
 
 /*/ /////////////////EQUIPES////////////////////*/
 
 /*//////////////////LES COURS////////////////////*/
 .testCart {
-  height: 300px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -224,26 +223,16 @@ main {
   font-size: clamp(1.5rem, 0.7571rem + 1.2143vw, 3rem);
   border-radius: 20px;
 }
-.testCart > .v-btn {
+.lesCours,
+.equipes,
+.temoignage {
+  padding: 1rem 2rem;
 }
+
 .testCart:hover {
   background-color: blue;
 }
 
-.v-card--reveal {
-  align-items: center;
-  bottom: 0;
-  justify-content: center;
-  opacity: 0.9;
-  position: absolute;
-  width: 100%;
-}
-/*.v-card--reveal {
-  bottom: 0;
-  opacity: 1 !important;
-  position: absolute;
-  width: 100%;
-}*/
 .textCours {
   color: white;
 }
@@ -281,4 +270,28 @@ main {
   height: 200px;
 }
 /*--------------CAROUSEL--------*/
+
+/*//////////////////Tablette////////////////////*/
+@media (min-width: 768px) {
+  .aPropos {
+    padding: 4rem;
+  }
+  .aPropos p {
+    font-size: 1.3rem;
+  }
+  /*/////////////////////////////*/
+  .testCart {
+    height: 300px;
+  }
+  /*/////////////////////////////*/
+
+  /*/////////////////////////////*/
+
+  /*/////////////////////////////*/
+}
+/*//////////////////Tablette////////////////////*/
+@media (min-width: 960px) {
+  .aPropos {
+  }
+}
 </style>
