@@ -62,6 +62,10 @@ p {
   --couleurPrincipale: #937fbc;
   --couleurTexte: #644a9d;
   --couleurTertiaire: #f5f5f5;
+  --couleurQuaternaire: #e394b5;
+  --couleurCinquieme: #f0a7a6;
+  --couleurSixieme: #f4dad2;
+  --couleurSeptieme: #8e7ab5;
   --couleurArriereplan: #faf6ff;
   --fontPrincipaleUn: "Kotta One", sans-serif;
 }
