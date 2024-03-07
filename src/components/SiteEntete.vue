@@ -58,6 +58,14 @@
       <v-list v-for="(lien, index) in liensMenu" :key="index">
         <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
       </v-list>
+      <div class="iconeMobile">
+        <RouterLink to="/boutique"
+          ><v-icon class="iconePanier" icon @click="toggleDrawer">mdi-shopping</v-icon>Panier</RouterLink
+        >
+        <RouterLink to="/connexion"
+          ><v-icon class="iconeCnx" icon @click="toggleDrawer">mdi-account</v-icon>Connection</RouterLink
+        >
+      </div>
     </div>
   </div>
 </template>

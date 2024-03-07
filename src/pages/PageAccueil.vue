@@ -100,15 +100,15 @@
         <v-carousel hide-delimiters>
           <v-carousel-item cover v-for="(commentaire, index) in commentaires" :key="index">
             <v-col cols="auto" height="500px">
-              <v-card
-                prepend-avatar="https://cdn.vuetifyjs.com/images/john.jpg"
-                class="mx-auto"
-                max-width="340px"
-                max-height="500px"
-                title="Daniel Dae Kim"
-                subtitle="Membre SNA depuis 2012"
-              >
-                <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly=""></v-rating>
+              <v-card class="mx-auto" max-width="340px" height="350px">
+                <div class="clients">
+                  <v-avatar v-slots:prepend>
+                    <img :src="commentaire.img" alt="avatar" cover />
+                  </v-avatar>
+
+                  <v-card-title>{{ commentaire.nom }}</v-card-title>
+                </div>
+                <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly size="x-large"></v-rating>
                 <v-card-subtitle class="text-h6">{{ commentaire.sousTitre }}</v-card-subtitle>
                 <v-card-text>{{ commentaire.comm }}</v-card-text>
               </v-card>
@@ -129,12 +129,12 @@ export default {
       rating: 4,
       lesEmployees: [
         {
-          imageUrl: " ",
+          img: " ",
           nom: "Émilie Leblanc",
           poste: "Professeur de yoga",
         },
         {
-          imageUrl: "",
+          img: "",
           nom: "Tom Jédusor",
           poste: "Professeur de méditation",
         },
@@ -165,16 +165,18 @@ export default {
       ],
       commentaires: [
         {
-          imageUrl: " ",
+          img: "https://m.media-amazon.com/images/M/MV5BOTRjYWNmNmMtYTFjZi00MWEzLWFhNjEtNWQwMTlkNDc0MzQzXkEyXkFqcGdeQXVyMjgyODMzNw@@._V1_.jpg ",
           nom: "Daniel Dae Kim",
           sousTitre: "Daebakida Shinsha!",
+          membres: "Membre depuis 2012",
           comm: " Depuis que j'ai commencé les cours de yoga chez ShantiNest Academy, ma vie a changé de manière incroyable.Je me sens plus équilibré, plus calme, et en meilleure santé. Les instructeurs sont incroyablement compétents et attentionnés.",
         },
         {
-          imageUrl: "",
+          img: "https://sf2.be.com/wp-content/uploads/2015/09/frank01-307x410.jpg",
           nom: "Tom Jédusor",
+          membres: "Membre depuis 2018",
           sousTitre: " Wow!",
-          comm: "best of the best",
+          comm: "Best of the best. I love it! I'm new to yoga and I'm so glad I found this place. The instructors are amazing and the studio is beautiful. I highly recommend it!",
         },
       ],
       reveal: false,
@@ -240,25 +242,32 @@ main {
   color: white;
   font-size: 2.7rem;
 }
-.v-responsive__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
 
 /*/ /////////////////TEMPOIGNAGES////////////////////*/
-.infoCarte {
-  bottom: 0;
-  opacity: 1 !important;
-  position: absolute;
-  width: 100%;
-}
+
 .temoignage {
   display: flex;
   flex-direction: column;
 }
+.temoignage .v-card {
+  border-radius: 20px;
+}
+.clients {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 1rem 0;
+}
+.v-card-title {
+  font-size: 1.7rem;
+  font-family: "Kotta One", sans-serif;
+  color: var(--couleurTexte);
+}
+.v-card-text {
+  font-size: 1rem;
+}
+/*--------------CAROUSEL--------*/
 .temoignage-carousel .v-carousel__controls {
   align-items: center;
 }
@@ -269,7 +278,6 @@ main {
 .temoignage-carousel .v-carousel__item {
   height: 200px;
 }
-/*--------------CAROUSEL--------*/
 
 /*//////////////////Tablette////////////////////*/
 @media (min-width: 768px) {
@@ -291,7 +299,5 @@ main {
 }
 /*//////////////////Tablette////////////////////*/
 @media (min-width: 960px) {
-  .aPropos {
-  }
 }
 </style>
