@@ -3,7 +3,10 @@
     <v-row no-gutters class="contenuRow">
       <!--------------LOGO----------------->
 
-      <v-col cols="6" md="auto" class="logo"> <SiteLogo /> </v-col>
+      <v-col cols="6" md="auto" class="logo">
+        <SiteLogo />
+        <p class="titreLogo d-md-none">ShantiNest Academy</p></v-col
+      >
       <!-------------- MENU NAV GRAND ÉCRAN------------>
       <v-col cols="auto" lg="6" class="blocMenu d-none d-md-flex">
         <v-list>
@@ -114,6 +117,15 @@ header {
 
 .logoSNA svg {
   fill: red;
+}
+.logo {
+  display: flex;
+}
+.titreLogo {
+  font-family: "Kotta One", sans-serif;
+  font-size: 1.5rem;
+  color: var(--couleurTertiaire);
+  margin-left: 1rem;
 }
 
 /*/////////////// BLOC LIENS (GRAND ECRAN)//////////////////*/

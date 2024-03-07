@@ -1,19 +1,21 @@
 <template>
   <main>
-    <v-parallax
-      height="500px"
-      sm="4"
-      src="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
-    >
+    <v-parallax height="500px" src="https://hips.hearstapps.com/hmg-prod/images/10-minute-yoga-1668510425.jpg">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">YOGA</p>
+      </div>
+
+      <div class="iconeFlech">
+        <v-btn icon large color="white">
+          <v-icon>mdi-chevron-down</v-icon>
+        </v-btn>
       </div>
       <!--<v-img
         height="400px"
         src="https://d33wubrfki0l68.cloudfront.net/772616e178d1844bb45cc244ee42ad217b0d4a64/6b6cf/images/schedule_main.png"
       ></v-img>-->
     </v-parallax>
-    <v-breadcrumbs :items="items"></v-breadcrumbs>
+    <v-breadcrumbs :items="items" class="d-none align-center d-md-flex"></v-breadcrumbs>
     <v-container>
       <!--------------INTRO YOGA----------------->
       <SousTitres title="Qu'est-ce que le yoga?" />
@@ -39,21 +41,22 @@
               src="https://www.yogajournal.com/.image/t_share/MTU5MzYwNzIwNzIwMzYwNzIw/yj-2020-07-08-2.jpg"
               :width="200"
               aspect-ratio="1"
-            ></v-img>
+              >Zone Image</v-img
+            >
             <v-card-title>{{ yoga.cours }}</v-card-title>
             <v-card-text>
               {{ yoga.textCourt }}
             </v-card-text>
             <v-card-actions>
-              <v-btn @click="dialog = true" text color="primary">En savoir plus</v-btn>
+              <v-btn @click="dialog = true" text color="pink">En savoir plus</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
         <v-col>
           <v-dialog v-model="dialog" max-width="600px">
             <v-card>
-              <v-card-title> Titre </v-card-title>
-              <v-card-text> Ceci est une boîte modale. </v-card-text>
+              <v-card-title> Mon titre sera ici </v-card-title>
+              <v-card-text> Mon texte sera ici </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" text @click="dialog = false">Fermer</v-btn>
@@ -190,9 +193,16 @@ export default {
 </script>
 <style scoped>
 main {
+  padding: 0;
+  color: var(--couleurQuaternaire);
+}
+.v-parallax {
+  height: 800px !important;
 }
 /*////////////LE YOGA CEST QUOI//////////////*/  
-
+.leSt{
+  color: var(--couleurQuaternaire) !important;
+}
 .v-window-item {
   padding: 5rem;
   height: 300px;

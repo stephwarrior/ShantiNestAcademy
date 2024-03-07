@@ -13,6 +13,9 @@
   </head>
   <SiteEntete />
   <router-view />
+  <v-btn class="btnRemonte" color="#e394b5" @click="scrollTop">
+    <v-icon>mdi-arrow-up</v-icon>
+  </v-btn>
   <SitePiedDePage />
 </template>
 
@@ -28,6 +31,14 @@ export default {
   },
   mounted() {
     console.log(this.$vuetify.display.mobile);
+  },
+  methods: {
+    scrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Pour un effet de défilement doux
+      });
+    },
   },
 };
 </script>
@@ -57,6 +68,12 @@ main {
 }
 p {
   font-family: "Lato", sans-serif;
+}
+.btnRemonte {
+  position: fixed;
+  bottom: 30px;
+  left: 80%;
+  z-index: 100;
 }
 :root {
   --couleurPrincipale: #937fbc;
