@@ -33,7 +33,7 @@
       </v-window>
 
       <!----------------- COURS DE YOGA-------------->
-      <SousTitres title="Cours de yoga" />
+      <SousTitres title="Quel cours de Yoga choisir ?" />
       <v-row>
         <v-col class="blocYogas" v-for="(yoga, index) in coursYoga" :key="index" cols="12" md="6" lg="4">
           <v-card>

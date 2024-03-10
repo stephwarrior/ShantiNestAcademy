@@ -21,7 +21,7 @@
           <v-img :src="aPropos.img" class="grey lighten-2"></v-img>
         </v-col>
         <v-col cols="12" lg="6">
-          <p>{{ aPropos.description }}</p>
+          <p>{{ aPropos.descriptiom }}</p>
         </v-col>
       </v-row>
       <!--------------ZONE EQUIPES----------------->
@@ -48,42 +48,6 @@
       <!--------------ZONE COURS----------------->
       <SousTitres title="Nos cours " />
       <v-row class="lesCours">
-        <!-- <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="12" md="4" lg="4">
-              <v-hover v-slot="{ hover, props }">
-                <v-card class="mx-auto" max-width="500px">
-                  <v-img
-                    class="imgCours"
-                    height="200px"
-                    src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                    cover
-                    v-bind="props"
-                  >
-                    <h1 class="titreCours">{{ cours.cours }}</h1>
-                    <v-btn
-                      class="attention d-none d-lg-flex"
-                      color="teal-accent-4"
-                      variant="text"
-                      @click="reveal = true"
-                    >
-                      Learn More
-                    </v-btn>
-
-                    <v-expand-transition>
-                      <p
-                        v-if="hover"
-                        class="textCours d-none d-md-flex transition-fast-in-fast-out bg-black v-card--reveal"
-                        style="height: 100%"
-                      >
-                        {{ cours.desc }}
-                      </p>
-                      <v-btn class="d-none d-md-flex" color="teal-accent-4" variant="text" @click="reveal = true">
-                        voir plus...
-                      </v-btn>
-                    </v-expand-transition>
-                  </v-img>
-                </v-card></v-hover
-              ></v-col
-            >-->
         <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" md="4" lg="4">
           <v-card
             class="testCart"
@@ -98,7 +62,7 @@
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
         <v-carousel hide-delimiters>
-          <v-carousel-item cover v-for="(commentaire, index) in commentaires" :key="index">
+          <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
                 <div class="clients">
@@ -122,63 +86,19 @@
 <script>
 //import UnCarousel from "../components/UnCarousel.vue";
 import SousTitres from "@/components/SousTitres.vue";
+import aPropos from "@/data/PageAccueil/aPropos.json";
+import commentaires from "@/data/PageAccueil/commentaires.json";
+import lesCours from "@/data/PageAccueil/lesCours.json";
+import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 
 export default {
   data() {
     return {
-      rating: 4,
-      lesEmployees: [
-        {
-          img: " ",
-          nom: "Émilie Leblanc",
-          poste: "Professeur de yoga",
-        },
-        {
-          img: "",
-          nom: "Tom Jédusor",
-          poste: "Professeur de méditation",
-        },
-      ],
-      aPropos: {
-        img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
-        description:
-          "Bienvenue à ShantiNest Academy, un sanctuaire de bien-être et d'apprentissage où chaque souffle et mouvement vous rapproche de votre moi intérieur. Fondée sur les principes de paix, d'harmonie et de croissance personnelle, notre académie est plus qu'un simple centre de yoga, de pilates et de méditation; c'est une communauté où les individus de tous horizons se rejoignent pour explorer, apprendre et se transformerAu cœur de ShantiNest Academy se trouve notre conviction profonde que le bien-être est un voyage holistique.Nous avons soigneusement conçu un environnement où chaque aspect de vous-même peut être nourri et revitalisé. Nos espaces, baignés de lumière naturelle et conçus avec des matériaux écologiques, sont des havres de paix qui invitent à la relaxation et à la réflexion dès l'instant où vous franchissez nos portes.Notre offre de cours est aussi variée que nos membres. Du yoga dynamique Vinyasa pour ceux qui cherchent à renforcer leur corps et leur esprit, au Pilates, concentré sur la tonification et l'équilibrage musculaire, en passant par des séances de méditation profonde pour ceux qui aspirent à une paix intérieure. Chaque classe est une invitation à explorer les limites de votre corps et à étendre les frontières de votre esprit.Mais ShantiNest Academy, c'est bien plus que des cours.  ",
-      },
-      lesCours: [
-        {
-          cours: "Yoga",
-          img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
-          desc: "Le yoga est une discipline qui allie le corps, l'esprit et l'âme. Il est une invitation à explorer les limites de votre corps et à étendre les frontières de votre esprit.",
-          url: "/yoga",
-        },
-        {
-          cours: "Pilates",
-          img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
-          desc: "Le Pilates est une méthode d'entraînement physique qui s'inspire du yoga, de la danse et de la gymnastique. Il est concentré sur la tonification et l'équilibrage musculaire.",
-          url: "/pilates",
-        },
-        {
-          cours: "Méditation",
-          img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
-          desc: "La méditation est une pratique qui consiste à entraîner l'esprit ou à induire un mode de conscience particulier. Elle est une invitation à explorer les limites de votre corps et à étendre les frontières de votre esprit.",
-        },
-      ],
-      commentaires: [
-        {
-          img: "https://m.media-amazon.com/images/M/MV5BOTRjYWNmNmMtYTFjZi00MWEzLWFhNjEtNWQwMTlkNDc0MzQzXkEyXkFqcGdeQXVyMjgyODMzNw@@._V1_.jpg ",
-          nom: "Daniel Dae Kim",
-          sousTitre: "Daebakida Shinsha!",
-          membres: "Membre depuis 2012",
-          comm: " Depuis que j'ai commencé les cours de yoga chez ShantiNest Academy, ma vie a changé de manière incroyable.Je me sens plus équilibré, plus calme, et en meilleure santé. Les instructeurs sont incroyablement compétents et attentionnés.",
-        },
-        {
-          img: "https://sf2.be.com/wp-content/uploads/2015/09/frank01-307x410.jpg",
-          nom: "Tom Jédusor",
-          membres: "Membre depuis 2018",
-          sousTitre: " Wow!",
-          comm: "Best of the best. I love it! I'm new to yoga and I'm so glad I found this place. The instructors are amazing and the studio is beautiful. I highly recommend it!",
-        },
-      ],
+      aPropos: aPropos.aPropos,
+      lesCommentaires: commentaires.lesCommentaires,
+      lesCours: lesCours.lesCours,
+      lesEmployees: LesEmployees.lesEmployees,
+      rating: 5,
       reveal: false,
       montrer: false,
     };

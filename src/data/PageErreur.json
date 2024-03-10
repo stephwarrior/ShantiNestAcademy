@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "title": "Accueil",
+      "desactive": false,
+      "href": "/"
+    },
+    {
+      "title": "Erreur 404",
+      "desactive": true
+    }
+  ]
+}

@@ -18,26 +18,18 @@
 </template>
 
 <script>
+// Importez le fichier JSON
+import PageErreur from "@/data/PageErreur.json";
 export default {
   data: () => ({
-    items: [
-      {
-        title: "Accueil",
-        desactive: false,
-        href: "/",
-      },
-      {
-        title: "Erreur 404",
-        desactive: true,
-      },
-    ],
+    items: PageErreur.items,
   }),
 };
 </script>
 
 <style scoped>
 main {
-  height: 100vh;
+  height: auto;
 }
 
 .tester {

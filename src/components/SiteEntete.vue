@@ -29,7 +29,11 @@
         <!--------------ICONES----------------->
         <v-col cols="auto" class="d-none d-md-flex">
           <RouterLink to="/boutique"
-            ><v-col> <v-icon class="iconePanier" icon @click="toggleDrawer">mdi-shopping</v-icon></v-col></RouterLink
+            ><v-col>
+              <v-badge color="error"
+                ><v-icon class="iconePanier" icon @click="toggleDrawer">mdi-shopping</v-icon></v-badge
+              ></v-col
+            ></RouterLink
           >
           <RouterLink to="/connexion"
             ><v-col> <v-icon class="iconeCnx" icon @click="toggleDrawer">mdi-account</v-icon></v-col></RouterLink

@@ -46,6 +46,7 @@ export default {
 <style>
 body {
   box-sizing: border-box;
+  overflow-x: hidden;
   width: 100vw;
   margin: 0;
   padding: 0;

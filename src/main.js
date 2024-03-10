@@ -10,6 +10,15 @@ import * as directives from "vuetify/directives";
 const vuetify = createVuetify({
   components,
   directives,
+  display: {
+    mobileBreakpoint: "sm",
+    thresholds: {
+      xs: 320,
+      sm: 500,
+      md: 768,
+      lg: 1024,
+    },
+  },
 });
 
 const app = createApp(App);
