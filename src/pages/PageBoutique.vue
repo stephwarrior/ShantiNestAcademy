@@ -8,7 +8,7 @@
       </div>
 
       <v-row class="test">
-        <v-col cols="12" md="4" v-for="(article, index) in articles" :key="index">
+        <v-col cols="12" md="4" v-for="article in articles" :key="article.id">
           <v-card class="blocItems">
             <v-img :src="article.img" alt="pas image">zone image</v-img>
             <p>{{ article.nom }}</p>
@@ -28,16 +28,16 @@ export default {
     return {
       articles: [
         {
-          id: 1,
           nom: "Goblet SNA",
           prix: 50,
           img: "",
+          id: 1,
         },
-        { nom: "Chandail SNA", prix: 10, img: "" },
-        { nom: "Bouteille SNA", prix: 15, img: "" },
-        { nom: "Tapis SNA", prix: 20, img: "" },
-        { nom: "Tasse SNA", prix: 10, img: "" },
-        { nom: "Sac SNA", prix: 25, img: "" },
+        { nom: "Chandail SNA", prix: 10, img: "", id: 2 },
+        { nom: "Bouteille SNA", prix: 15, img: "", id: 3 },
+        { nom: "Tapis SNA", prix: 20, img: "", id: 4 },
+        { nom: "Tasse SNA", prix: 10, img: "", id: 5 },
+        { nom: "Sac SNA", prix: 25, img: "", id: 6 },
       ],
       items: [
         {
@@ -56,9 +56,9 @@ export default {
     ...mapActions(["ajouterAuPanier"]),
     ajouterArticle(article) {
       this.ajouterAuPanier(article);
+      console.log(article);
     },
   },
-  components: {},
 };
 </script>
 <style scoped>

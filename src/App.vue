@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kotta+One:regular" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:regular,700,800" rel="stylesheet" />
   </head>
-  <SiteEntete @afficher-le-panier="afficherPanier = !afficherPanier" />
+  <SiteEntete @afficheLePanier="afficherPanier = !afficherPanier" />
   <PanierAchat v-if="afficherPanier" />
   <router-view />
   <v-btn class="btnRemonte" color="#e394b5" @click="scrollTop">
@@ -82,7 +82,7 @@ p {
   position: fixed;
   bottom: 30px;
   left: 80%;
-  z-index: 100;
+  z-index: 2;
 }
 :root {
   --couleurPrincipale: #937fbc;

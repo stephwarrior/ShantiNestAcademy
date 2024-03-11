@@ -33,9 +33,6 @@ export default createStore({
     retireDuPanier({ commit }, articleId) {
       commit("RETIRER_DU_PANIER", articleId);
     },
-    TOGGLE_PANIER(state) {
-      state.afficherPanier = !state.afficherPanier;
-    },
   },
   getters: {
     nombreArticles: (state) => {

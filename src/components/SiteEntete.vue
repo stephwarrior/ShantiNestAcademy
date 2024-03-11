@@ -51,8 +51,9 @@
       ><RouterLink to="/connexion"><v-icon class="iconeCnx" icon>mdi-account</v-icon></RouterLink>
       <!--------------BOUTON MENU-MOBILE/TABLETTE---------->
       <div class="menuBurger">
-        <v-btn icon @click="ouvreNav">
-          <v-icon>mdi-menu</v-icon>
+        <v-btn icon>
+          <v-icon @click="ouvreNav" v-if="!menuMobileActive">mdi-menu</v-icon>
+          <v-icon v-else>mdi-close</v-icon>
         </v-btn>
       </div>
     </div>
@@ -92,7 +93,7 @@ export default {
       this.active = false;
     },
     montrerPanier() {
-      this.$emit("afficher-le-panier");
+      this.$emit("afficheLePanier");
     },
   },
   computed: {
