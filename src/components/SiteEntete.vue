@@ -1,19 +1,21 @@
 <template>
   <header>
-    <div class="enteteMobTab">
+    <div class="enteteMobTab d-md-none">
       <SiteLogo />
       <p class="titreLogo d-md-none">ShantiNest Academy</p>
       <!--------------BOUTON MENU-MOBILE/TABLETTE---------->
-      <div class="menuBurger d-md-none">
+      <div class="menuBurger">
         <v-btn icon @click="ouvreNav">
           <v-icon>mdi-menu</v-icon>
         </v-btn>
       </div>
     </div>
     <!--cols="8" md="auto"-->
-    <v-row no-gutters class="contenuRow">
+    <v-row no-gutters class="contenuRow align-center">
       <!--------------LOGO----------------->
-
+      <v-col cols="auto" class="d-none d-md-flex">
+        <SiteLogo />
+      </v-col>
       <!-------------- MENU NAV GRAND ÉCRAN------------>
       <v-col cols="auto" lg="6" class="blocMenu d-none d-md-flex">
         <v-list>

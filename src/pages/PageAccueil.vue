@@ -1,10 +1,6 @@
 <template>
   <main>
-    <v-parallax
-      height="500px"
-      sm="4"
-      src="https://images.pexels.com/photos/9304859/pexels-photo-9304859.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    >
+    <v-parallax height="500px" sm="4" :src="parallaxSrc">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">Bienvenue à ShantiNest Academy</p>
       </div>
@@ -14,7 +10,7 @@
       <SousTitres title="Qui sommes nous" />
       <v-row class="aPropos">
         <v-col cols="12" lg="6" class="glee">
-          <v-img :src="aPropos.img" class="grey lighten-2"></v-img>
+          <v-img :src="parallaxSrc" class="grey lighten-2"></v-img>
         </v-col>
         <v-col cols="12" lg="6">
           <p>{{ aPropos.description }}</p>
@@ -91,6 +87,8 @@ import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 export default {
   data() {
     return {
+      parallaxSrc: require("../img/general/sna08.jpeg"),
+
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,
       lesCours: lesCours.lesCours,
