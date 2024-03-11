@@ -1,12 +1,19 @@
 <template>
   <header>
+    <div class="enteteMobTab">
+      <SiteLogo />
+      <p class="titreLogo d-md-none">ShantiNest Academy</p>
+      <!--------------BOUTON MENU-MOBILE/TABLETTE---------->
+      <div class="menuBurger d-md-none">
+        <v-btn icon @click="ouvreNav">
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+      </div>
+    </div>
+    <!--cols="8" md="auto"-->
     <v-row no-gutters class="contenuRow">
       <!--------------LOGO----------------->
 
-      <v-col cols="6" md="auto" class="logo">
-        <SiteLogo />
-        <p class="titreLogo d-md-none">ShantiNest Academy</p></v-col
-      >
       <!-------------- MENU NAV GRAND ÉCRAN------------>
       <v-col cols="auto" lg="6" class="blocMenu d-none d-md-flex">
         <v-list>
@@ -40,12 +47,6 @@
           >
         </v-col></v-col
       >
-      <!--------------BOUTON MENU-MOBILE/TABLETTE---------->
-      <v-col class="menuBurger d-md-none">
-        <v-btn icon @click="ouvreNav">
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-      </v-col>
     </v-row>
   </header>
   <!--------------BLOC MENU-MOBILE----------->
@@ -107,27 +108,20 @@ header {
   width: 100vw;
   height: auto;
   background-color: #937fbc;
-  padding: 0 3rem;
+  padding: 0 1rem;
   z-index: 2;
   position: fixed;
 }
-.contenuRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
+
 /*//////////////////LOGO////////////////////*/
 
-.logoSNA svg {
-  fill: red;
-}
-.logo {
+.enteteMobTab {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .titreLogo {
   font-family: "Kotta One", sans-serif;
-  font-size: 1.5rem;
   color: var(--couleurTertiaire);
   margin-left: 1rem;
 }
@@ -218,4 +212,8 @@ input#recherche {
 }
 
 /*//////////////////LIENS MOBILE////////////////////*/
+
+/*//////////////////Grand Ecran////////////////////*/
+@media (min-width: 960px) {
+}
 </style>

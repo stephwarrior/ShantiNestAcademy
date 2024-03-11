@@ -16,7 +16,8 @@ const vuetify = createVuetify({
       xs: 320,
       sm: 500,
       md: 768,
-      lg: 1024,
+      lg: 960,
+      xl: 1440,
     },
   },
 });

@@ -32,6 +32,7 @@ export default {
 }
 
 .leSt {
+  font-size: clamp(1.5rem, 0.4286rem + 2.8571vw, 2.7rem);
   font-family: var(--fontPrincipaleUn);
   color: var(--couleurPrincipale);
   white-space: nowrap;

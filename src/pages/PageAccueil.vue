@@ -1,17 +1,13 @@
 <template>
   <main>
     <v-parallax
-      height="800px"
+      height="500px"
       sm="4"
-      src="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
+      src="https://images.pexels.com/photos/9304859/pexels-photo-9304859.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     >
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">Bienvenue à ShantiNest Academy</p>
       </div>
-      <!--<v-img
-        height="400px"
-        src="https://d33wubrfki0l68.cloudfront.net/772616e178d1844bb45cc244ee42ad217b0d4a64/6b6cf/images/schedule_main.png"
-      ></v-img>-->
     </v-parallax>
     <v-container>
       <!--------------ZONE A PROPOS----------------->
@@ -21,7 +17,7 @@
           <v-img :src="aPropos.img" class="grey lighten-2"></v-img>
         </v-col>
         <v-col cols="12" lg="6">
-          <p>{{ aPropos.descriptiom }}</p>
+          <p>{{ aPropos.description }}</p>
         </v-col>
       </v-row>
       <!--------------ZONE EQUIPES----------------->
@@ -39,6 +35,7 @@
             <v-card-title>{{ employee.nom }} </v-card-title>
 
             <v-card-subtitle> {{ employee.poste }} </v-card-subtitle>
+            <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
             <v-card-actions>
               <v-btn color="teal-accent-4" variant="text" @click="reveal = true"> Voir plus </v-btn>
             </v-card-actions>
@@ -217,7 +214,7 @@ main {
 
   /*/////////////////////////////*/
 }
-/*//////////////////Tablette////////////////////*/
+/*//////////////////Grand Ecran////////////////////*/
 @media (min-width: 960px) {
 }
 </style>
