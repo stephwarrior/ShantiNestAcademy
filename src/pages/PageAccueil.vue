@@ -1,6 +1,6 @@
 <template>
   <main>
-    <v-parallax height="500px" sm="4" :src="parallaxSrc">
+    <v-parallax height="400px" sm="4" :src="parallaxSrc">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">Bienvenue à ShantiNest Academy</p>
       </div>
@@ -10,7 +10,7 @@
       <SousTitres title="Qui sommes nous" />
       <v-row class="aPropos">
         <v-col cols="12" lg="6" class="glee">
-          <v-img :src="parallaxSrc" class="grey lighten-2"></v-img>
+          <v-img :src="parallaxDeux" class="imgAp grey lighten-2"></v-img>
         </v-col>
         <v-col cols="12" lg="6">
           <p>{{ aPropos.description }}</p>
@@ -33,10 +33,20 @@
             <v-card-subtitle> {{ employee.poste }} </v-card-subtitle>
             <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
             <v-card-actions>
-              <v-btn color="teal-accent-4" variant="text" @click="reveal = true"> Voir plus </v-btn>
+              <v-btn color="teal-accent-4" variant="text" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
+        <v-dialog v-model="dialog" persistent max-width="600px">
+          <v-card>
+            <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
+            <v-card-text>{{ itemSelectionner.description }}</v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="green darken-1" text @click="dialog = false">Fermer</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </v-row>
       <!--------------ZONE COURS----------------->
       <SousTitres title="Nos cours " />
@@ -54,7 +64,7 @@
       <!--------------ZONE AVIS/COMMENTAIRES----------------->
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
-        <v-carousel hide-delimiters>
+        <v-carousel hide-delimiters :show-arrows="false">
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
@@ -65,7 +75,7 @@
 
                   <v-card-title>{{ commentaire.nom }}</v-card-title>
                 </div>
-                <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly size="x-large"></v-rating>
+                <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly></v-rating>
                 <v-card-subtitle class="text-h6">{{ commentaire.sousTitre }}</v-card-subtitle>
                 <v-card-text>{{ commentaire.comm }}</v-card-text>
               </v-card>
@@ -88,14 +98,18 @@ export default {
   data() {
     return {
       parallaxSrc: require("../img/general/sna08.jpeg"),
-
+      parallaxDeux: require("../img/general/sna03.jpeg"),
+      //////////////////////////////////////
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,
       lesCours: lesCours.lesCours,
       lesEmployees: LesEmployees.lesEmployees,
+      //////////////////////////////////////
       rating: 5,
       reveal: false,
       montrer: false,
+      dialog: false,
+      itemSelectionner: null,
     };
   },
   components: {
@@ -105,8 +119,10 @@ export default {
     naviguerVersCours(route) {
       this.$router.push(route);
     },
-    ouvrirModal(cours) {
-      cours.dialog = true;
+    ouvreDialogue(employee) {
+      this.itemSelectionner = employee;
+      this.dialog = true;
+      // console.log(employee);
     },
   },
 };
@@ -125,6 +141,9 @@ main {
 .aPropos {
   justify-content: space-around;
   padding: 1rem 2rem;
+}
+.imgAp {
+  border-radius: 20px;
 }
 
 /*/ /////////////////EQUIPES////////////////////*/
@@ -175,12 +194,13 @@ main {
   padding: 1rem 1rem 0;
 }
 .v-card-title {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-family: "Kotta One", sans-serif;
   color: var(--couleurTexte);
 }
+
 .v-card-text {
-  font-size: 1rem;
+  font-size: 0.7rem;
 }
 /*--------------CAROUSEL--------*/
 .temoignage-carousel .v-carousel__controls {
