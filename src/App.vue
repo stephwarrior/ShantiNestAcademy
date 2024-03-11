@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Kotta+One:regular" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:regular,700,800" rel="stylesheet" />
   </head>
-  <SiteEntete />
+  <SiteEntete @afficher-le-panier="afficherPanier = !afficherPanier" />
+  <PanierAchat v-if="afficherPanier" />
   <router-view />
   <v-btn class="btnRemonte" color="#e394b5" @click="scrollTop">
     <v-icon>mdi-arrow-up</v-icon>
@@ -22,12 +23,19 @@
 <script>
 import SiteEntete from "./components/SiteEntete.vue";
 import SitePiedDePage from "./components/SitePiedDePage.vue";
+import PanierAchat from "./components/PanierAchat.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      afficherPanier: false,
+    };
+  },
   components: {
     SiteEntete,
     SitePiedDePage,
+    PanierAchat,
   },
   mounted() {
     console.log(this.$vuetify.display.mobile);
@@ -56,7 +64,7 @@ body {
 main {
   height: auto;
   color: var(--couleurTexte);
-  padding-top: 7rem;
+  padding-top: 3rem;
 }
 .v-container {
   padding: 0;

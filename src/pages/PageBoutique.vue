@@ -3,17 +3,17 @@
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <v-container>
       <div class="nbrItems">
-        <div>{{ lesItems.length }} items</div>
+        <div>{{ articles.length }} items</div>
         <div></div>
       </div>
 
       <v-row class="test">
-        <v-col cols="12" md="4" v-for="(item, index) in lesItems" :key="index">
+        <v-col cols="12" md="4" v-for="(article, index) in articles" :key="index">
           <v-card class="blocItems">
-            <v-img :src="item.img" alt="pas image">zone image</v-img>
-            <p>{{ item.nom }}</p>
-            <p>${{ item.prix }}.00 CAD</p>
-            <v-btn>Ajouter au panier</v-btn>
+            <v-img :src="article.img" alt="pas image">zone image</v-img>
+            <p>{{ article.nom }}</p>
+            <p>${{ article.prix }}.00 CAD</p>
+            <v-btn @click="ajouterArticle(article)">Ajouter au panier</v-btn>
           </v-card></v-col
         ></v-row
       ></v-container
@@ -21,12 +21,14 @@
   </main>
 </template>
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "PageBoutique",
   data() {
     return {
-      lesItems: [
+      articles: [
         {
+          id: 1,
           nom: "Goblet SNA",
           prix: 50,
           img: "",
@@ -49,6 +51,12 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    ...mapActions(["ajouterAuPanier"]),
+    ajouterArticle(article) {
+      this.ajouterAuPanier(article);
+    },
   },
   components: {},
 };

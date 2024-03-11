@@ -9,6 +9,7 @@ import PageErreur from "../pages/PageErreur.vue";
 import CoursYoga from "@/pages/CoursYoga.vue";
 import CoursPilates from "@/pages/CoursPilates.vue";
 import CoursMeditation from "@/pages/CoursMeditation.vue";
+//import PanierAchat from "@/components/PanierAchat.vue";
 
 const routes = [
   {

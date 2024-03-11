@@ -1,6 +1,6 @@
 <template>
   <main>
-    <v-parallax height="400px" sm="4" :src="parallaxSrc">
+    <v-parallax height="500px" sm="4" :src="parallaxSrc">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">Bienvenue à ShantiNest Academy</p>
       </div>
@@ -115,8 +115,8 @@ import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 export default {
   data() {
     return {
-      parallaxSrc: require("../img/general/sna08.jpeg"),
-      parallaxDeux: require("../img/general/sna03.jpeg"),
+      parallaxSrc: require("../img/general/sna15.jpeg"),
+      parallaxDeux: require("../img/general/sna08.jpeg"),
       //////////////////////////////////////
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,
@@ -218,7 +218,7 @@ main {
 }
 
 .v-card-text {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 /*--------------CAROUSEL--------*/
 .temoignage-carousel .v-carousel__controls {

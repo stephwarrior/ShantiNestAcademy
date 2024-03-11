@@ -23,7 +23,7 @@
           <div class="telephone"><SiteIcones name="telephone" /> {{ telephone }}</div>
         </div>
       </div>
-      <div class="zoneServices" v-show="largeurEcran > 768">
+      <div class="zoneServices" v-show="largeurEcran > 500">
         <h2>{{ sousTitreFooterDeux }}</h2>
         <ul>
           <li v-for="(lien, index) in liensMenu" :key="index">
