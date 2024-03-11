@@ -1,7 +1,7 @@
 {
   "lesCommentaires": [
     {
-      "img": "https://m.media-amazon.com/images/M/MV5BOTRjYWNmNmMtYTFjZi00MWEzLWFhNjEtNWQwMTlkNDc0MzQzXkEyXkFqcGdeQXVyMjgyODMzNw@@._V1_.jpg ",
+      "img": "",
       "nom": "Daniel Dae Kim",
       "sousTitre": "Daebakida Shinsha!",
       "membres": "Membre depuis 2012",
@@ -13,6 +13,27 @@
       "membres": "Membre depuis 2018",
       "sousTitre": " Wow!",
       "comm": "Best of the best. I love it! I'm new to yoga and I'm so glad I found this place. The instructors are amazing and the studio is beautiful. I highly recommend it!"
+    },
+    {
+      "img": "https://m.media-amazon.com/images/M/MV5BOTRjYWNmNmMtYTFjZi00MWEzLWFhNjEtNWQwMTlkNDc0MzQzXkEyXkFqcGdeQXVyMjgyODMzNw@@._V1_.jpg ",
+      "nom": "Jackson Wang",
+      "sousTitre": "SNA est le meilleur!",
+      "membres": "Membre depuis 2015",
+      "comm": " Depuis que j'ai commencé les cours de yoga chez ShantiNest Academy, ma vie a changé de manière incroyable.Je me sens plus équilibré, plus calme, et en meilleure santé. Les instructeurs sont incroyablement compétents et attentionnés."
+    },
+    {
+      "img": "https://m.media-amazon.com/images/M/MV5BOTRjYWNmNmMtYTFjZi00MWEzLWFhNjEtNWQwMTlkNDc0MzQzXkEyXkFqcGdeQXVyMjgyODMzNw@@._V1_.jpg ",
+      "nom": "Ranveer Singh",
+      "sousTitre": "Kya bhat hai!",
+      "membres": "Membre depuis 2017",
+      "comm": " Bahuuutt pyaar hai yaar."
+    },
+    {
+      "img": "https://m.media-amazon.com/images/M/MV5BOTRjYWNmNmMtYTFjZi00MWEzLWFhNjEtNWQwMTlkNDc0MzQzXkEyXkFqcGdeQXVyMjgyODMzNw@@._V1_.jpg ",
+      "nom": "Shondra Anand",
+      "sousTitre": "Quoi de plus?",
+      "membres": "Membre depuis 2019",
+      "comm": " J'ai toujours voulu essayé les machines spécialisées pour les cours de pilates et j'ai trouvé mon bonheur chez ShantiNest Academy. Les instructeurs sont très patient, instructifs et les machines sont de très bonne qualité. Je recommande vivement!"
     }
   ]
 }

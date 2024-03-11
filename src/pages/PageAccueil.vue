@@ -24,6 +24,24 @@
           l'épanouissement personnel. Notre groupe d'experts dévoués en yoga, pilates et méditation partage un objectif
           : vous accompagner vers une meilleure version de vous-même.
         </p>
+        <v-carousel hide-delimiters :show-arrows="false">
+          <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
+            <v-col cols="auto" height="500px">
+              <v-card class="mx-auto" max-width="340px" height="350px">
+                <v-avatar v-slots:prepend>
+                  <img :src="employee.img" alt="avatar" cover />
+                </v-avatar>
+                <v-card-title>{{ employee.nom }}</v-card-title>
+                <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
+                <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
+                <v-card-actions>
+                  <v-btn color="teal-accent-4" variant="text" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+          </v-carousel-item>
+        </v-carousel>
+        <!--
         <v-col v-for="(employee, index) in lesEmployees" :key="index">
           <v-card class="mx-auto" max-width="200">
             <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover></v-img>
@@ -36,7 +54,7 @@
               <v-btn color="teal-accent-4" variant="text" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
             </v-card-actions>
           </v-card>
-        </v-col>
+        </v-col>-->
         <v-dialog v-model="dialog" persistent max-width="600px">
           <v-card>
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
@@ -64,7 +82,7 @@
       <!--------------ZONE AVIS/COMMENTAIRES----------------->
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
-        <v-carousel hide-delimiters :show-arrows="false">
+        <v-carousel hide-delimiters :show-arrows="false" progress="#644a9d" cycle>
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
