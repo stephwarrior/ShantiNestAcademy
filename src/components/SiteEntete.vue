@@ -77,6 +77,8 @@ import SiteLogo from "./SiteLogo.vue";
 import { mapGetters } from "vuex";
 
 export default {
+  emits: ["afficheLePanier"],
+
   data: () => ({
     liensMenu: [
       { nom: "Accueil", url: "/" },

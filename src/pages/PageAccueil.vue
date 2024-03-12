@@ -1,16 +1,21 @@
 <template>
   <main>
-    <v-parallax height="500px" sm="4" :src="parallaxSrc">
+    <v-parallax class="d-md-none" height="500px" sm="4" :src="parallaxDeux">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">Bienvenue à ShantiNest Academy</p>
       </div>
     </v-parallax>
+    <v-img :src="parallaxDeux" class="d-none d-md-flex">
+      <div class="d-flex flex-column fill-height justify-center align-center text-white">
+        <p class="text-h3 sous-titre">Bienvenue à ShantiNest Academy</p>
+      </div>
+    </v-img>
     <v-container>
       <!--------------ZONE A PROPOS----------------->
       <SousTitres title="Qui sommes nous" />
       <v-row class="aPropos">
         <v-col cols="12" lg="6" class="glee">
-          <v-img :src="parallaxDeux" class="imgAp grey lighten-2"></v-img>
+          <v-img :src="parallaxSrc" class="imgAp grey lighten-2"></v-img>
         </v-col>
         <v-col cols="12" lg="6">
           <p>{{ aPropos.description }}</p>
@@ -28,9 +33,7 @@
           <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
-                <v-avatar v-slots:prepend>
-                  <img :src="employee.img" alt="avatar" cover />
-                </v-avatar>
+                <v-img height="200px" :src="employee.img" cover></v-img>
                 <v-card-title>{{ employee.nom }}</v-card-title>
                 <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
                 <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
@@ -82,12 +85,12 @@
       <!--------------ZONE AVIS/COMMENTAIRES----------------->
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
-        <v-carousel hide-delimiters :show-arrows="false" progress="#644a9d" cycle>
+        <v-carousel :show-arrows="false" progress="#644a9d" cycle>
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
                 <div class="clients">
-                  <v-avatar v-slots:prepend>
+                  <v-avatar prepend>
                     <img :src="commentaire.img" alt="avatar" cover />
                   </v-avatar>
 
@@ -115,7 +118,8 @@ import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 export default {
   data() {
     return {
-      parallaxSrc: require("../img/general/sna15.jpeg"),
+      imgAccueil: require("../img/general/sna15.jpeg"),
+      parallaxSrc: require("../img/general/sna03.jpeg"),
       parallaxDeux: require("../img/general/sna08.jpeg"),
       //////////////////////////////////////
       aPropos: aPropos.aPropos,
@@ -128,6 +132,7 @@ export default {
       montrer: false,
       dialog: false,
       itemSelectionner: null,
+      employee: null,
     };
   },
   components: {
@@ -143,11 +148,15 @@ export default {
       // console.log(employee);
     },
   },
+  created() {
+    // Ici, vous chargeriez votre fichier JSON et définiriez `employee`
+  },
 };
 </script>
 <style scoped>
 main {
   padding: 0;
+  padding-top: 3rem;
   height: auto;
 }
 .v-container {
