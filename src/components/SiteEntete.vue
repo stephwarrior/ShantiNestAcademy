@@ -48,7 +48,9 @@
 
       <v-badge :content="nombreArticles"
         ><v-icon @click="montrerPanier" class="iconePanier" icon>mdi-shopping</v-icon></v-badge
-      ><RouterLink to="/connexion"><v-icon class="iconeCnx" icon>mdi-account</v-icon></RouterLink>
+      ><RouterLink to="/connexion">
+        <v-badge color="default" dot><v-icon class="iconeCnx" icon>mdi-account</v-icon></v-badge></RouterLink
+      >
       <!--------------BOUTON MENU-MOBILE/TABLETTE---------->
       <div class="menuBurger">
         <v-btn icon>

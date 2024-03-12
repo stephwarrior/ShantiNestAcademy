@@ -67,7 +67,7 @@ main {
   height: auto;
 }
 .v-container {
-  padding: 0 7rem;
+  padding: 0 3rem;
 }
 .nbrItems {
   padding: 2rem 0;

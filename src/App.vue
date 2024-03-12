@@ -24,6 +24,8 @@
 import SiteEntete from "./components/SiteEntete.vue";
 import SitePiedDePage from "./components/SitePiedDePage.vue";
 import PanierAchat from "./components/PanierAchat.vue";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
 
 export default {
   name: "App",
@@ -47,6 +49,13 @@ export default {
         behavior: "smooth", // Pour un effet de défilement doux
       });
     },
+  },
+  setup() {
+    const store = useStore();
+
+    onMounted(() => {
+      store.dispatch("checkUser");
+    });
   },
 };
 </script>

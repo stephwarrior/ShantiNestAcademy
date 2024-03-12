@@ -1,12 +1,17 @@
 import { createStore } from "vuex";
+import { auth, verifierCnx } from "@/data/init";
 
 export default createStore({
   state() {
     return {
       panier: [],
+      user: null,
     };
   },
   mutations: {
+    setUser(state, user) {
+      state.user = user;
+    },
     AJOUTER_AU_PANIER(state, article) {
       const existant = state.panier.find((item) => item.id === article.id);
       if (existant) {
@@ -27,6 +32,11 @@ export default createStore({
     },
   },
   actions: {
+    checkUser({ commit }) {
+      verifierCnx(auth, (user) => {
+        commit("setUser", user);
+      });
+    },
     ajouterAuPanier({ commit }, article) {
       commit("AJOUTER_AU_PANIER", article);
     },
