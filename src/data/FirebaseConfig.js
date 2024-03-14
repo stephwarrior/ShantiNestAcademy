@@ -1,6 +1,6 @@
 const firebaseConfig = {
   apiKey: "AIzaSyCTbXbeRni-6ByMtAt_50l3qJnPIQvVcCE",
-  authDomain: "shanti-nest-academy.vercel.app",
+  authDomain: "shantinest-academy.firebaseapp.com",
   projectId: "shantinest-academy",
   storageBucket: "shantinest-academy.appspot.com",
   messagingSenderId: "755360750389",
