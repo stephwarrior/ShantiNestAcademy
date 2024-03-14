@@ -1,6 +1,5 @@
 <template>
   <header>
-    <!--cols="8" md="auto"-->
     <v-row no-gutters class="contenuRow align-center">
       <!--------------LOGO----------------->
       <v-col cols="auto" class="d-none d-md-flex">

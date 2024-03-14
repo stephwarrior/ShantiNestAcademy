@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="zoneFooter">
-      <div class="test" v-show="largeurEcran > 768">
+      <div class="test d-none align-center d-md-flex">
         <SiteLogo />
         <div>
           <p>ShantiNest</p>
@@ -23,7 +23,7 @@
           <div class="telephone"><SiteIcones name="telephone" /> {{ telephone }}</div>
         </div>
       </div>
-      <div class="zoneServices" v-show="largeurEcran > 500">
+      <div class="zoneServices d-none align-center d-sm-flex">
         <h2>{{ sousTitreFooterDeux }}</h2>
         <ul>
           <li v-for="(lien, index) in liensMenu" :key="index">
@@ -55,18 +55,6 @@ export default {
         { nom: "Horaire et Tarifs", url: "/HoraireTarifs" },
       ],
     };
-  },
-  mounted() {
-    this.checkTailleEcran();
-    window.addEventListener("resize", this.checkTailleEcran);
-  },
-  beforeUnmount() {
-    window.removeEventListener("resize", this.checkTailleEcran);
-  },
-  methods: {
-    checkTailleEcran() {
-      this.largeurEcran = window.innerWidth;
-    },
   },
   name: "App",
   components: {

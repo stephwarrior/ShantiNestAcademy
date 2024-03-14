@@ -1,25 +1,28 @@
 <template>
   <main>
+    <v-parallax class="imgServ" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" height="400">
+      <p class="sous-titre text-h3">Services</p>
+    </v-parallax>
+
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <v-container>
-      <v-row v-for="(service, index) in services" :key="index"
-        ><v-col cols="12" md="4">
-          <v-img :src="service.img" aspect-ratio="1.4" class="grey lighten-2"></v-img>
-        </v-col>
-        <v-col cols="12" md="8">
+      <v-col cols="12" class="blocServ" v-for="(service, index) in services" :key="index">
+        <v-img :src="service.img" class="grey lighten-2"></v-img>
+        <v-col md="6" lg="7">
           <h1>{{ service.name }}</h1>
+
           <p>{{ service.descriptionCourt }}</p>
-          <v-btn color="primary" @click="ouvreDialogue(service)">Voir plus</v-btn>
+          <v-btn color="#644a9d" @click="ouvreDialogue(service)">Voir plus</v-btn>
         </v-col>
-      </v-row>
+      </v-col>
 
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
           <v-card-title>{{ itemSelectionner.name }}</v-card-title>
+          <v-img :src="itemSelectionner.img" aspect-ratio="1.4" class="grey lighten-2"></v-img>
           <v-card-text>{{ itemSelectionner.descriptionLong }}</v-card-text>
           <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="dialog = false">Fermer</v-btn>
+            <v-btn color="#644a9d" text @click="dialog = false">Fermer</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -27,47 +30,13 @@
   </main>
 </template>
 <script>
+import lesServices from "@/data/PageServices.json";
 export default {
   data() {
     return {
-      services: [
-        {
-          img: "https://unpasverssoi.ca/fr/wp-content/uploads/2018/04/salle-cours-yoga.jpg",
-          name: "Location des salles",
-          descriptionCourt:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.",
-          descriptionLong:
-            "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat",
-        },
-        {
-          img: "https://sautoformer.fr/wp-content/uploads/2019/04/formation-professeur-yoga.jpg",
-          name: "Formation des cours",
-          descriptionCourt:
-            "Lorem ipsumAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.",
-          descriptionLong:
-            "voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat",
-        },
-        {
-          img: "https://sautoformer.fr/wp-content/uploads/2019/04/formation-professeur-yoga.jpg",
-          name: "Carrière",
-          descriptionCourt: "Vero eos et accusamus et iusto odio dignissimos ducimus qui blanditi praesentium.",
-          descriptionLong:
-            "Vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et qua non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat",
-        },
-      ],
+      services: lesServices.services,
       dialog: false,
       itemSelectionner: null,
-      items: [
-        {
-          title: "Accueil",
-          desactive: false,
-          href: "/",
-        },
-        {
-          title: "Services",
-          desactive: true,
-        },
-      ],
     };
   },
   methods: {
@@ -83,20 +52,20 @@ export default {
 main {
   height: auto;
 }
-.blocService {
+.imgServ {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
 }
-h3 {
-  color: white;
-  margin: 0;
-  padding: 20px;
+.blocServ > * {
+  margin: 10px 0;
 }
-img {
-  width: 50vw;
-  height: 100%;
+@media (min-width: 768px) {
+  .blocServ {
+    display: flex;
+  }
+  .blocServ div {
+    margin: 10px 0;
+  }
 }
 </style>

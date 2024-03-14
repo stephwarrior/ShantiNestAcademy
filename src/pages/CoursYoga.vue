@@ -33,11 +33,11 @@
       <v-col class="blocYogas" v-for="(yoga, index) in coursYoga" :key="index" cols="12" md="6" lg="4">
         <v-card>
           <v-img
-            src="https://www.yogajournal.com/.image/t_share/MTU5MzYwNzIwNzIwMzYwNzIw/yj-2020-07-08-2.jpg"
-            :width="200"
-            aspect-ratio="1"
-            >Zone Image</v-img
-          >
+            src="https://img.freepik.com/free-photo/young-woman-doing-pigeon-exercise_1163-5051.jpg?t=st=1710449067~exp=1710452667~hmac=5865854afabd73b1396a68618f105898aec5f826491204285ef79ef2f1a58978&w=1380"
+            :width="auto"
+            aspect-ratio="1/4"
+            cover
+          ></v-img>
           <v-card-title>{{ yoga.cours }}</v-card-title>
           <v-card-text>
             {{ yoga.textCourt }}
@@ -107,7 +107,7 @@ main {
 }
 /*////////////LE YOGA CEST QUOI//////////////*/  
 .leSt{
-  color: var(--couleurQuaternaire) !important;
+  color: var(--couleurQuaternaire) ;
 }
 .v-window-item {
   

@@ -2,7 +2,8 @@
   <main>
     <v-parallax class="d-md-none" height="500px" sm="4" :src="parallaxDeux">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <p class="text-h3 sous-titre">Bienvenue à ShantiNest Academy</p>
+        <SiteLogo />
+        <p class="sous-titre text-h2">Bienvenue à ShantiNest Academy</p>
       </div>
     </v-parallax>
     <v-img :src="parallaxDeux" class="d-none d-md-flex">
@@ -44,20 +45,6 @@
             </v-col>
           </v-carousel-item>
         </v-carousel>
-        <!--
-        <v-col v-for="(employee, index) in lesEmployees" :key="index">
-          <v-card class="mx-auto" max-width="200">
-            <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover></v-img>
-
-            <v-card-title>{{ employee.nom }} </v-card-title>
-
-            <v-card-subtitle> {{ employee.poste }} </v-card-subtitle>
-            <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
-            <v-card-actions>
-              <v-btn color="teal-accent-4" variant="text" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>-->
         <v-dialog v-model="dialog" persistent max-width="600px">
           <v-card>
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
@@ -113,6 +100,7 @@ import aPropos from "@/data/PageAccueil/aPropos.json";
 import commentaires from "@/data/PageAccueil/commentaires.json";
 import lesCours from "@/data/PageAccueil/lesCours.json";
 import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
+import SiteLogo from "@/components/SiteLogo.vue";
 
 export default {
   data() {
@@ -136,9 +124,6 @@ export default {
       employee: null,
     };
   },
-  components: {
-    SousTitres,
-  },
   methods: {
     naviguerVersCours(route) {
       this.$router.push(route);
@@ -149,8 +134,9 @@ export default {
       // console.log(employee);
     },
   },
-  created() {
-    // Ici, vous chargeriez votre fichier JSON et définiriez `employee`
+  components: {
+    SousTitres,
+    SiteLogo,
   },
 };
 </script>
@@ -163,7 +149,12 @@ main {
 .v-container {
   padding: 0;
 }
-
+.v-parallax {
+  filter: brightness(80%);
+}
+.logoSNA {
+  fill: red;
+}
 /*//////////////////A PROPOS////////////////////*/
 
 .aPropos {
