@@ -107,7 +107,7 @@ export default {
 </script>
 <style scoped>
 main {
-  height: 100vh;
+  height: 120vh;
 }
 .blocCnx {
   display: flex;

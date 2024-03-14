@@ -33,7 +33,7 @@
           <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
-                <v-img height="200px" :src="employee.img" cover></v-img>
+                <v-img height="200px" :src="imgEmilie" cover></v-img>
                 <v-card-title>{{ employee.nom }}</v-card-title>
                 <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
                 <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
@@ -85,7 +85,7 @@
       <!--------------ZONE AVIS/COMMENTAIRES----------------->
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
-        <v-carousel :show-arrows="false" progress="#644a9d" cycle>
+        <v-carousel hide-delimiters :show-arrows="false" progress="#644a9d" cycle>
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
@@ -108,7 +108,6 @@
   </main>
 </template>
 <script>
-//import UnCarousel from "../components/UnCarousel.vue";
 import SousTitres from "@/components/SousTitres.vue";
 import aPropos from "@/data/PageAccueil/aPropos.json";
 import commentaires from "@/data/PageAccueil/commentaires.json";
@@ -118,6 +117,8 @@ import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 export default {
   data() {
     return {
+      imgEmilie: require("@/img/PageAccueil/lesProfs/tomJaydusor.jpeg"),
+
       imgAccueil: require("../img/general/sna15.jpeg"),
       parallaxSrc: require("../img/general/sna03.jpeg"),
       parallaxDeux: require("../img/general/sna08.jpeg"),
