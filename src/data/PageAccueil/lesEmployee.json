@@ -1,7 +1,7 @@
 {
   "lesEmployees": [
     {
-      "img": "/img/lesProfs/emilieleblanc.png",
+      "img": "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg",
       "nom": "Émilie Leblanc",
       "poste": "Professeure de yoga",
       "periode": "Depuis 12 ans",

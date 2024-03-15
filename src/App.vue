@@ -14,7 +14,7 @@
   <SiteEntete @afficheLePanier="afficherPanier = !afficherPanier" />
   <PanierAchat v-if="afficherPanier" />
   <router-view />
-  <v-btn class="btnRemonte" color="#e394b5" @click="scrollTop">
+  <v-btn class="btnRemonte" color="#644a9d" :style="{ borderRadius: '50px' }" @click="scrollTop">
     <v-icon>mdi-arrow-up</v-icon>
   </v-btn>
   <SitePiedDePage />
@@ -65,8 +65,8 @@ body {
 }
 main {
   height: auto;
-  color: var(--couleurTexte);
   padding-top: 3rem;
+  color: black;
 }
 .v-container {
   padding: 0;

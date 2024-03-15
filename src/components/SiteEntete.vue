@@ -3,7 +3,7 @@
     <v-row no-gutters class="contenuRow align-center">
       <!--------------LOGO----------------->
       <v-col cols="auto" class="d-none d-md-flex">
-        <SiteLogo />
+        <SiteLogo taille="3rem" />
       </v-col>
       <!-------------- MENU NAV GRAND ÉCRAN------------>
       <v-col cols="auto" lg="6" class="blocMenu d-none d-md-flex">
@@ -41,7 +41,7 @@
     </v-row>
     <!--------------HEADER MENU-MOBILE/TABLETTE---------->
     <div class="enteteMobTab d-md-none">
-      <SiteLogo />
+      <SiteLogo taille="2rem" />
       <p class="titreLogo d-md-none">ShantiNest Academy</p>
       <!--------------ICONE MOBILE/TABLETTE------------>
 
