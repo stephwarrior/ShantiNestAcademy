@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-//import { getFirestore } from "firebase/firestore";
 
 import {
   getAuth,
@@ -8,14 +7,12 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import firebaseConfig from "./FirebaseConfig";
 
 // Initialiser l'appli Firebase
 const app = initializeApp(firebaseConfig);
-
-// Obtenir une connexion à la BD Firestore
-//export const bd = getFirestore(app);
 
 // Initialiser le service d'authentification Firebase
 export const auth = getAuth(app);
@@ -29,7 +26,10 @@ export const cnxGoogle = signInWithPopup;
 export const signIn = signInWithEmailAndPassword;
 
 // Pour deconnexion
-export const deconnect = signOut(auth);
+export const deconnect = () => signOut(auth);
 
 // Pour verifier si l'utilisateur est connecté
 export const verifierCnx = onAuthStateChanged;
+
+// Pour creer un compte
+export const creerCompte = createUserWithEmailAndPassword;

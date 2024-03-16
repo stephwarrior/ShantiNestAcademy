@@ -1,6 +1,7 @@
 {
   "lesEmployees": [
     {
+      "id": 1,
       "img": "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg",
       "nom": "Émilie Leblanc",
       "poste": "Professeure de yoga",
@@ -8,6 +9,7 @@
       "description": "Émilie est une passionnée de yoga depuis son plus jeune âge. Elle a commencé à enseigner le yoga à l'âge de 20 ans. Elle a étudié le yoga en Inde et a obtenu son diplôme de professeur de yoga. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves."
     },
     {
+      "id": 2,
       "img": "",
       "nom": "Tom Jaydusor",
       "poste": "Professeur de méditation",
@@ -15,6 +17,7 @@
       "description": "Tom est un passionné de méditation. Il a commencé à méditer à l'âge de 15 ans. Il a étudié la méditation en Inde et a obtenu son diplôme de professeur de méditation. Il a enseigné dans plusieurs pays avant de s'installer à Montréal. Il est un professeur très apprécié par ses élèves."
     },
     {
+      "id": 3,
       "img": "",
       "nom": "Lydia Desjardin",
       "poste": "Professeure de pilates",
@@ -22,6 +25,7 @@
       "description": "Lydia est une passionnée de pilates depuis son plus jeune âge. Elle a commencé à enseigner le pilates à l'âge de 25 ans. Elle a étudié le pilates en France et a obtenu son diplôme de professeur de pilates. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves."
     },
     {
+      "id": 4,
       "img": "",
       "nom": "Alex Lee",
       "poste": "Professeur de pilates",
@@ -29,6 +33,7 @@
       "description": "Alex est un passionné de pilates depuis son plus jeune âge. Il a commencé à enseigner le pilates à l'âge de 30 ans. Il a étudié le pilates en Australie et a obtenu son diplôme de professeur de pilates. Il a enseigné dans plusieurs pays avant de s'installer à Montréal. Il est un professeur très apprécié par ses élèves."
     },
     {
+      "id": 5,
       "img": "",
       "nom": "Anushka Kapur",
       "poste": "Professeure de méditation",
@@ -36,6 +41,7 @@
       "description": "Anushka est une passionnée de méditation. Elle a commencé à méditer à l'âge de 18 ans. Elle a étudié la méditation en Inde et a obtenu son diplôme de professeur de méditation. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves."
     },
     {
+      "id": 6,
       "img": "",
       "nom": "Mario Lopez",
       "poste": "Professeur de méditation",
@@ -43,6 +49,7 @@
       "description": "Mario est un passionné de méditation. Il a commencé à méditer à l'âge de 20 ans. Il a étudié la méditation en Inde et a obtenu son diplôme de professeur de méditation. Il a enseigné dans plusieurs pays avant de s'installer à Montréal. Il est un professeur très apprécié par ses élèves."
     },
     {
+      "id": 7,
       "img": "",
       "nom": "Léa Dufresne",
       "poste": "Professeure de yoga",
@@ -50,6 +57,7 @@
       "description": "Léa est une passionnée de yoga depuis son plus jeune âge. Elle a commencé à enseigner le yoga à l'âge de 25 ans. Elle a étudié le yoga en Inde et a obtenu son diplôme de professeur de yoga. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves."
     },
     {
+      "id": 8,
       "img": "",
       "nom": "Pierre Patneaude",
       "poste": "Professeur de yoga",

@@ -1,29 +1,21 @@
 <template>
   <header>
+    <!-------------------------ZONE GRAND ECRAN-------------------->
+
     <v-row no-gutters class="contenuRow align-center">
       <!--------------LOGO----------------->
       <v-col cols="auto" class="d-none d-md-flex">
-        <SiteLogo taille="3rem" />
+        <SiteLogo taille="2.7rem" />
       </v-col>
       <!-------------- MENU NAV GRAND ÉCRAN------------>
-      <v-col cols="auto" lg="6" class="blocMenu d-none d-md-flex">
+      <v-col cols="auto" lg="7" class="blocMenu d-none d-md-flex">
         <v-list>
           <v-list-item v-for="(lien, index) in liensMenu" :key="index">
             <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
           </v-list-item></v-list
         >
       </v-col>
-      <v-col cols="4" class="d-flex">
-        <!--------------RECHERCHE INPUT----------------->
-        <v-col class="d-none align-center d-md-flex">
-          <v-text-field
-            class="d-none d-md-flex flex-column"
-            label="Recherche..."
-            type="text"
-            clearable
-            append-inner-icon="mdi-magnify"
-          ></v-text-field>
-        </v-col>
+      <v-col cols="auto" class="d-flex">
         <!--------------ICONES----------------->
         <v-col cols="auto" class="d-none d-md-flex">
           <RouterLink to="/boutique"
@@ -36,21 +28,23 @@
           <RouterLink to="/connexion"
             ><v-col> <v-icon class="iconeCnx" icon>mdi-account</v-icon></v-col></RouterLink
           >
-        </v-col></v-col
-      >
+        </v-col>
+      </v-col>
     </v-row>
-    <!--------------HEADER MENU-MOBILE/TABLETTE---------->
+    <!-------------------------ZONE MOBILE/TABLETTE-------------------->
+
+    <!--Header mobile/tablette-->
     <div class="enteteMobTab d-md-none">
       <SiteLogo taille="2rem" />
       <p class="titreLogo d-md-none">ShantiNest Academy</p>
-      <!--------------ICONE MOBILE/TABLETTE------------>
 
+      <!--Icones mobile/tablette-->
       <v-badge :content="nombreArticles"
         ><v-icon @click="montrerPanier" class="iconePanier" icon>mdi-shopping</v-icon></v-badge
       ><RouterLink to="/connexion">
         <v-badge color="default" dot><v-icon class="iconeCnx" icon>mdi-account</v-icon></v-badge></RouterLink
       >
-      <!--------------BOUTON MENU-MOBILE/TABLETTE---------->
+      <!--Bouton burger mobile/tablette-->
       <div class="menuBurger">
         <v-btn icon>
           <v-icon @click="ouvreNav" v-if="!menuMobileActive">mdi-menu</v-icon>
@@ -59,11 +53,12 @@
       </div>
     </div>
   </header>
-  <!--------------BLOC MENU-MOBILE/TABLETTE----------->
+  <!--Navigation mobile/tablette-->
   <div class="blocMenumobile d-md-none">
     <div class="menu-mobile" v-click-outside="ouvreNav" v-if="menuMobileActive">
-      <input type="search" name="recherche" id="recherche" label="recherche" />
-
+      <!--Barre de recherche-->
+      <!--<input type="search" name="recherche" id="recherche" label="recherche" />-->
+      <!--Les menus mobile/tablette-->
       <v-list v-for="(lien, index) in liensMenu" :key="index">
         <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
       </v-list>
@@ -163,14 +158,7 @@ header {
   height: 100%;
   z-index: 1;
 }
-/*//////////////////RECHERCHE////////////////////*/
-input#recherche {
-  background-color: rgba(0, 0, 0, 0.229);
-  padding: 1rem;
-  width: 60%;
-  border: var(--couleurPrincipale) 1px solid;
-  border-radius: 20px;
-}
+
 /*//////////////////ICONES////////////////////*/
 .v-icon {
   color: var(--couleurTertiaire);
@@ -198,12 +186,16 @@ input#recherche {
     background-color: transparent;
     overflow: hidden;
   }
-
+  .contenuRow {
+    height: 7vh;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+  }
   /*----LIENS----*/
 
   .v-list-item a {
     font-family: "Kotta One", sans-serif;
-    font-size: 1.3rem;
     color: var(--couleurTertiaire);
     border-bottom: transparent 2px solid;
   }
@@ -212,16 +204,7 @@ input#recherche {
     border-bottom: white 2px solid;
     transition: border-bottom 0.7s ease;
   }
-  /*//////////////////RECHERCHE INPUT////////////////////*/
-
-  .v-text-field {
-    position: relative;
-    top: 10px;
-  }
 
   /*//////////////////ICONES////////////////////*/
-  .v-icon {
-    font-size: 2.5rem;
-  }
 }
 </style>

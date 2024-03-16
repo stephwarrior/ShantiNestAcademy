@@ -1,6 +1,5 @@
 <template>
   <main>
-    <!--:style="{ borderRadius: '20px' }"-->
     <v-container>
       <!---------------------------ZONE IMG PAGE ACCUEIL----------------------------->
 
@@ -25,50 +24,65 @@
       <!-----------------------------ZONE A PROPOS----------------------------------->
       <SousTitres title="Qui sommes nous?" />
       <v-row class="aPropos">
-        <v-col cols="12" lg="6">
+        <v-col cols="12" sm="6" lg="4">
           <v-img :src="parallaxSrc" class="imgAp grey lighten-2"></v-img>
         </v-col>
-        <v-col cols="12" lg="6">
+        <v-col cols="12" sm="6">
           <p>{{ aPropos.descCourt }}</p>
           <v-btn class="btnVoirPlus" color="#644a9d" @click="dialogIntro"> Voir plus </v-btn>
         </v-col>
         <!--Boite modale pour voir plus de details (texte) sur SNA -->
-        <v-dialog v-model="dialogInt" max-width="600px" max-height="600px">
-          <v-card :style="{ borderRadius: '20px' }">
+        <v-dialog class="modaleApropos" v-model="dialogInt">
+          <v-card>
             <SiteLogo couleur="pink" taille="5rem" />
             <v-card-text>{{ aPropos.description }}</v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="purple" @click="dialogInt = false">Fermer</v-btn>
-            </v-card-actions>
+            <v-btn color="#644a9d" @click="dialogInt = false">Fermer</v-btn>
           </v-card>
         </v-dialog>
       </v-row>
       <!-----------------------------------ZONE EQUIPES----------------------------------->
       <SousTitres title="Notre Équipe" />
       <v-row class="equipes">
-        <p>{{ messageEquipe }}</p>
-        <v-carousel hide-delimiter-background :show-arrows="false" height="450px">
+        <v-row class="equipe">
+          <v-col cols="12" sm="6">
+            <p>{{ textEquipe }}</p>
+          </v-col>
+          <v-col cols="12" sm="6" lg="4">
+            <v-img :src="imgEquipe" class="imgAp"></v-img>
+          </v-col>
+        </v-row>
+
+        <!--Bloc introduit les employees de SNA-->
+        <v-col class="d-none d-sm-flex" cols="12" sm="4" md="3" v-for="(employee, index) in lesEmployees" :key="index">
+          <v-card class="mx-auto" width="300px" height="350px">
+            <v-img :src="employee.img" alt="avatar" height="200px" cover @click="onImageClick(employee)"></v-img>
+            <v-card-title>{{ employee.nom }}</v-card-title>
+            <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
+            <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
+            <v-card-item>
+              <v-btn color="#644a9d" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
+            </v-card-item>
+          </v-card>
+        </v-col>
+        <!--Carroussel pour mobile seulement-->
+        <v-carousel class="d-xs-flex d-sm-none" hide-delimiter-background :show-arrows="false">
           <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
-            <v-col cols="auto">
-              <v-card class="mx-auto" max-width="340px" height="auto" :style="{ borderRadius: '20px' }">
-                <v-img
-                  height="250px"
-                  :src="employee.img"
-                  :alt="employee.nom"
-                  @click="onImageClick(employee)"
-                  cover
-                ></v-img>
+            <v-col cols="auto" height="500px">
+              <v-card class="mx-auto" max-width="340px" height="350px">
+                <v-avatar v-slots:prepend>
+                  <img :src="employee.img" alt="avatar" cover />
+                </v-avatar>
                 <v-card-title>{{ employee.nom }}</v-card-title>
                 <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
                 <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
                 <v-card-actions>
-                  <v-btn color="#644a9d" variant="text" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
+                  <v-btn color="teal-accent-4" variant="text" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
                 </v-card-actions>
               </v-card>
             </v-col>
           </v-carousel-item>
         </v-carousel>
+
         <!--Boite modale pour voir plus de details (texte) sur les employee de SNA -->
         <v-dialog v-model="dialog" persistent max-width="600px">
           <v-card :style="{ borderRadius: '20px' }">
@@ -84,9 +98,9 @@
       <!--------------------------------------ZONE COURS---------------------------------->
       <SousTitres title="Nos cours" />
       <v-row class="lesCours">
-        <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" md="4" lg="4">
+        <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="4" lg="4">
           <v-card
-            class="testCart"
+            class="blocCours"
             image="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
           >
             <h1>{{ cours.cours }}</h1>
@@ -97,10 +111,34 @@
       <!---------------------------ZONE AVIS/COMMENTAIRES------------------------------>
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
-        <v-carousel hide-delimiters :show-arrows="false" progress="#644a9d" cycle>
+        <v-col
+          class="d-none d-sm-flex"
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
+          v-for="(commentaire, index) in lesCommentaires"
+          :key="index"
+        >
+          <v-card class="mx-auto" width="400px" height="350px">
+            <div class="clients">
+              <v-avatar prepend>
+                <img :src="commentaire.img" alt="avatar" cover />
+              </v-avatar>
+
+              <v-card-title>{{ commentaire.nom }}</v-card-title>
+            </div>
+            <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly></v-rating>
+            <v-card-subtitle class="text-h6">{{ commentaire.sousTitre }}</v-card-subtitle>
+            <v-card-text>{{ commentaire.comm }}</v-card-text>
+          </v-card>
+        </v-col>
+
+        <!--Carroussel avis clients pour mobile seulement-->
+        <v-carousel class="d-xs-flex d-sm-none" hide-delimiter-background :show-arrows="false">
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
-            <v-col cols="auto" height="500px">
-              <v-card class="mx-auto" max-width="340px" height="350px">
+            <v-col>
+              <v-card class="mx-auto" max-width="340px" height="400px">
                 <div class="clients">
                   <v-avatar prepend>
                     <img :src="commentaire.img" alt="avatar" cover />
@@ -128,54 +166,46 @@ import lesCours from "@/data/PageAccueil/lesCours.json";
 import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 import SiteLogo from "@/components/SiteLogo.vue";
 
-//////////////////---EXPORTATIONS/DATA---/////////////////////
 export default {
+  //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
     return {
+      /////////////////////ZONE TEXTE////////////////////////////
       message: "Bienvenue à ShantiNest Academy - votre havre pour méditation, yoga, et croissance personnelle.",
-      messageLong:
-        "Bienvenue à ShantiNest Academy - votre havre pour méditation, yoga, et croissance personnelle. Rejoignez-nous pour un voyage vers la sérénité et l'équilibre.",
-      messageEquipe:
-        "Au cœur de ShantiNest Academy se trouve une équipe unie par une passion commune pour le bien-être et l'épanouissement personnel. Notre groupe d'experts dévoués en yoga, pilates et méditation partage un objectif: vous accompagner vers une meilleure version de vous-même.",
+      textEquipe:
+        "Au cœur de ShantiNest Academy se trouve une équipe unie par une passion commune pour le bien-être et l'épanouissement personnel. Notre groupe d'experts dévoués en yoga, pilates et méditation partage un objectif: vous accompagner vers une meilleure version de vous-même.Nous sommes là pour vous aider à trouver la paix intérieure, la force et la sérénité. Nous sommes là pour vous aider à trouver votre équilibre. Nous sommes là pour vous aider à trouver votre voie. Nous sommes là pour vous aider à trouver votre SNA. Bienvenue à la maison. Bienvenue à ShantiNest Academy.",
+
+      /////////////////LES IMAGES/////////////////////
       imgEmilie: require("@/img/PageAccueil/lesProfs/tomJaydusor.jpeg"),
       imgAccueil: require("../img/general/sna15.jpeg"),
       parallaxSrc: require("../img/general/sna03.jpeg"),
       parallaxDeux: require("../img/general/sna08.jpeg"),
-      employees: [],
-      //////////////////////////////////////
+      imgEquipe: require("../img/general/sna05.jpeg"),
+
+      /////////////////DATA EXTERNE/////////////////////
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,
       lesCours: lesCours.lesCours,
       lesEmployees: LesEmployees.lesEmployees,
-      //////////////////////////////////////
-      rating: 5,
-      reveal: false,
-      montrer: false,
-      dialog: false,
-      dialogInt: false,
+      employees: LesEmployees.lesEmployees,
+
+      /////////////////////ZONE BOOLEAN////////////////////////////
+      montrer: false, //Boite modale pour voir plus de details (texte) sur SNA
+      dialog: false, //Boite modale pour voir plus de details (texte) sur les employee de SNA
+      dialogInt: false, //Boite modale pour voir plus de details (texte) sur SNA
+
+      ////////////////////BLOC EQUIPE//////////////////
       itemSelectionner: null,
       employee: null,
+
+      ////////////////////BLOC COMMENTAIRES//////////////////
+      rating: 5,
     };
   },
-  created() {
-    this.employees = LesEmployees.lesEmployees.map((employee) => {
-      let img;
-      try {
-        img = employee.img ? require(`${employee.img}`) : null;
-      } catch (err) {
-        console.error(`Failed to load image ${employee.img}: ${err}`);
-        img = null;
-      }
-      return {
-        ...employee,
-        img,
-      };
-    });
-  },
+
+  ////---------ZONE FONCTION---------------////
   methods: {
-    naviguerVersCours(route) {
-      this.$router.push(route);
-    },
+    //les fonctions pour ouvrir les boites modales
     ouvreDialogue(employee) {
       this.itemSelectionner = employee;
       this.dialog = true;
@@ -184,6 +214,8 @@ export default {
     dialogIntro() {
       this.dialogInt = true;
     },
+
+    ////Aide pour mon probleme dimage qui ne saffiche pas
     onImageClick(employee) {
       console.log(employee.img);
     },
@@ -196,7 +228,6 @@ export default {
 </script>
 <style scoped>
 /*//////////////////GLOBAL////////////////////*/
-
 main {
   padding: 0;
   padding-top: 3rem;
@@ -205,8 +236,20 @@ main {
 
 .v-container {
   padding: 0;
-  width: 100vw;
+  max-width: none;
 }
+.lesCours,
+.equipes,
+.temoignage {
+  padding: 1rem 2rem;
+}
+.v-card,
+.v-btn,
+.imgAp,
+.blocCours {
+  border-radius: 20px;
+}
+
 /*////////////////// IMAGE INTRO PAGE ACCUEIL////////////////////*/
 .imgIntro {
   padding: 0 20px;
@@ -263,17 +306,24 @@ hr {
   padding: 1rem 2rem;
 }
 
-.imgAp {
-  border-radius: 20px;
-}
 .btnVoirPlus {
-  border-radius: 20px;
   margin-top: 20px;
 }
+.v-dialog {
+  max-height: 800px;
+  max-width: 750px;
+  line-height: 2;
+}
 /*/ /////////////////EQUIPES////////////////////*/
-
+.equipe {
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+.equipes .v-card {
+  margin: 1rem;
+}
 /*//////////////////LES COURS////////////////////*/
-.testCart {
+.blocCours {
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -281,31 +331,10 @@ hr {
   align-items: center;
   color: white;
   font-size: clamp(1.5rem, 0.7571rem + 1.2143vw, 3rem);
-  border-radius: 20px;
-}
-.lesCours,
-.equipes,
-.temoignage {
-  padding: 1rem 2rem;
-}
-
-.textCours {
-  color: white;
-}
-.titreCours {
-  color: white;
-  font-size: 2.7rem;
 }
 
 /*/ /////////////////TEMPOIGNAGES////////////////////*/
 
-.temoignage {
-  display: flex;
-  flex-direction: column;
-}
-.temoignage .v-card {
-  border-radius: 20px;
-}
 .clients {
   display: flex;
   flex-direction: row;
@@ -322,11 +351,14 @@ hr {
 .v-card-text {
   font-size: 0.8rem;
 }
-/*--------------CAROUSEL--------*/
+/*--------------Carrousel mobile--------*/
+.temoignage {
+  display: flex;
+}
+
 .temoignage-carousel .v-carousel__controls {
   align-items: center;
 }
-
 .temoignage-carousel .v-carousel__controls .v-btn {
   background-color: #644a9d;
 }
@@ -336,23 +368,40 @@ hr {
 
 /*//////////////////------TABLETTE------////////////////////*/
 @media (min-width: 768px) {
-  .aPropos p {
-    font-size: 1.3rem;
+  /*/////////////////////////////*/
+  .blocCours {
+    font-size: 1.2rem;
+    height: 400px;
   }
-  /*/////////////////////////////*/
-  .testCart {
-    height: 300px;
-  }
-  /*/////////////////////////////*/
-
-  /*/////////////////////////////*/
-
-  /*/////////////////////////////*/
 }
+
 /*//////////////////-----------GRAND ECRAN---------////////////////////*/
 @media (min-width: 960px) {
   main {
-    padding-top: 6rem;
+    padding-top: 4.2rem;
+  }
+  .aPropos,
+  .lesCours,
+  .equipes,
+  .temoignage {
+    padding: 5rem 5rem;
+  }
+
+  .aPropos p,
+  .equipe p {
+    font-size: 1.2rem;
+    line-height: 2;
+  }
+  /*//////////////////LES COURS////////////////////*/
+  .blocCours {
+    height: 500px;
+  }
+}
+
+/*//////////////////-----------GRAND ECRAN plus---------////////////////////*/
+@media (min-width: 1200px) {
+  .blocCours {
+    height: 300px;
   }
 }
 </style>

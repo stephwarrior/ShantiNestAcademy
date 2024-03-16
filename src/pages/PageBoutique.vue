@@ -4,20 +4,23 @@
     <v-container>
       <div class="nbrItems">
         <div>{{ articles.length }} items</div>
-        <div></div>
       </div>
 
       <v-row class="test">
-        <v-col cols="12" md="4" v-for="article in articles" :key="article.id">
+        <v-col cols="12" sm="4" v-for="article in articles" :key="article.id">
           <v-card class="blocItems">
             <v-img :src="article.img" alt="pas image">zone image</v-img>
             <p>{{ article.nom }}</p>
             <p>${{ article.prix }}.00 CAD</p>
-            <v-btn @click="ajouterArticle(article)">Ajouter au panier</v-btn>
-          </v-card></v-col
-        ></v-row
-      ></v-container
-    >
+
+            <v-btn rounded="lg" elevated @click="ajouterArticle(article)"
+              >Ajouter au panier
+              <v-badge
+                v-if="article.count > 0"
+                :content="article.count"
+                floating
+              ></v-badge></v-btn></v-card></v-col></v-row
+    ></v-container>
   </main>
 </template>
 <script>
@@ -32,12 +35,13 @@ export default {
           prix: 50,
           img: "",
           id: 1,
+          count: 0,
         },
-        { nom: "Chandail SNA", prix: 10, img: "", id: 2 },
-        { nom: "Bouteille SNA", prix: 15, img: "", id: 3 },
-        { nom: "Tapis SNA", prix: 20, img: "", id: 4 },
-        { nom: "Tasse SNA", prix: 10, img: "", id: 5 },
-        { nom: "Sac SNA", prix: 25, img: "", id: 6 },
+        { nom: "Chandail SNA", prix: 10, img: "", id: 2, count: 0 },
+        { nom: "Bouteille SNA", prix: 15, img: "", id: 3, count: 0 },
+        { nom: "Tapis SNA", prix: 20, img: "", id: 4, count: 0 },
+        { nom: "Tasse SNA", prix: 10, img: "", id: 5, count: 0 },
+        { nom: "Sac SNA", prix: 25, img: "", id: 6, count: 0 },
       ],
       items: [
         {
@@ -56,6 +60,7 @@ export default {
     ...mapActions(["ajouterAuPanier"]),
     ajouterArticle(article) {
       this.ajouterAuPanier(article);
+      article.count++;
       console.log(article);
     },
   },

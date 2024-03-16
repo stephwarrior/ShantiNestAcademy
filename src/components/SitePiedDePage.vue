@@ -2,7 +2,7 @@
   <footer>
     <div class="zoneFooter">
       <div class="test d-none align-center d-md-flex">
-        <SiteLogo />
+        <SiteLogo taille="5rem" />
         <div>
           <p>ShantiNest</p>
           <p>Academy</p>

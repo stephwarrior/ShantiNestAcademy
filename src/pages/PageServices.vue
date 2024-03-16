@@ -7,8 +7,8 @@
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <v-container>
       <v-col cols="12" class="blocServ" v-for="(service, index) in services" :key="index">
-        <v-img :src="service.img" class="grey lighten-2"></v-img>
-        <v-col md="6" lg="7">
+        <v-img :src="service.img" :style="{ borderRadius: '20px' }" class="grey lighten-2"></v-img>
+        <v-col md="6" lg="8">
           <h1>{{ service.name }}</h1>
 
           <p>{{ service.descriptionCourt }}</p>
@@ -17,7 +17,7 @@
       </v-col>
 
       <v-dialog v-model="dialog" persistent max-width="600px">
-        <v-card>
+        <v-card :style="{ borderRadius: '20px' }">
           <v-card-title>{{ itemSelectionner.name }}</v-card-title>
           <v-img :src="itemSelectionner.img" aspect-ratio="1.4" class="grey lighten-2"></v-img>
           <v-card-text>{{ itemSelectionner.descriptionLong }}</v-card-text>
