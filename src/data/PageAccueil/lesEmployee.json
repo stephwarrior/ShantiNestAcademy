@@ -2,7 +2,6 @@
   "lesEmployees": [
     {
       "id": 1,
-      "img": "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg",
       "nom": "Émilie Leblanc",
       "poste": "Professeure de yoga",
       "periode": "Depuis 12 ans",
@@ -10,7 +9,6 @@
     },
     {
       "id": 2,
-      "img": "",
       "nom": "Tom Jaydusor",
       "poste": "Professeur de méditation",
       "periode": "Depuis 10 ans",
@@ -18,7 +16,6 @@
     },
     {
       "id": 3,
-      "img": "",
       "nom": "Lydia Desjardin",
       "poste": "Professeure de pilates",
       "periode": "Depuis 8 ans",
@@ -26,7 +23,6 @@
     },
     {
       "id": 4,
-      "img": "",
       "nom": "Alex Lee",
       "poste": "Professeur de pilates",
       "periode": "Depuis 5 ans",
@@ -34,7 +30,6 @@
     },
     {
       "id": 5,
-      "img": "",
       "nom": "Anushka Kapur",
       "poste": "Professeure de méditation",
       "periode": "Depuis 15 ans",
@@ -42,7 +37,6 @@
     },
     {
       "id": 6,
-      "img": "",
       "nom": "Mario Lopez",
       "poste": "Professeur de méditation",
       "periode": "Depuis 7 ans",
@@ -50,7 +44,6 @@
     },
     {
       "id": 7,
-      "img": "",
       "nom": "Léa Dufresne",
       "poste": "Professeure de yoga",
       "periode": "Depuis 21 ans",
@@ -58,7 +51,6 @@
     },
     {
       "id": 8,
-      "img": "",
       "nom": "Pierre Patneaude",
       "poste": "Professeur de yoga",
       "periode": "Depuis 3 ans",

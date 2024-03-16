@@ -29,7 +29,7 @@
         </v-col>
         <v-col cols="12" sm="6">
           <p>{{ aPropos.descCourt }}</p>
-          <v-btn class="btnVoirPlus" color="#644a9d" @click="dialogIntro"> Voir plus </v-btn>
+          <v-btn class="btnVoirPlus" color="#42A5A1" @click="dialogIntro"> Voir plus </v-btn>
         </v-col>
         <!--Boite modale pour voir plus de details (texte) sur SNA -->
         <v-dialog class="modaleApropos" v-model="dialogInt">
@@ -54,13 +54,13 @@
 
         <!--Bloc introduit les employees de SNA-->
         <v-col class="d-none d-sm-flex" cols="12" sm="4" md="3" v-for="(employee, index) in lesEmployees" :key="index">
-          <v-card class="mx-auto" width="300px" height="350px">
-            <v-img :src="employee.img" alt="avatar" height="200px" cover @click="onImageClick(employee)"></v-img>
+          <v-card class="mx-auto" width="300px" height="380px">
+            <v-img :src="employee.img" alt="avatar" height="230px" cover @click="onImageClick(employee)"></v-img>
             <v-card-title>{{ employee.nom }}</v-card-title>
             <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
             <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
             <v-card-item>
-              <v-btn color="#644a9d" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
+              <v-btn color="#42A5A1" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
             </v-card-item>
           </v-card>
         </v-col>
@@ -69,9 +69,8 @@
           <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
-                <v-avatar v-slots:prepend>
-                  <img :src="employee.img" alt="avatar" cover />
-                </v-avatar>
+                <v-img :src="employee.img" alt="avatar" height="200px" cover="" @click="onImageClick(employee)"></v-img>
+
                 <v-card-title>{{ employee.nom }}</v-card-title>
                 <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
                 <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
@@ -86,6 +85,8 @@
         <!--Boite modale pour voir plus de details (texte) sur les employee de SNA -->
         <v-dialog v-model="dialog" persistent max-width="600px">
           <v-card :style="{ borderRadius: '20px' }">
+            <v-img :src="itemSelectionner.img" alt="avatar" height="200px" cover></v-img>
+
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
             <v-card-text>{{ itemSelectionner.description }}</v-card-text>
             <v-card-actions>
@@ -166,10 +167,32 @@ import lesCours from "@/data/PageAccueil/lesCours.json";
 import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 import SiteLogo from "@/components/SiteLogo.vue";
 
+import tomJaydusorImage from "@/img/ddk.jpg";
+import tomImage from "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg";
+//import monImgs from "@/img/general/sna03.jpeg";
+
 export default {
   //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
+    //console.log(tomJaydusorImage);
+    const employeesWithImages = LesEmployees.lesEmployees.map((employee) => {
+      let image;
+      switch (employee.id) {
+        case 1:
+          image = tomJaydusorImage;
+          break;
+        case 2:
+          image = tomImage;
+          break;
+        default:
+          image = "";
+          break;
+      }
+      return { ...employee, img: image };
+    });
     return {
+      lesEmployees: employeesWithImages,
+
       /////////////////////ZONE TEXTE////////////////////////////
       message: "Bienvenue à ShantiNest Academy - votre havre pour méditation, yoga, et croissance personnelle.",
       textEquipe:
@@ -186,7 +209,7 @@ export default {
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,
       lesCours: lesCours.lesCours,
-      lesEmployees: LesEmployees.lesEmployees,
+      //lesEmployees: LesEmployees.lesEmployees,
       employees: LesEmployees.lesEmployees,
 
       /////////////////////ZONE BOOLEAN////////////////////////////
@@ -256,7 +279,7 @@ main {
 }
 .troisAction {
   padding-top: 30px;
-  font-size: 1.3rem;
+  font-size: clamp(1.3rem, 0.7571rem + 1.2143vw, 2rem);
 }
 .troisAction p {
   font-family: "Kotta One", sans-serif;
@@ -266,7 +289,7 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-content: center;
   color: white;
 }
 .introTexte > * {
@@ -275,11 +298,11 @@ main {
 
 .sous-titre {
   font-family: "Kotta One", sans-serif;
-  font-size: clamp(2rem, 0.7571rem + 1.2143vw, 4rem);
+  font-size: clamp(2.5rem, 0.7571rem + 1.2143vw, 4rem);
   color: white;
 }
 hr {
-  width: 100px;
+  width: 50vw;
   height: 2px;
   background-color: white;
   margin: 10px 0;
@@ -295,7 +318,7 @@ hr {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: -1;
 }
 
@@ -368,6 +391,9 @@ hr {
 
 /*//////////////////------TABLETTE------////////////////////*/
 @media (min-width: 768px) {
+  .introTexte {
+    align-items: center;
+  }
   /*/////////////////////////////*/
   .blocCours {
     font-size: 1.2rem;
@@ -392,6 +418,7 @@ hr {
     font-size: 1.2rem;
     line-height: 2;
   }
+
   /*//////////////////LES COURS////////////////////*/
   .blocCours {
     height: 500px;

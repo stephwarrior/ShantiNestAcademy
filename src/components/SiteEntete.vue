@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :style="{ backgroundColor: bgColor }">
     <!-------------------------ZONE GRAND ECRAN-------------------->
 
     <v-row no-gutters class="contenuRow align-center">
@@ -72,7 +72,12 @@ import { mapGetters } from "vuex";
 
 export default {
   emits: ["afficheLePanier"],
-
+  props: {
+    bgColor: {
+      type: String,
+      default: "#FFFFFF", // Default color is white
+    },
+  },
   data: () => ({
     liensMenu: [
       { nom: "Accueil", url: "/" },

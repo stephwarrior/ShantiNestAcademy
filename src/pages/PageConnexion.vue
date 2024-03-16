@@ -149,11 +149,8 @@ export default {
     async logout() {
       try {
         await deconnect();
-        // Traitement après déconnexion, par exemple :
-        // this.$router.push('/login');
       } catch (error) {
         console.error("Erreur de déconnexion:", error.message);
-        // Gestion de l'erreur de déconnexion, si nécessaire
       }
     },
   },

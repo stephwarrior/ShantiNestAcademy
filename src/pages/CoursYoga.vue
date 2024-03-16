@@ -65,15 +65,28 @@
     <SousTitres title="Conseils de nos professionnels" />
     <v-row>
       <v-col v-for="(conseil, index) in cslYoga" :key="index" cols="12" md="6">
-        <v-card>
-          <v-card-title>{{ conseil.titre }}</v-card-title>
-          <v-card-text>{{ conseil.texte }}</v-card-text>
-        </v-card></v-col
-      >
+        <v-alert border="start" border-color="deep-purple accent-4" elevation="4" icon="mdi-circle">
+          <v-alert-title>{{ conseil.titre }}</v-alert-title>
+          <p>{{ conseil.texte }}</p>
+        </v-alert>
+      </v-col>
     </v-row>
 
     <!--------------NUTRITIONS----------------->
     <SousTitres title="Nutrition" />
+    <v-row>
+      <v-col cols="12">
+        <h2>Conseils de nutrition pour le yoga</h2>
+        <v-list>
+          <v-list-item v-for="(conseil, index) in conseils" :key="index">
+            <v-list-item-title>{{ conseil.conseilUn }}</v-list-item-title>
+            <v-list-item-title>{{ conseil.conseilDeux }}</v-list-item-title>
+            <v-list-item-title>{{ conseil.conseilTrois }}</v-list-item-title>
+            <v-list-item-title>{{ conseil.conseilQuatre }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-col>
+    </v-row>
   </main>
 </template>
 <script>
@@ -82,13 +95,21 @@ import pageYogaData from "@/data/PageYoga.json";
 export default {
   data: () => ({
     items: pageYogaData.items,
-    coursYoga: pageYogaData.coursYoga, // Utilisez les données importées ici
+    coursYoga: pageYogaData.coursYoga,
     descYoga: pageYogaData.descYoga,
     cslYoga: pageYogaData.cslYoga,
     length: 3,
     window: 0,
     dialog: false,
   }),
+  conseils: [
+    {
+      conseilUn: "Mangez beaucoup de fruits et légumes pour une alimentation équilibrée.",
+      conseilDeux: "Buvez beaucoup d'eau pour rester hydraté.",
+      conseilTrois: "Évitez les repas lourds avant une séance de yoga.",
+      conseilQuatre: "Évitez les aliments transformés et les sucres ajoutés.",
+    },
+  ],
   components: {
     SousTitres,
   },
@@ -98,6 +119,7 @@ export default {
 main {
   padding: 0;
   color: var(--couleurQuaternaire);
+  height: auto;
 }
 .v-parallax {
   height: 800px !important;

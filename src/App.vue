@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kotta+One:regular" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:regular,700,800" rel="stylesheet" />
   </head>
-  <SiteEntete @afficheLePanier="afficherPanier = !afficherPanier" />
+  <SiteEntete @afficheLePanier="afficherPanier = !afficherPanier" :bgColor="headerColor" />
   <PanierAchat v-if="afficherPanier" />
   <router-view />
   <v-btn class="btnRemonte" color="#644a9d" :style="{ borderRadius: '50px' }" @click="scrollTop">
@@ -48,6 +48,20 @@ export default {
         top: 0,
         behavior: "smooth", // Pour un effet de défilement doux
       });
+    },
+  },
+  computed: {
+    headerColor() {
+      switch (this.$route.name) {
+        /*case "yoga":
+          return "#EC9198";
+        case "pilates":
+          return "#f0a7a6";
+        case "meditation":
+          return "#EC9198";*/
+        default:
+          return "#937fbc"; // Default color
+      }
     },
   },
 };
@@ -90,7 +104,7 @@ p {
   --couleurPrincipale: #937fbc;
   --couleurTexte: #644a9d;
   --couleurTertiaire: #f5f5f5;
-  --couleurQuaternaire: #e394b5;
+  --couleurQuaternaire: #ec9198;
   --couleurCinquieme: #f0a7a6;
   --couleurSixieme: #f4dad2;
   --couleurSeptieme: #8e7ab5;
