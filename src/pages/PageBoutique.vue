@@ -25,6 +25,8 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import { bouteilleBleu, bouteilleRose, bouteilleVerte, bouteilleJaune } from "@/data/imageBoutique.js";
+
 export default {
   name: "PageBoutique",
   data() {
@@ -37,10 +39,10 @@ export default {
           id: 1,
           count: 0,
         },
-        { nom: "Chandail SNA", prix: 10, img: "", id: 2, count: 0 },
-        { nom: "Bouteille SNA", prix: 15, img: "", id: 3, count: 0 },
-        { nom: "Tapis SNA", prix: 20, img: "", id: 4, count: 0 },
-        { nom: "Tasse SNA", prix: 10, img: "", id: 5, count: 0 },
+        { nom: "Chandail SNA", prix: 10, img: bouteilleVerte, id: 2, count: 0 },
+        { nom: "Bouteille SNA", prix: 15, img: bouteilleBleu, id: 3, count: 0 },
+        { nom: "Tapis SNA", prix: 20, img: bouteilleJaune, id: 4, count: 0 },
+        { nom: "Tasse SNA", prix: 10, img: bouteilleRose, id: 5, count: 0 },
         { nom: "Sac SNA", prix: 25, img: "", id: 6, count: 0 },
       ],
       items: [
