@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       /////////////////LES IMAGES/////////////////////
-      imgCourDeux: require("@/img/general/sna12.jpeg"),
+      imgCourDeux: require("@/img/general/sna16.jpeg"),
 
       tab: null,
       items: [
@@ -112,7 +112,7 @@ export default {
 <style scoped>
 main {
   height: auto;
-  padding-top: 3rem;
+  padding: 3rem 0 1rem;
 }
 
 .lesForfaits h3 {

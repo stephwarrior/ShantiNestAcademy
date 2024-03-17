@@ -167,7 +167,7 @@ export default {
 <style scoped>
 main {
   padding-top: 5rem;
-  height: 100vh;
+  height: 110vh;
 }
 /******************************/
 

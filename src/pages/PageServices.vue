@@ -1,6 +1,6 @@
 <template>
   <main>
-    <v-parallax class="imgServ" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" height="400"> </v-parallax>
+    <v-parallax class="imgServ" :src="imageAcc" height="400"> </v-parallax>
 
     <v-breadcrumbs :items="items"></v-breadcrumbs>
 
@@ -31,7 +31,7 @@
   </main>
 </template>
 <script>
-import lesServices from "@/data/PageServices.json";
+import lesServices from "@/data/PageServices.js";
 import SousTitres from "@/components/SousTitres.vue";
 export default {
   components: {
@@ -42,6 +42,9 @@ export default {
       services: lesServices.services,
       dialog: false,
       itemSelectionner: null,
+
+      /////////////////LES IMAGES/////////////////////
+      imageAcc: require("../img/general/sna14.jpeg"),
     };
   },
   items: [

@@ -4,7 +4,7 @@
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">1er cours d'essai gratuit</p>
         <p class="text-h5">Découvrez notre offre de cours et trouvez celui qui vous convient</p>
-        <RouterLink to="/accueil">
+        <RouterLink to="/HoraireTarifs">
           <v-btn class="mt-5" color="white" dark>Explorer nos cours et leurs tarifs</v-btn></RouterLink
         >
       </div>
@@ -30,19 +30,6 @@
             </v-list-item>
           </v-list>
         </v-col>
-      </v-row>
-
-      <!-----------------Les page cours--------------------->
-      <v-row class="lesCours d-none">
-        <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="4" lg="4">
-          <v-card
-            class="blocCours"
-            image="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
-          >
-            <h1>{{ cours.cours }}</h1>
-            <v-btn :to="cours.url" variant="outlined">Explorer</v-btn>
-          </v-card></v-col
-        >
       </v-row>
 
       <!-----------------Quoi amener----------------------->
@@ -77,9 +64,6 @@ import lesCours from "@/data/PageAccueil/lesCours.js";
 
 export default {
   data: () => ({
-    components: {
-      SousTitres,
-    },
     coursItems: [
       "En personne",
       "En ligne",
@@ -135,6 +119,9 @@ export default {
       },
     ],
   }),
+  components: {
+    SousTitres,
+  },
 };
 </script>
 <style scoped>
