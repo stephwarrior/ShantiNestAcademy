@@ -10,8 +10,19 @@
       <!-------------- MENU NAV GRAND ÉCRAN------------>
       <v-col cols="auto" lg="7" class="blocMenu d-none d-md-flex">
         <v-list>
-          <v-list-item v-for="(lien, index) in liensMenu" :key="index">
+          <v-list-item
+            v-for="(lien, index) in liensMenu"
+            :key="index"
+            class="menu-item"
+            @mouseenter="isSubMenuVisible = true"
+            @mouseleave="isSubMenuVisible = false"
+          >
             <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
+            <v-list v-if="lien.sousMenu && isSubMenuVisible" class="sous-menu">
+              <v-list-item v-for="(sousLien, sIndex) in lien.sousMenu" :key="`sous-${sIndex}`">
+                <RouterLink :to="sousLien.url">{{ sousLien.nom }}</RouterLink>
+              </v-list-item>
+            </v-list>
           </v-list-item></v-list
         >
       </v-col>
@@ -56,8 +67,6 @@
   <!--Navigation mobile/tablette-->
   <div class="blocMenumobile d-md-none">
     <div class="menu-mobile" v-click-outside="ouvreNav" v-if="menuMobileActive">
-      <!--Barre de recherche-->
-      <!--<input type="search" name="recherche" id="recherche" label="recherche" />-->
       <!--Les menus mobile/tablette-->
       <v-list v-for="(lien, index) in liensMenu" :key="index">
         <RouterLink :to="lien.url">{{ lien.nom }}</RouterLink>
@@ -79,11 +88,22 @@ export default {
     },
   },
   data: () => ({
+    isSubMenuVisible: false,
+
     liensMenu: [
       { nom: "Accueil", url: "/" },
-      { nom: "Cours", url: "/cours" },
+      {
+        nom: "Cours",
+        url: "/cours",
+        sousMenu: [
+          { nom: "Yoga", url: "/yoga" },
+          { nom: "Pilates", url: "/pilates" },
+          { nom: "Méditation", url: "/meditation" },
+        ],
+      },
+
       { nom: "Services", url: "/services" },
-      { nom: "Horaires et Tarifs", url: "/HoraireTarifs" },
+      { nom: "Abonnement", url: "/HoraireTarifs" },
       { nom: "Boutique", url: "/boutique" },
     ],
     menuMobileActive: false,
@@ -114,6 +134,10 @@ header {
   position: fixed;
 }
 
+/*//////////////////BLOC MENU GRAND ECRAN////////////////////*/
+.blockMenu {
+  z-index: 15;
+}
 /*//////////////////LOGO////////////////////*/
 
 .enteteMobTab {
@@ -179,7 +203,7 @@ header {
 }
 /*----/////----------ZONE GRAND ECRAN-------////-----------*/
 @media (min-width: 960px) {
-  /*/////////////// BLOC LIENS (GRAND ECRAN)//////////////////*/
+  /*/////////////// MENU  //////////////////*/
   .blockMenu {
     display: flex;
     flex-wrap: nowrap;
@@ -197,18 +221,39 @@ header {
     justify-content: space-around;
     align-content: center;
   }
-  /*----LIENS----*/
-
-  .v-list-item a {
+  .menu-item {
+    position: relative;
+    border-bottom: 5px solid transparent;
+  }
+  .menu-item:hover {
+    border-bottom: 5px solid lightcoral;
+    transition: border-bottom 0.3s ease;
+  }
+  .menu-item a {
     font-family: "Kotta One", sans-serif;
     color: var(--couleurTertiaire);
-    border-bottom: transparent 2px solid;
   }
 
-  .v-list-item a:hover {
-    border-bottom: white 2px solid;
-    transition: border-bottom 0.7s ease;
+  .sous-menu {
+    display: none;
+    position: fixed;
+    width: max-content;
+    top: 60px;
+    background: #937fbc;
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 50px 10px;
+    border-radius: 0 0 20px 20px;
   }
+
+  .menu-item:hover .sous-menu,
+  .sous-menu.visible {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: display 1s ease;
+  }
+  /*----LIENS----*/
 
   /*//////////////////ICONES////////////////////*/
 }

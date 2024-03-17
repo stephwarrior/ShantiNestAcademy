@@ -46,7 +46,7 @@
 </template>
 <script>
 import SousTitres from "@/components/SousTitres.vue";
-import lesCours from "@/data/PageAccueil/lesCours.json";
+import lesCours from "@/data/PageAccueil/lesCours.js";
 
 export default {
   data: () => ({

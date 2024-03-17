@@ -54,7 +54,7 @@
 
         <!--Bloc introduit les employees de SNA-->
         <v-col class="d-none d-sm-flex" cols="12" sm="4" md="3" v-for="(employee, index) in lesEmployees" :key="index">
-          <v-card class="mx-auto" width="300px" height="380px">
+          <v-card class="mx-auto" width="300px" height="380px" elevation="2">
             <v-img :src="employee.img" alt="avatar" height="230px" cover @click="onImageClick(employee)"></v-img>
             <v-card-title>{{ employee.nom }}</v-card-title>
             <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
@@ -84,7 +84,7 @@
 
         <!--Boite modale pour voir plus de details (texte) sur les employee de SNA -->
         <v-dialog v-model="dialog" persistent max-width="600px">
-          <v-card :style="{ borderRadius: '20px' }">
+          <v-card>
             <v-img :src="itemSelectionner.img" alt="avatar" height="200px" cover></v-img>
 
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
@@ -99,15 +99,13 @@
       <!--------------------------------------ZONE COURS---------------------------------->
       <SousTitres title="Nos cours" />
       <v-row class="lesCours">
-        <v-col v-for="(cours, index) in lesCours" :key="index" cols="12" sm="4" lg="4">
-          <v-card
-            class="blocCours"
-            image="https://media.cntraveler.com/photos/5be07adbcfd2bb17f97a7a52/16:9/w_3199,h_1799,c_limit/MAG18_DEC_TR120818_SG_Flores02.jpg"
-          >
-            <h1>{{ cours.cours }}</h1>
+        <v-col class="blocCours" v-for="(cours, index) in lesCours" :key="index" cols="12" sm="4" lg="4">
+          <v-img :src="cours.img" alt="image" height="100%" width="100%" cover
+            ><h1>{{ cours.cours }}</h1>
             <v-btn :to="cours.url" variant="outlined">Voir plus...</v-btn>
-          </v-card></v-col
-        >
+            <div class="overlay"></div>
+          </v-img>
+        </v-col>
       </v-row>
       <!---------------------------ZONE AVIS/COMMENTAIRES------------------------------>
       <SousTitres title="Témoignages" />
@@ -121,7 +119,7 @@
           v-for="(commentaire, index) in lesCommentaires"
           :key="index"
         >
-          <v-card class="mx-auto" width="400px" height="350px">
+          <v-card class="mx-auto" width="400px" height="350px" elevation="10">
             <div class="clients">
               <v-avatar prepend>
                 <img :src="commentaire.img" alt="avatar" cover />
@@ -163,19 +161,20 @@
 import SousTitres from "@/components/SousTitres.vue";
 import aPropos from "@/data/PageAccueil/aPropos.json";
 import commentaires from "@/data/PageAccueil/commentaires.json";
-import lesCours from "@/data/PageAccueil/lesCours.json";
+import lesCours from "@/data/PageAccueil/lesCours.js";
 import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
 import SiteLogo from "@/components/SiteLogo.vue";
-
+//Importation images
 import tomJaydusorImage from "@/img/ddk.jpg";
 import tomImage from "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg";
-//import monImgs from "@/img/general/sna03.jpeg";
+import monImgs from "@/img/general/sna04.jpeg";
+//import { imgCoursYoga } from "@/data/img/imgAccueil.js";
 
 export default {
   //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
     //console.log(tomJaydusorImage);
-    const employeesWithImages = LesEmployees.lesEmployees.map((employee) => {
+    const imgEmployees = LesEmployees.lesEmployees.map((employee) => {
       let image;
       switch (employee.id) {
         case 1:
@@ -184,15 +183,32 @@ export default {
         case 2:
           image = tomImage;
           break;
+        case 3:
+          image = tomImage;
+          break;
+        case 4:
+          image = tomImage;
+          break;
+        case 5:
+          image = tomImage;
+          break;
+        case 6:
+          image = tomImage;
+          break;
+        case 7:
+          image = tomImage;
+          break;
+        case 8:
+          image = tomImage;
+          break;
         default:
-          image = "";
+          image = monImgs;
           break;
       }
       return { ...employee, img: image };
     });
-    return {
-      lesEmployees: employeesWithImages,
 
+    return {
       /////////////////////ZONE TEXTE////////////////////////////
       message: "Bienvenue à ShantiNest Academy - votre havre pour méditation, yoga, et croissance personnelle.",
       textEquipe:
@@ -204,7 +220,6 @@ export default {
       parallaxSrc: require("../img/general/sna03.jpeg"),
       parallaxDeux: require("../img/general/sna08.jpeg"),
       imgEquipe: require("../img/general/sna05.jpeg"),
-
       /////////////////DATA EXTERNE/////////////////////
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,
@@ -218,6 +233,7 @@ export default {
       dialogInt: false, //Boite modale pour voir plus de details (texte) sur SNA
 
       ////////////////////BLOC EQUIPE//////////////////
+      lesEmployees: imgEmployees,
       itemSelectionner: null,
       employee: null,
 
@@ -266,6 +282,7 @@ main {
 .temoignage {
   padding: 1rem 2rem;
 }
+.blocCours .v-img,
 .v-card,
 .v-btn,
 .imgAp,
@@ -347,11 +364,7 @@ hr {
 }
 /*//////////////////LES COURS////////////////////*/
 .blocCours {
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   color: white;
   font-size: clamp(1.5rem, 0.7571rem + 1.2143vw, 3rem);
 }

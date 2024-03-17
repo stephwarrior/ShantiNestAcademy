@@ -25,7 +25,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
-import { bouteilleBleu, bouteilleRose, bouteilleVerte, bouteilleJaune } from "@/data/imageBoutique.js";
+import { bouteilleBleu, bouteilleRose, bouteilleVerte, bouteilleJaune } from "@/data/img/imageBoutique.js";
 
 export default {
   name: "PageBoutique",
@@ -120,3 +120,4 @@ main {
   }
 }
 </style>
+@/data/img/imageBoutique.js
