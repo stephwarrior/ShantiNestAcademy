@@ -115,7 +115,7 @@
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
         <!--Carroussel avis clients pour mobile seulement-->
-        <v-carousel class="d-xs-flex d-sm-none" hide-delimiters progress="">
+        <v-carousel class="d-xs-flex d-sm-none" hide-delimiters progress="#644a9d" :show-arrows="false">
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
             <v-col>
               <v-card class="mx-auto" max-width="340px" height="400px">
@@ -305,11 +305,6 @@ main {
   font-family: "Kotta One", sans-serif;
 }
 .introTexte {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
   color: white;
 }
 .introTexte > * {
