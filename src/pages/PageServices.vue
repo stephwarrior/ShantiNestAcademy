@@ -1,10 +1,11 @@
 <template>
   <main>
-    <v-parallax class="imgServ" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" height="400">
-      <p class="sous-titre text-h3">Services</p>
-    </v-parallax>
+    <v-parallax class="imgServ" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" height="400"> </v-parallax>
 
     <v-breadcrumbs :items="items"></v-breadcrumbs>
+
+    <SousTitres title="Services" />
+
     <v-container>
       <v-col cols="12" class="blocServ" v-for="(service, index) in services" :key="index">
         <v-img :src="service.img" :style="{ borderRadius: '20px' }" class="grey lighten-2"></v-img>
@@ -31,7 +32,11 @@
 </template>
 <script>
 import lesServices from "@/data/PageServices.json";
+import SousTitres from "@/components/SousTitres.vue";
 export default {
+  components: {
+    SousTitres,
+  },
   data() {
     return {
       services: lesServices.services,
@@ -39,6 +44,17 @@ export default {
       itemSelectionner: null,
     };
   },
+  items: [
+    {
+      title: "Accueil",
+      desactive: false,
+      href: "/",
+    },
+    {
+      title: "Services",
+      desactive: true,
+    },
+  ],
   methods: {
     ouvreDialogue(item) {
       this.itemSelectionner = item;

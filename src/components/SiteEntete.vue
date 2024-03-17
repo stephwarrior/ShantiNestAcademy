@@ -183,7 +183,7 @@ header {
   transition: 0.5s;
   top: 0;
   right: 0;
-  width: 80%;
+  width: 250px;
   height: 100%;
   z-index: 1;
 }
@@ -228,6 +228,7 @@ header {
   .menu-item:hover {
     border-bottom: 5px solid lightcoral;
     transition: border-bottom 0.3s ease;
+    cursor: pointer;
   }
   .menu-item a {
     font-family: "Kotta One", sans-serif;

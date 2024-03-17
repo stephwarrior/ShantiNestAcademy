@@ -4,7 +4,7 @@
       <!---------------------------ZONE IMG PAGE ACCUEIL----------------------------->
 
       <v-img class="imgIntro" :src="parallaxDeux" height="600px" cover>
-        <v-row class="fill-height flex-column align-content-space-between">
+        <v-row class="fill-height flex-column align-content-space-between justify-center">
           <v-col class="troisAction d-flex justify-space-around text-white">
             <p>Respirer.</p>
             <p>Méditer.</p>
@@ -44,10 +44,10 @@
       <SousTitres title="Notre Équipe" />
       <v-row class="equipes">
         <v-row class="equipe">
-          <v-col cols="12" sm="6">
+          <v-col cols="12" sm="auto" md="6">
             <p>{{ textEquipe }}</p>
           </v-col>
-          <v-col cols="12" sm="6" lg="4">
+          <v-col cols="12" md="6" lg="4">
             <v-img :src="imgEquipe" class="imgAp"></v-img>
           </v-col>
         </v-row>
@@ -60,10 +60,11 @@
             <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
             <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
             <v-card-item>
-              <v-btn color="#42A5A1" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
+              <v-btn color="#42A5A1" variant="outlined" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
             </v-card-item>
           </v-card>
         </v-col>
+
         <!--Carroussel pour mobile seulement-->
         <v-carousel class="d-xs-flex d-sm-none" hide-delimiter-background :show-arrows="false">
           <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
@@ -89,10 +90,9 @@
 
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
             <v-card-text>{{ itemSelectionner.description }}</v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="#644a9d" text @click="dialog = false">Fermer</v-btn>
-            </v-card-actions>
+
+            <v-spacer></v-spacer>
+            <v-btn color="#644a9d" variant="outlined" text @click="dialog = false">Fermer</v-btn>
           </v-card>
         </v-dialog>
       </v-row>
@@ -100,7 +100,13 @@
       <SousTitres title="Nos cours" />
       <v-row class="lesCours">
         <v-col class="blocCours" v-for="(cours, index) in lesCours" :key="index" cols="12" sm="4" lg="4">
-          <v-img :src="cours.img" alt="image" height="100%" width="100%" cover
+          <v-img
+            :src="cours.img"
+            alt="image"
+            height="100%"
+            width="100%"
+            cover
+            class="d-flex align-center justify-center"
             ><h1>{{ cours.cours }}</h1>
             <v-btn :to="cours.url" variant="outlined">Voir plus...</v-btn>
             <div class="overlay"></div>

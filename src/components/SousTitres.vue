@@ -12,7 +12,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Insérez un sous-titre", // Fournir une valeur par défaut pour la prop title
+      default: "Insérez un sous-titre",
     },
   },
 };
