@@ -4,7 +4,7 @@
       <!---------------------------ZONE IMG PAGE ACCUEIL----------------------------->
 
       <v-img class="imgIntro" :src="parallaxDeux" height="600px" cover>
-        <v-row class="fill-height flex-column align-content-space-between justify-center">
+        <v-row class="fill-height flex-column justify-center">
           <v-col class="troisAction d-flex justify-space-around text-white">
             <p>Respirer.</p>
             <p>Méditer.</p>
@@ -51,6 +51,23 @@
             <v-img :src="imgEquipe" class="imgAp"></v-img>
           </v-col>
         </v-row>
+        <!--Carroussel pour mobile seulement-->
+        <v-carousel class="d-xs-flex d-sm-none" hide-delimiters progress="#42A5A1">
+          <v-carousel-item v-for="(employee, index) in lesEmployees" :key="index">
+            <v-col cols="auto" height="500px">
+              <v-card class="mx-auto" max-width="340px" height="550px">
+                <v-img :src="employee.img" alt="avatar" height="300px" cover @click="onImageClick(employee)"></v-img>
+
+                <v-card-title>{{ employee.nom }}</v-card-title>
+                <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
+                <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
+                <v-card-actions>
+                  <v-btn color="#42A5A1" variant="outlined" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+          </v-carousel-item>
+        </v-carousel>
 
         <!--Bloc introduit les employees de SNA-->
         <v-col class="d-none d-sm-flex" cols="12" sm="4" md="3" v-for="(employee, index) in lesEmployees" :key="index">
@@ -65,34 +82,15 @@
           </v-card>
         </v-col>
 
-        <!--Carroussel pour mobile seulement-->
-        <v-carousel class="d-xs-flex d-sm-none" hide-delimiter-background :show-arrows="false">
-          <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
-            <v-col cols="auto" height="500px">
-              <v-card class="mx-auto" max-width="340px" height="350px">
-                <v-img :src="employee.img" alt="avatar" height="200px" @click="onImageClick(employee)"></v-img>
-
-                <v-card-title>{{ employee.nom }}</v-card-title>
-                <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
-                <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
-                <v-card-actions>
-                  <v-btn color="teal-accent-4" variant="text" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-col>
-          </v-carousel-item>
-        </v-carousel>
-
         <!--Boite modale pour voir plus de details (texte) sur les employee de SNA -->
         <v-dialog v-model="dialog" persistent max-width="600px">
           <v-card>
-            <v-img :src="itemSelectionner.img" alt="avatar" height="500px" cover></v-img>
+            <v-img class="d-flex justify-center" :src="itemSelectionner.img" alt="avatar" height="500px" cover>
+              <v-btn height="auto" color="#42A5A1" text @click="dialog = false">X</v-btn></v-img
+            >
 
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
             <v-card-text>{{ itemSelectionner.description }}</v-card-text>
-
-            <v-spacer></v-spacer>
-            <v-btn color="#644a9d" variant="outlined" text @click="dialog = false">Fermer</v-btn>
           </v-card>
         </v-dialog>
       </v-row>
@@ -116,6 +114,25 @@
       <!---------------------------ZONE AVIS/COMMENTAIRES------------------------------>
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
+        <!--Carroussel avis clients pour mobile seulement-->
+        <v-carousel class="d-xs-flex d-sm-none" hide-delimiters progress="">
+          <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
+            <v-col>
+              <v-card class="mx-auto" max-width="340px" height="400px">
+                <div class="clients">
+                  <v-avatar prepend>
+                    <img :src="commentaire.img" alt="avatar" cover />
+                  </v-avatar>
+
+                  <v-card-title>{{ commentaire.nom }}</v-card-title>
+                </div>
+                <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly></v-rating>
+                <v-card-subtitle class="text-h6">{{ commentaire.sousTitre }}</v-card-subtitle>
+                <v-card-text>{{ commentaire.comm }}</v-card-text>
+              </v-card>
+            </v-col>
+          </v-carousel-item>
+        </v-carousel>
         <v-col
           class="d-none d-sm-flex"
           cols="12"
@@ -138,26 +155,6 @@
             <v-card-text>{{ commentaire.comm }}</v-card-text>
           </v-card>
         </v-col>
-
-        <!--Carroussel avis clients pour mobile seulement-->
-        <v-carousel class="d-xs-flex d-sm-none" hide-delimiter-background :show-arrows="false">
-          <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
-            <v-col>
-              <v-card class="mx-auto" max-width="340px" height="400px">
-                <div class="clients">
-                  <v-avatar prepend>
-                    <img :src="commentaire.img" alt="avatar" cover />
-                  </v-avatar>
-
-                  <v-card-title>{{ commentaire.nom }}</v-card-title>
-                </div>
-                <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly></v-rating>
-                <v-card-subtitle class="text-h6">{{ commentaire.sousTitre }}</v-card-subtitle>
-                <v-card-text>{{ commentaire.comm }}</v-card-text>
-              </v-card>
-            </v-col>
-          </v-carousel-item>
-        </v-carousel>
       </v-row>
     </v-container>
   </main>
