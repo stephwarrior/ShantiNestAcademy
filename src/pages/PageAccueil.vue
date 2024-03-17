@@ -70,7 +70,7 @@
           <v-carousel-item cover v-for="(employee, index) in lesEmployees" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="350px">
-                <v-img :src="employee.img" alt="avatar" height="200px" cover="" @click="onImageClick(employee)"></v-img>
+                <v-img :src="employee.img" alt="avatar" height="200px" @click="onImageClick(employee)"></v-img>
 
                 <v-card-title>{{ employee.nom }}</v-card-title>
                 <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
@@ -86,7 +86,7 @@
         <!--Boite modale pour voir plus de details (texte) sur les employee de SNA -->
         <v-dialog v-model="dialog" persistent max-width="600px">
           <v-card>
-            <v-img :src="itemSelectionner.img" alt="avatar" height="200px" cover></v-img>
+            <v-img :src="itemSelectionner.img" alt="avatar" height="500px" cover></v-img>
 
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
             <v-card-text>{{ itemSelectionner.description }}</v-card-text>
@@ -168,18 +168,18 @@ import SousTitres from "@/components/SousTitres.vue";
 import aPropos from "@/data/PageAccueil/aPropos.json";
 import commentaires from "@/data/PageAccueil/commentaires.json";
 import lesCours from "@/data/PageAccueil/lesCours.js";
-import LesEmployees from "@/data/PageAccueil/lesEmployee.json";
+import LesEmployees from "@/data/PageAccueil/lesEmployee.js";
 import SiteLogo from "@/components/SiteLogo.vue";
 //Importation images
-import tomJaydusorImage from "@/img/ddk.jpg";
-import tomImage from "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg";
-import monImgs from "@/img/general/sna04.jpeg";
-//import { imgCoursYoga } from "@/data/img/imgAccueil.js";
+//import tomJaydusorImage from "@/img/ddk.jpg";
+//import tomImage from "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg";
+//import monImgs from "@/img/general/sna04.jpeg";
 
 export default {
   //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
     //console.log(tomJaydusorImage);
+    /*
     const imgEmployees = LesEmployees.lesEmployees.map((employee) => {
       let image;
       switch (employee.id) {
@@ -212,7 +212,7 @@ export default {
           break;
       }
       return { ...employee, img: image };
-    });
+    });*/
 
     return {
       /////////////////////ZONE TEXTE////////////////////////////
@@ -230,8 +230,8 @@ export default {
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,
       lesCours: lesCours.lesCours,
-      //lesEmployees: LesEmployees.lesEmployees,
-      employees: LesEmployees.lesEmployees,
+      lesEmployees: LesEmployees.lesEmployees,
+      //employees: LesEmployees.lesEmployees,
 
       /////////////////////ZONE BOOLEAN////////////////////////////
       montrer: false, //Boite modale pour voir plus de details (texte) sur SNA
@@ -239,7 +239,7 @@ export default {
       dialogInt: false, //Boite modale pour voir plus de details (texte) sur SNA
 
       ////////////////////BLOC EQUIPE//////////////////
-      lesEmployees: imgEmployees,
+
       itemSelectionner: null,
       employee: null,
 
