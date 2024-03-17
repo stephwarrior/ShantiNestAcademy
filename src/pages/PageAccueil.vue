@@ -172,10 +172,6 @@ export default {
   //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
     return {
-      components: {
-        SousTitres,
-        SiteLogo,
-      },
       /////////////////////ZONE TEXTE////////////////////////////
       message: "Bienvenue à ShantiNest Academy - votre havre pour méditation, yoga, et croissance personnelle.",
       textEquipe:
@@ -206,6 +202,10 @@ export default {
       ////////////////////BLOC COMMENTAIRES//////////////////
       rating: 5,
     };
+  },
+  components: {
+    SousTitres,
+    SiteLogo,
   },
 
   ////---------ZONE FONCTION---------------////
