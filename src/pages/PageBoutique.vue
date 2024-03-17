@@ -4,7 +4,7 @@
     <v-container>
       <!--Pour afficher le nombre d'articles dans la boutique-->
       <div class="nbrItems">
-        <h2>{{ lesArticles.length }} items</h2>
+        <h2>{{ lesArticles.length }} Articles</h2>
       </div>
       <!--------------------Les Articles (Boucle)------------------------>
       <v-row class="zoneArticles">
@@ -24,6 +24,7 @@
   </main>
 </template>
 <script>
+//////////////////---IMPORTATIONS---/////////////////////
 import { mapActions } from "vuex";
 import lesArticles from "@/data/PageBoutique.js";
 
@@ -47,6 +48,7 @@ export default {
       ],
     };
   },
+  //Permet d'ajouter l'article sélectionné au panier et incrémenter le nombre de fois quil a ete ajoutee
   methods: {
     ...mapActions(["ajouterAuPanier"]),
     ajouterArticle(article) {
@@ -70,6 +72,12 @@ main {
   display: flex;
   justify-content: flex-end;
 }
+
+/*//////////////////Les articles////////////////////*/
+.zoneArticles {
+  display: flex;
+  justify-content: space-around;
+}
 .lesArticles {
   display: flex;
   flex-direction: column;
@@ -90,10 +98,6 @@ main {
 .lesArticles .v-btn {
   width: 100%;
   font-size: 0.7rem;
-}
-.zoneArticles {
-  display: flex;
-  justify-content: space-around;
 }
 
 /*//////////////////Tablette////////////////////*/

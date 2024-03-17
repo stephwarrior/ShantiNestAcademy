@@ -4,7 +4,9 @@
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">1er cours d'essai gratuit</p>
         <p class="text-h5">Découvrez notre offre de cours et trouvez celui qui vous convient</p>
-        <v-btn class="mt-5" color="white" dark>Explorer nos cours et leurs tarifs</v-btn>
+        <RouterLink to="/accueil">
+          <v-btn class="mt-5" color="white" dark>Explorer nos cours et leurs tarifs</v-btn></RouterLink
+        >
       </div>
       <!--Div pour assombrir mon image -->
       <div class="overlay"></div>
@@ -75,6 +77,9 @@ import lesCours from "@/data/PageAccueil/lesCours.js";
 
 export default {
   data: () => ({
+    components: {
+      SousTitres,
+    },
     coursItems: [
       "En personne",
       "En ligne",
@@ -130,15 +135,16 @@ export default {
       },
     ],
   }),
-  components: {
-    SousTitres,
-  },
 };
 </script>
 <style scoped>
 p {
   text-align: start;
   line-height: 2;
+}
+
+.v-parallax {
+  height: 200px;
 }
 .overlay {
   position: absolute;
@@ -164,13 +170,10 @@ p {
 .essentielsBloc {
   width: 230px;
 }
-.v-img {
+.nosCours .v-img {
   border-radius: 20px;
 }
 
-.v-parallax {
-  height: 200px;
-}
 .zoneCours {
   padding: 0 2rem;
   text-align: center;
@@ -187,17 +190,17 @@ p {
   padding: 70px 0;
 }
 @media (min-width: 768px) {
-  .cours-list {
-    height: 254px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    align-content: space-evenly;
-  }
   .lesEssentiels {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: space-evenly;
+  }
+  .cours-list {
+    height: 254px;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: flex-start;
     align-content: space-evenly;
   }

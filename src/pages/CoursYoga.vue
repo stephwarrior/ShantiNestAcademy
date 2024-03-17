@@ -1,14 +1,9 @@
 <template>
   <main>
-    <v-parallax height="200px" src="https://hips.hearstapps.com/hmg-prod/images/10-minute-yoga-1668510425.jpg">
+    <v-parallax src="">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">YOGA</p>
       </div>
-
-      <!--<v-img
-        height="400px"
-        src="https://d33wubrfki0l68.cloudfront.net/772616e178d1844bb45cc244ee42ad217b0d4a64/6b6cf/images/schedule_main.png"
-      ></v-img>-->
     </v-parallax>
     <v-breadcrumbs :items="items" class="d-none align-center d-md-flex"></v-breadcrumbs>
 
@@ -35,7 +30,6 @@
           <v-img
             src="https://img.freepik.com/free-photo/young-woman-doing-pigeon-exercise_1163-5051.jpg?t=st=1710449067~exp=1710452667~hmac=5865854afabd73b1396a68618f105898aec5f826491204285ef79ef2f1a58978&w=1380"
             :width="auto"
-            aspect-ratio="1/4"
             cover
           ></v-img>
           <v-card-title>{{ yoga.cours }}</v-card-title>
@@ -65,7 +59,7 @@
     <SousTitres title="Conseils de nos professionnels" />
     <v-row>
       <v-col v-for="(conseil, index) in cslYoga" :key="index" cols="12" md="6">
-        <v-alert border="start" border-color="deep-purple accent-4" elevation="4" icon="mdi-circle">
+        <v-alert border="start" border-color="deep-purple accent-4" elevation="4" icon="mdi-check-circle">
           <v-alert-title>{{ conseil.titre }}</v-alert-title>
           <p>{{ conseil.texte }}</p>
         </v-alert>
@@ -75,16 +69,15 @@
     <!--------------NUTRITIONS----------------->
     <SousTitres title="Nutrition" />
     <v-row>
-      <v-col cols="12">
-        <h2>Conseils de nutrition pour le yoga</h2>
-        <v-list>
-          <v-list-item v-for="(conseil, index) in conseils" :key="index">
-            <v-list-item-title>{{ conseil.conseilUn }}</v-list-item-title>
-            <v-list-item-title>{{ conseil.conseilDeux }}</v-list-item-title>
-            <v-list-item-title>{{ conseil.conseilTrois }}</v-list-item-title>
-            <v-list-item-title>{{ conseil.conseilQuatre }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
+      <v-col>
+        <div class="listCslNutri">
+          <ul class="cslNutri fill-height">
+            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilUn }}</li>
+            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilDeux }}</li>
+            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilTrois }}</li>
+            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilQuatre }}</li>
+          </ul>
+        </div>
       </v-col>
     </v-row>
   </main>
@@ -98,18 +91,16 @@ export default {
     coursYoga: pageYogaData.coursYoga,
     descYoga: pageYogaData.descYoga,
     cslYoga: pageYogaData.cslYoga,
-    length: 3,
     window: 0,
     dialog: false,
-  }),
-  conseils: [
-    {
+    conseils: {
       conseilUn: "Mangez beaucoup de fruits et légumes pour une alimentation équilibrée.",
       conseilDeux: "Buvez beaucoup d'eau pour rester hydraté.",
       conseilTrois: "Évitez les repas lourds avant une séance de yoga.",
       conseilQuatre: "Évitez les aliments transformés et les sucres ajoutés.",
     },
-  ],
+  }),
+
   components: {
     SousTitres,
   },
@@ -118,21 +109,20 @@ export default {
 <style scoped>
 main {
   padding: 0;
-  color: var(--couleurQuaternaire);
   height: auto;
 }
 .v-parallax {
-  height: 800px !important;
+  height: 200px;
 }
 .v-row {
   padding: 0 1.5rem;
 }
-/*////////////LE YOGA CEST QUOI//////////////*/  
-.leSt{
-  color: var(--couleurQuaternaire) ;
+h2 {
+  font-family: var(--fontPrincipaleUn);
 }
+/*////////////LE YOGA CEST QUOI//////////////*/
+
 .v-window-item {
-  
   height: 200px;
   display: flex;
   justify-content: center;
@@ -150,7 +140,18 @@ main {
   margin-bottom: 2rem;
 }
 
-/*////////////CONSEILS//////////////*/
-
 /*/ ///////////NUTRITIONS//////////////*/
+
+.listCslNutri {
+  height: 300px;
+}
+.cslNutri {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/*//////////////////------TABLETTE------////////////////////*/
+@media (min-width: 768px) {
+}
 </style>

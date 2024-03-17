@@ -178,12 +178,23 @@ header {
   padding: 5rem 0;
   background-color: white;
   border-left: #937fbc 5px solid;
+  font-family: var(--fontPrincipaleUn);
+  font-size: 1.3rem;
   transition: 0.5s;
   top: 0;
   right: 0;
   width: 250px;
   height: 100%;
   z-index: 1;
+}
+.menu-mobile a {
+  color: var(--couleurPrincipale);
+  border-bottom: 3px solid transparent;
+}
+.menu-mobile a:hover {
+  color: var(--couleurSecondaire);
+  border-bottom: 3px solid var(--couleurSecondaire);
+  transition: border-bottom 0.3s ease;
 }
 
 /*//////////////////ICONES////////////////////*/
@@ -206,6 +217,13 @@ header {
     display: flex;
     flex-wrap: nowrap;
   }
+
+  .contenuRow {
+    height: 7vh;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+  }
   .v-list {
     display: flex;
     justify-content: space-around;
@@ -213,18 +231,13 @@ header {
     background-color: transparent;
     overflow: hidden;
   }
-  .contenuRow {
-    height: 7vh;
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-  }
+  /*///////////////////////////////*/
   .menu-item {
     position: relative;
     border-bottom: 5px solid transparent;
   }
   .menu-item:hover {
-    border-bottom: 5px solid lightcoral;
+    border-bottom: 3px solid var(--couleurArriereplan);
     transition: border-bottom 0.3s ease;
     cursor: pointer;
   }
@@ -232,17 +245,23 @@ header {
     font-family: "Kotta One", sans-serif;
     color: var(--couleurTertiaire);
   }
+  /*/////////////// SOUS-MENU  //////////////////*/
 
   .sous-menu {
     display: none;
     position: fixed;
     width: max-content;
     top: 60px;
+    left: 27%;
     background: #937fbc;
     color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     padding: 50px 10px;
     border-radius: 0 0 20px 20px;
+  }
+  .sous-menu a {
+    border-bottom: 2px solid white;
+    padding: 2rem;
   }
 
   .menu-item:hover .sous-menu,
@@ -252,8 +271,10 @@ header {
     justify-content: space-between;
     transition: display 1s ease;
   }
-  /*----LIENS----*/
 
-  /*//////////////////ICONES////////////////////*/
+  .sous-menu a:hover {
+    color: #937fbc;
+    background-color: white;
+  }
 }
 </style>

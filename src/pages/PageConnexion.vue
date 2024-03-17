@@ -10,20 +10,25 @@
             <v-img height="auto" src="https://cdn.vuetifyjs.com/docs/images/cards/purple-flowers.jpg" cover> </v-img>
             <v-card-title>Connexion</v-card-title>
             <v-card-item>
-              <SiteLogo taille="2.7rem" couleur="pink" />
               <v-form>
+                <!----------------------------connexion------------------------------>
                 <v-text-field v-model="email" label="Courriel" required clearable=""></v-text-field>
                 <v-text-field v-model="password" label="Mot de passe" type="password" required clearable></v-text-field>
                 <p v-if="errMsg">{{ errMsg }}</p>
-                <v-btn @click="login">Connexion</v-btn>
+
+                <v-btn color="#937fbc" @click="login">Connexion</v-btn>
+
+                <!-------------------------Diviseur/barre--------------------------------->
                 <div class="my-4 d-flex align-center justify-center subtitle-container">
                   <v-divider class="flex-grow-1"></v-divider>
                   <p>ou</p>
                   <v-divider class="flex-grow-1"></v-divider>
                 </div>
-                <v-btn @click="signInWithGoogle" color="white">
+                <!----------------------Connexion avec gooogle------------------------------------>
+                <v-btn class="btnGoogle" @click="signInWithGoogle" color="white">
                   <i class="fab fa-google" style="color: #db4437; margin-right: 8px"></i> Connexion avec Google</v-btn
                 >
+                <!-----------------------------si utilsateur na pas de compte----------------------------->
                 <p class="pasDeCompte">
                   Vous n'avez pas de compte? <span @click="showInscription = true">Inscrivez-vous ici</span>
                 </p>
@@ -92,11 +97,10 @@ export default {
     const password = ref("");
     const inscriptionMsg = ref("");
     const showInscription = ref(false);
-
-    //const user = ref(null);
     const store = useStore();
     const user = computed(() => store.state.user);
-    //const router = useRouter();
+
+    /////////Pour la connexion///////////
     const login = async () => {
       try {
         await signIn(auth, email.value, password.value);
@@ -105,6 +109,8 @@ export default {
         errMsg.value = error.message;
       }
     };
+    /////////Pour la connexion avec google///////////
+
     const signInWithGoogle = async () => {
       try {
         await cnxGoogle(auth, googleAuth);
@@ -112,16 +118,17 @@ export default {
         errMsg.value = error.message;
       }
     };
+    /////////Pour les inscriptions///////////
+
     const sinscrire = async () => {
       try {
         await creerCompte(auth, email.value, password.value);
         inscriptionMsg.value = "Inscription réussie. Vous pouvez maintenant vous connecter.";
-
-        // Rediriger l'utilisateur vers la page d'accueil ou une autre page après l'inscription
       } catch (error) {
         errMsg.value = error.message;
       }
     };
+    /////////Pour verifier etat de connexion de lutilisateur///////////
     onMounted(() => {
       verifierCnx(auth, (currentUser) => {
         user.value = currentUser;
@@ -141,10 +148,8 @@ export default {
       showInscription,
     };
   },
-  created() {
-    this.$store.dispatch("checkUser");
-  },
 
+  /////////Pour la déconnexion///////////
   methods: {
     async logout() {
       try {
@@ -154,41 +159,32 @@ export default {
       }
     },
   },
+  created() {
+    this.$store.dispatch("checkUser");
+  },
 };
 </script>
 <style scoped>
 main {
+  padding-top: 5rem;
   height: 100vh;
 }
+/******************************/
+
 .blocCnx {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-/*
-.v-card {
-  width: 50%;
-}
-.carteCnx {
-  text-align: center;
-}
-.carteCnx .v-avatar {
-  border: 2px solid var(--couleurPrincipale);
-}
-.v-form {
-  display: flex;
-  flex-direction: column;
-}
-.v-btn {
-  margin: 1rem 0;
-  font-size: 0.5rem;
-}
+/******************************/
+
 .v-form p {
   font-size: 1.5rem;
   color: var(--couleurPrincipale);
   padding: 0 1rem;
 }
-*/
+
+/******************************/
 p.pasDeCompte,
 p.aUnCompte {
   font-size: 1rem;
@@ -200,5 +196,19 @@ p.aUnCompte span {
   color: var(--couleurPrincipale);
   text-decoration: underline;
   cursor: pointer;
+}
+/*************zone inscription*****************/
+
+.blocInscr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnGoogle {
+  margin-bottom: 2rem;
+}
+
+/*//////////////////------TABLETTE------////////////////////*/
+@media (min-width: 768px) {
 }
 </style>

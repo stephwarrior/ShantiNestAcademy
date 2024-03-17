@@ -3,7 +3,7 @@
     <v-container>
       <!---------------------------ZONE IMG PAGE ACCUEIL----------------------------->
 
-      <v-img class="imgIntro" :src="parallaxDeux" height="600px" cover>
+      <v-img class="imgIntro" :src="imageAcc" height="600px" cover>
         <v-row class="fill-height flex-column justify-center">
           <v-col class="troisAction d-flex justify-space-around text-white">
             <p>Respirer.</p>
@@ -25,7 +25,7 @@
       <SousTitres title="Qui sommes nous?" />
       <v-row class="aPropos">
         <v-col cols="12" sm="6" lg="4">
-          <v-img :src="parallaxSrc" class="imgAp grey lighten-2"></v-img>
+          <v-img :src="imgApropos" class="imgAp grey lighten-2"></v-img>
         </v-col>
         <v-col cols="12" sm="6">
           <p>{{ aPropos.descCourt }}</p>
@@ -161,12 +161,12 @@
 </template>
 <script>
 //////////////////---IMPORTATIONS---/////////////////////
-import SousTitres from "@/components/SousTitres.vue";
 import aPropos from "@/data/PageAccueil/aPropos.json";
 import commentaires from "@/data/PageAccueil/commentaires.json";
 import lesCours from "@/data/PageAccueil/lesCours.js";
 import LesEmployees from "@/data/PageAccueil/lesEmployee.js";
 import SiteLogo from "@/components/SiteLogo.vue";
+import SousTitres from "@/components/SousTitres.vue";
 
 export default {
   //////////////////---EXPORTATIONS/DATA---/////////////////////
@@ -182,11 +182,11 @@ export default {
         "Au cœur de ShantiNest Academy se trouve une équipe unie par une passion commune pour le bien-être et l'épanouissement personnel. Notre groupe d'experts dévoués en yoga, pilates et méditation partage un objectif: vous accompagner vers une meilleure version de vous-même.Nous sommes là pour vous aider à trouver la paix intérieure, la force et la sérénité. Nous sommes là pour vous aider à trouver votre équilibre. Nous sommes là pour vous aider à trouver votre voie. Nous sommes là pour vous aider à trouver votre SNA. Bienvenue à la maison. Bienvenue à ShantiNest Academy.",
 
       /////////////////LES IMAGES/////////////////////
-      imgEmilie: require("@/img/PageAccueil/lesProfs/tomJaydusor.jpeg"),
       imgAccueil: require("../img/general/sna15.jpeg"),
-      parallaxSrc: require("../img/general/sna03.jpeg"),
-      parallaxDeux: require("../img/general/sna08.jpeg"),
+      imgApropos: require("../img/general/sna03.jpeg"),
+      imageAcc: require("../img/general/sna08.jpeg"),
       imgEquipe: require("../img/general/sna05.jpeg"),
+
       /////////////////DATA EXTERNE/////////////////////
       aPropos: aPropos.aPropos,
       lesCommentaires: commentaires.lesCommentaires,

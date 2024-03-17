@@ -53,12 +53,6 @@ export default {
   computed: {
     headerColor() {
       switch (this.$route.name) {
-        /*case "yoga":
-          return "#EC9198";
-        case "pilates":
-          return "#f0a7a6";
-        case "meditation":
-          return "#EC9198";*/
         default:
           return "#937fbc"; // Default color
       }
@@ -102,6 +96,7 @@ p {
 }
 :root {
   --couleurPrincipale: #937fbc;
+  --couleurSecondaire: #42a5a1;
   --couleurTexte: #644a9d;
   --couleurTertiaire: #f5f5f5;
   --couleurQuaternaire: #ec9198;
