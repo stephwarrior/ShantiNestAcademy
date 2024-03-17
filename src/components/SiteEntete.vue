@@ -29,12 +29,10 @@
       <v-col cols="auto" class="d-flex">
         <!--------------ICONES----------------->
         <v-col cols="auto" class="d-none d-md-flex">
-          <RouterLink to="/boutique"
-            ><v-col>
-              <v-badge :content="nombreArticles" color="error"
-                ><v-icon class="iconePanier" @click="montrerPanier" icon>mdi-shopping</v-icon></v-badge
-              ></v-col
-            ></RouterLink
+          <v-col>
+            <v-badge :content="nombreArticles" color="error"
+              ><v-icon class="iconePanier" @click="montrerPanier" icon>mdi-shopping</v-icon></v-badge
+            ></v-col
           >
           <RouterLink to="/connexion"
             ><v-col> <v-icon class="iconeCnx" icon>mdi-account</v-icon></v-col></RouterLink
@@ -50,7 +48,7 @@
       <p class="titreLogo d-md-none">ShantiNest Academy</p>
 
       <!--Icones mobile/tablette-->
-      <v-badge :content="nombreArticles"
+      <v-badge :content="nombreArticles" color="error"
         ><v-icon @click="montrerPanier" class="iconePanier" icon>mdi-shopping</v-icon></v-badge
       ><RouterLink to="/connexion">
         <v-badge color="default" dot><v-icon class="iconeCnx" icon>mdi-account</v-icon></v-badge></RouterLink

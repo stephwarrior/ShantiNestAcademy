@@ -1,50 +1,39 @@
 <template>
   <main>
-    <v-breadcrumbs :items="items"></v-breadcrumbs>
+    <v-breadcrumbs color="#644a9d" :items="items"></v-breadcrumbs>
     <v-container>
+      <!--Pour afficher le nombre d'articles dans la boutique-->
       <div class="nbrItems">
-        <div>{{ articles.length }} items</div>
+        <h2>{{ lesArticles.length }} items</h2>
       </div>
-
-      <v-row class="test">
-        <v-col cols="12" sm="4" v-for="article in articles" :key="article.id">
-          <v-card class="blocItems">
-            <v-img :src="article.img" alt="pas image">zone image</v-img>
-            <p>{{ article.nom }}</p>
+      <!--------------------Les Articles (Boucle)------------------------>
+      <v-row class="zoneArticles">
+        <v-col class="blocArticles" cols="12" sm="6" md="4" v-for="article in lesArticles" :key="article.id">
+          <v-card class="lesArticles">
+            <v-img :src="article.img" alt="pas image"></v-img>
+            <h3>{{ article.nom }}</h3>
             <p>${{ article.prix }}.00 CAD</p>
 
-            <v-btn rounded="lg" elevated @click="ajouterArticle(article)"
+            <v-btn rounded="xl" color="#42A5A1" elevated @click="ajouterArticle(article)"
               >Ajouter au panier
-              <v-badge
-                v-if="article.count > 0"
-                :content="article.count"
-                floating
-              ></v-badge></v-btn></v-card></v-col></v-row
-    ></v-container>
+            </v-btn></v-card
+          ></v-col
+        ></v-row
+      ></v-container
+    >
   </main>
 </template>
 <script>
 import { mapActions } from "vuex";
-import { bouteilleBleu, bouteilleRose, bouteilleVerte, bouteilleJaune } from "@/data/img/imageBoutique.js";
+import lesArticles from "@/data/PageBoutique.js";
 
 export default {
   name: "PageBoutique",
   data() {
+    console.log("erreur", lesArticles);
+
     return {
-      articles: [
-        {
-          nom: "Goblet SNA",
-          prix: 50,
-          img: "",
-          id: 1,
-          count: 0,
-        },
-        { nom: "Chandail SNA", prix: 10, img: bouteilleVerte, id: 2, count: 0 },
-        { nom: "Bouteille SNA", prix: 15, img: bouteilleBleu, id: 3, count: 0 },
-        { nom: "Tapis SNA", prix: 20, img: bouteilleJaune, id: 4, count: 0 },
-        { nom: "Tasse SNA", prix: 10, img: bouteilleRose, id: 5, count: 0 },
-        { nom: "Sac SNA", prix: 25, img: "", id: 6, count: 0 },
-      ],
+      lesArticles: lesArticles.articles,
       items: [
         {
           title: "Accueil",
@@ -77,11 +66,11 @@ main {
   padding: 0 3rem;
 }
 .nbrItems {
-  padding: 2rem 0;
+  padding: 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
-.blocItems {
+.lesArticles {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,20 +78,20 @@ main {
   background-color: transparent;
   box-shadow: none;
 }
-.blocItems > * {
+.lesArticles > * {
   margin: 0.3rem 0;
 }
-.blocItems .v-img {
+.lesArticles .v-img {
   width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border: 1px solid black;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
 }
-.blocItems .v-btn {
+.lesArticles .v-btn {
   width: 100%;
   font-size: 0.7rem;
 }
-.test {
+.zoneArticles {
   display: flex;
   justify-content: space-around;
 }
@@ -115,9 +104,9 @@ main {
   .v-container {
     padding: 0;
   }
-  .blocItems {
-    padding: 4rem;
+
+  .lesArticles {
+    padding: 2rem;
   }
 }
 </style>
-@/data/img/imageBoutique.js

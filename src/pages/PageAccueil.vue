@@ -16,7 +16,7 @@
             <p class="sous-titre">Bienvenue à ShantiNest Academy</p>
             <hr />
             <p>{{ message }}</p>
-            <v-btn class="btnIntro"> Réservez maintenant</v-btn>
+            <RouterLink to="/HoraireTarifs"><v-btn class="btnIntro"> Réservez maintenant</v-btn></RouterLink>
           </v-col>
         </v-row>
       </v-img>
@@ -167,51 +167,15 @@ import commentaires from "@/data/PageAccueil/commentaires.json";
 import lesCours from "@/data/PageAccueil/lesCours.js";
 import LesEmployees from "@/data/PageAccueil/lesEmployee.js";
 import SiteLogo from "@/components/SiteLogo.vue";
-//Importation images
-//import tomJaydusorImage from "@/img/ddk.jpg";
-//import tomImage from "@/img/PageAccueil/lesProfs/tomJaydusor.jpeg";
-//import monImgs from "@/img/general/sna04.jpeg";
 
 export default {
   //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
-    //console.log(tomJaydusorImage);
-    /*
-    const imgEmployees = LesEmployees.lesEmployees.map((employee) => {
-      let image;
-      switch (employee.id) {
-        case 1:
-          image = tomJaydusorImage;
-          break;
-        case 2:
-          image = tomImage;
-          break;
-        case 3:
-          image = tomImage;
-          break;
-        case 4:
-          image = tomImage;
-          break;
-        case 5:
-          image = tomImage;
-          break;
-        case 6:
-          image = tomImage;
-          break;
-        case 7:
-          image = tomImage;
-          break;
-        case 8:
-          image = tomImage;
-          break;
-        default:
-          image = monImgs;
-          break;
-      }
-      return { ...employee, img: image };
-    });*/
-
     return {
+      components: {
+        SousTitres,
+        SiteLogo,
+      },
       /////////////////////ZONE TEXTE////////////////////////////
       message: "Bienvenue à ShantiNest Academy - votre havre pour méditation, yoga, et croissance personnelle.",
       textEquipe:
@@ -228,7 +192,6 @@ export default {
       lesCommentaires: commentaires.lesCommentaires,
       lesCours: lesCours.lesCours,
       lesEmployees: LesEmployees.lesEmployees,
-      //employees: LesEmployees.lesEmployees,
 
       /////////////////////ZONE BOOLEAN////////////////////////////
       montrer: false, //Boite modale pour voir plus de details (texte) sur SNA
@@ -261,10 +224,6 @@ export default {
     onImageClick(employee) {
       console.log(employee.img);
     },
-  },
-  components: {
-    SousTitres,
-    SiteLogo,
   },
 };
 </script>
