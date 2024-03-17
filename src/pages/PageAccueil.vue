@@ -178,7 +178,6 @@ export default {
         "Au cœur de ShantiNest Academy se trouve une équipe unie par une passion commune pour le bien-être et l'épanouissement personnel. Notre groupe d'experts dévoués en yoga, pilates et méditation partage un objectif: vous accompagner vers une meilleure version de vous-même.Nous sommes là pour vous aider à trouver la paix intérieure, la force et la sérénité. Nous sommes là pour vous aider à trouver votre équilibre. Nous sommes là pour vous aider à trouver votre voie. Nous sommes là pour vous aider à trouver votre SNA. Bienvenue à la maison. Bienvenue à ShantiNest Academy.",
 
       /////////////////LES IMAGES/////////////////////
-      imgAccueil: require("../img/general/sna15.jpeg"),
       imgApropos: require("../img/general/sna03.jpeg"),
       imageAcc: require("../img/general/sna08.jpeg"),
       imgEquipe: require("../img/general/sna05.jpeg"),

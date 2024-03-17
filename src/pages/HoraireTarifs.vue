@@ -40,7 +40,6 @@ export default {
   data() {
     return {
       /////////////////LES IMAGES/////////////////////
-      imgCourUn: require("@/img/general/sna07.jpeg"),
       imgCourDeux: require("@/img/general/sna12.jpeg"),
 
       tab: null,
