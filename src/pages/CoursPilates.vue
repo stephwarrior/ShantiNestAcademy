@@ -33,7 +33,7 @@
             {{ pilates.textCourt }}
           </v-card-text>
           <v-card-actions>
-            <v-btn @click="dialog = true" text color="pink">En savoir plus</v-btn>
+            <v-btn @click="ouvreDialogue(pilates)" color="#42A5A1" variant="outlined">En savoir plus</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -42,11 +42,11 @@
       <v-col>
         <v-dialog v-model="dialog" max-width="600px">
           <v-card>
-            <v-card-title> </v-card-title>
-            <v-card-text> </v-card-text>
+            <v-card-title>{{ itemSelectionner.cours }}</v-card-title>
+            <v-card-text>{{ itemSelectionner.text }} </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="dialog = false">Fermer</v-btn>
+              <v-btn color="#42A5A1" text @click="dialog = false">Fermer</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -57,7 +57,7 @@
     <SousTitres title="Conseils de nos professionnels" />
     <v-row>
       <v-col v-for="(conseil, index) in cslPilates" :key="index" cols="12" md="6">
-        <v-alert border="start" border-color="deep-purple accent-4" elevation="4" icon="mdi-check-circle">
+        <v-alert border="start" border-color="#42A5A1" elevation="4" icon="mdi-check-circle">
           <v-alert-title>{{ conseil.titre }}</v-alert-title>
           <p>{{ conseil.texte }}</p>
         </v-alert>
@@ -70,10 +70,10 @@
       <v-col>
         <div class="listCslNutri">
           <ul class="cslNutri fill-height">
-            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilUn }}</li>
-            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilDeux }}</li>
-            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilTrois }}</li>
-            <li><v-icon color="#937fbc" size="sm">mdi-circle</v-icon> {{ conseils.conseilQuatre }}</li>
+            <li><v-icon color="#42A5A1" size="sm">mdi-circle</v-icon> {{ conseils.conseilUn }}</li>
+            <li><v-icon color="#42A5A1" size="sm">mdi-circle</v-icon> {{ conseils.conseilDeux }}</li>
+            <li><v-icon color="#42A5A1" size="sm">mdi-circle</v-icon> {{ conseils.conseilTrois }}</li>
+            <li><v-icon color="#42A5A1" size="sm">mdi-circle</v-icon> {{ conseils.conseilQuatre }}</li>
           </ul>
         </div>
       </v-col>
@@ -81,17 +81,14 @@
   </main>
 </template>
 <script>
+/////////////////---IMPORTATIONS---/////////////////////
 import SousTitres from "@/components/SousTitres.vue";
 import pilatesData from "@/data/PagePilates.js";
+
 export default {
   data: () => ({
     /////////////////LES IMAGES/////////////////////
-    imgUn: require("@/img/PagePilates/pilates01.jpeg"),
-    imgDeux: require("@/img/PagePilates/pilates02.jpeg"),
     imgTrois: require("@/img/PagePilates/pilates03.jpeg"),
-    imgQuatre: require("@/img/PagePilates/pilates05.jpeg"),
-    imgCinq: require("@/img/PagePilates/pilates06.jpeg"),
-    imgSix: require("@/img/PagePilates/pilates07.jpeg"),
 
     /////////////////DATA EXTERNE/////////////////////
     items: pilatesData.items,
@@ -108,14 +105,26 @@ export default {
     /////////////////////ZONE BOOLEAN////////////////////////////
     window: 0,
     dialog: false,
+    itemSelectionner: null,
+    pilates: null,
   }),
-
+  ////---------ZONE FONCTION---------------////
+  methods: {
+    //les fonctions pour ouvrir les boites modales
+    ouvreDialogue(test) {
+      this.itemSelectionner = test;
+      this.dialog = true;
+      console.log(test);
+    },
+  },
   components: {
     SousTitres,
   },
 };
 </script>
 <style scoped>
+/*////////////GLOBALe//////////////*/
+
 main {
   padding: 0;
   height: auto;
@@ -125,6 +134,12 @@ main {
 }
 h2 {
   font-family: var(--fontPrincipaleUn);
+}
+.v-card-title,
+.v-alert-title {
+  font-family: var(--fontPrincipaleUn);
+  font-size: 1.5rem;
+  color: #42a5a1;
 }
 /*////////////LE YOGA CEST QUOI//////////////*/
 

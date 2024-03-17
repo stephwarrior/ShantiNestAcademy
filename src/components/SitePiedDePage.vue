@@ -8,7 +8,7 @@
           <p>Academy</p>
         </div>
       </div>
-
+      <!-------------------------------------------->
       <div class="zoneContact">
         <h2>{{ sousTitreFooterUn }}</h2>
         <div class="iconeRS">
@@ -88,6 +88,7 @@ footer {
   height: auto;
 }
 .test p {
+  font-family: var(--fontPrincipaleUn);
   font-size: 1.5rem;
 }
 /** ICONES */

@@ -1,11 +1,11 @@
 <template>
   <main>
-    <v-parallax src="">
+    <v-parallax :src="imgAcc">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <p class="text-h3 sous-titre">YOGA</p>
       </div>
     </v-parallax>
-    <v-breadcrumbs :items="items" class="d-none align-center d-md-flex"></v-breadcrumbs>
+    <v-breadcrumbs color="#937fbc" :items="items" class="d-none align-center d-md-flex"></v-breadcrumbs>
 
     <!--------------INTRO YOGA----------------->
     <SousTitres title="Qu'est-ce que le yoga?" />
@@ -26,29 +26,25 @@
     <SousTitres title="Quel cours de Yoga choisir ?" />
     <v-row>
       <v-col class="blocYogas" v-for="(yoga, index) in coursYoga" :key="index" cols="12" md="6" lg="4">
-        <v-card>
-          <v-img
-            src="https://img.freepik.com/free-photo/young-woman-doing-pigeon-exercise_1163-5051.jpg?t=st=1710449067~exp=1710452667~hmac=5865854afabd73b1396a68618f105898aec5f826491204285ef79ef2f1a58978&w=1380"
-            :width="auto"
-            cover
-          ></v-img>
+        <v-card height="600px">
+          <v-img :src="yoga.img" :width="auto" cover></v-img>
           <v-card-title>{{ yoga.cours }}</v-card-title>
           <v-card-text>
             {{ yoga.textCourt }}
           </v-card-text>
           <v-card-actions>
-            <v-btn @click="dialog = true" text color="pink">En savoir plus</v-btn>
+            <v-btn @click="ouvreDialogue(yoga)" color="#937fbc" variant="outlined">En savoir plus</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
       <v-col>
         <v-dialog v-model="dialog" max-width="600px">
           <v-card>
-            <v-card-title> Mon titre sera ici </v-card-title>
-            <v-card-text> Mon texte sera ici </v-card-text>
+            <v-card-title>{{ itemSelectionner.cours }} </v-card-title>
+            <v-card-text> {{ itemSelectionner.text }}</v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="dialog = false">Fermer</v-btn>
+              <v-btn color="#937fbc" text @click="dialog = false">Fermer</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -83,23 +79,40 @@
   </main>
 </template>
 <script>
+/////////////////---IMPORTATIONS---/////////////////////
 import SousTitres from "@/components/SousTitres.vue";
-import pageYogaData from "@/data/PageYoga.json";
+import yogaData from "@/data/PageYoga.js";
+
 export default {
   data: () => ({
-    items: pageYogaData.items,
-    coursYoga: pageYogaData.coursYoga,
-    descYoga: pageYogaData.descYoga,
-    cslYoga: pageYogaData.cslYoga,
-    window: 0,
-    dialog: false,
+    /////////////////LES IMAGES/////////////////////
+    imgAcc: require("@/img/general/sna13.jpeg"),
+    /////////////////DATA EXTERNE/////////////////////
+    items: yogaData.items,
+    coursYoga: yogaData.coursYoga,
+    descYoga: yogaData.descYoga,
+    cslYoga: yogaData.cslYoga,
+
     conseils: {
       conseilUn: "Mangez beaucoup de fruits et légumes pour une alimentation équilibrée.",
       conseilDeux: "Buvez beaucoup d'eau pour rester hydraté.",
       conseilTrois: "Évitez les repas lourds avant une séance de yoga.",
       conseilQuatre: "Évitez les aliments transformés et les sucres ajoutés.",
     },
-  }),
+    /////////////////////ZONE BOOLEAN////////////////////////////
+    window: 0,
+    dialog: false,
+    itemSelectionner: null,
+    //pilates: null,
+  }), ////---------ZONE FONCTION---------------////
+  methods: {
+    //les fonctions pour ouvrir les boites modales
+    ouvreDialogue(test) {
+      this.itemSelectionner = test;
+      this.dialog = true;
+      console.log(test);
+    },
+  },
 
   components: {
     SousTitres,
@@ -120,6 +133,13 @@ main {
 h2 {
   font-family: var(--fontPrincipaleUn);
 }
+.v-card-title,
+.v-alert-title {
+  font-family: var(--fontPrincipaleUn);
+  font-size: 1.5rem;
+  color: #937fbc;
+}
+
 /*////////////LE YOGA CEST QUOI//////////////*/
 
 .v-window-item {
@@ -153,5 +173,8 @@ h2 {
 
 /*//////////////////------TABLETTE------////////////////////*/
 @media (min-width: 768px) {
+  .v-parallax {
+    height: 500px;
+  }
 }
 </style>
