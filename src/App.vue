@@ -1,6 +1,6 @@
 <template>
   <head>
-    <!--Liens pour fonts icon-->
+    <!--Liens pour fonts et icon-->
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -9,7 +9,10 @@
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" />
     <!--Liens pour fonts principale-->
     <link href="https://fonts.googleapis.com/css?family=Kotta+One:regular" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:regular,700,800" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <SiteEntete @afficheLePanier="afficherPanier = !afficherPanier" :bgColor="headerColor" />
   <PanierAchat v-if="afficherPanier" />
@@ -86,7 +89,8 @@ main {
   list-style: none;
 }
 p {
-  font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
 }
 .btnRemonte {
   position: fixed;
@@ -94,6 +98,7 @@ p {
   left: 80%;
   z-index: 2;
 }
+
 :root {
   --couleurPrincipale: #937fbc;
   --couleurSecondaire: #42a5a1;
