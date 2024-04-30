@@ -201,13 +201,16 @@ header {
 .v-icon {
   color: var(--couleurTertiaire);
 }
-/*//////////////////LIENS MOBILE////////////////////*/
 
 /*----/////----------ZONE TABLETTE-------////-----------*/
 @media (min-width: 768px) {
   /*//////////////////ICONES////////////////////*/
   .v-icon {
     font-size: 2rem;
+  }
+  .v-icon:hover {
+    color: #57dfd9;
+    transition: 0.3s ease-in-out;
   }
 }
 /*----/////----------ZONE GRAND ECRAN-------////-----------*/
@@ -234,17 +237,22 @@ header {
   /*///////////////////////////////*/
   .menu-item {
     position: relative;
-    border-bottom: 5px solid transparent;
+    border-bottom: 3px solid transparent;
   }
   .menu-item:hover {
-    border-bottom: 3px solid var(--couleurArriereplan);
-    transition: border-bottom 0.3s ease;
+    border-bottom: 3px solid #57dfd9;
+    transition: border-bottom 0.3s ease-in-out;
     cursor: pointer;
+  }
+  .menu-item:hover a {
+    color: #57dfd9;
+    transition: 0.3s ease-in-out;
   }
   .menu-item a {
     font-family: "Kotta One", sans-serif;
     color: var(--couleurTertiaire);
   }
+
   /*/////////////// SOUS-MENU  //////////////////*/
 
   .sous-menu {
@@ -277,4 +285,6 @@ header {
     background-color: white;
   }
 }
+
+/*//////////////////ANIMATION////////////////////*/
 </style>

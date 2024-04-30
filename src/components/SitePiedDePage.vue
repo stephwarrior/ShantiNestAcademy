@@ -89,7 +89,7 @@ footer {
 /** LOGO */
 .logo p {
   font-family: var(--fontPrincipaleUn);
-  font-size: 2rem;
+  font-size: 2.5rem;
   padding-left: 15px;
 }
 /** ICONES */
