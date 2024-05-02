@@ -13,18 +13,18 @@
           <h1>{{ service.name }}</h1>
 
           <p>{{ service.descriptionCourt }}</p>
-          <v-btn color="#644a9d" @click="ouvreDialogue(service)">Voir plus</v-btn>
+          <v-btn color="#42A5A1" @click="ouvreDialogue(service)">Voir plus</v-btn>
         </v-col>
       </v-col>
 
-      <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-dialog v-model="dialog" max-width="600px">
         <v-card :style="{ borderRadius: '20px' }">
-          <v-card-title>{{ itemSelectionner.name }}</v-card-title>
+          <v-card-actions>
+            <v-btn color="#42A5A1" text @click="dialog = false">X</v-btn>
+          </v-card-actions>
+          <SousTitres :title="itemSelectionner.name" />
           <v-img :src="itemSelectionner.img" aspect-ratio="1.4" class="grey lighten-2"></v-img>
           <v-card-text>{{ itemSelectionner.descriptionLong }}</v-card-text>
-          <v-card-actions>
-            <v-btn color="#644a9d" text @click="dialog = false">Fermer</v-btn>
-          </v-card-actions>
         </v-card>
       </v-dialog>
     </v-container>
@@ -70,6 +70,9 @@ export default {
 <style scoped>
 main {
   height: auto;
+}
+.v-btn {
+  border-radius: 20px;
 }
 .imgServ {
   display: flex;

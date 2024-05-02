@@ -34,9 +34,9 @@
         <!--Boite modale pour voir plus de details (texte) sur SNA -->
         <v-dialog class="modaleApropos" v-model="dialogInt">
           <v-card>
-            <SiteLogo couleur="pink" taille="5rem" />
+            <v-btn @click="dialogInt = false">X</v-btn>
+            <SousTitres title="Qui sommes nous?" />
             <v-card-text>{{ aPropos.description }}</v-card-text>
-            <v-btn color="#644a9d" @click="dialogInt = false">Fermer</v-btn>
           </v-card>
         </v-dialog>
       </v-row>
@@ -83,10 +83,10 @@
         </v-col>
 
         <!--Boite modale pour voir plus de details (texte) sur les employee de SNA -->
-        <v-dialog v-model="dialog" persistent max-width="600px">
+        <v-dialog class="textEmployee" v-model="dialog" max-width="600px">
           <v-card>
-            <v-img class="d-flex justify-center" :src="itemSelectionner.img" alt="avatar" height="500px" cover>
-              <v-btn height="auto" color="#42A5A1" text @click="dialog = false">X</v-btn></v-img
+            <v-img :src="itemSelectionner.img" alt="avatar" height="500px" cover>
+              <v-btn @click="dialog = false">X</v-btn></v-img
             >
 
             <v-card-title>{{ itemSelectionner.nom }}</v-card-title>
@@ -165,7 +165,6 @@ import aPropos from "@/data/PageAccueil/aPropos.json";
 import commentaires from "@/data/PageAccueil/commentaires.json";
 import lesCours from "@/data/PageAccueil/lesCours.js";
 import LesEmployees from "@/data/PageAccueil/lesEmployee.js";
-import SiteLogo from "@/components/SiteLogo.vue";
 import SousTitres from "@/components/SousTitres.vue";
 
 export default {
@@ -204,7 +203,6 @@ export default {
   },
   components: {
     SousTitres,
-    SiteLogo,
   },
 
   ////---------ZONE FONCTION---------------////
@@ -281,8 +279,12 @@ hr {
   margin: 10px 0;
 }
 .btnIntro {
-  color: #937fbc;
+  color: #42a5a1;
   border-radius: 20px;
+}
+.btnIntro:hover {
+  background-color: #42a5a1;
+  color: white;
 }
 
 .overlay {
@@ -305,10 +307,17 @@ hr {
 .btnVoirPlus {
   margin-top: 20px;
 }
+.btnVoirPlus:hover {
+  background-color: white !important;
+  color: #42a5a1 !important;
+}
 .v-dialog {
   max-height: 800px;
   max-width: 750px;
   line-height: 2;
+}
+.modaleApropos .v-btn {
+  direction: rtl;
 }
 /*/ /////////////////EQUIPES////////////////////*/
 .equipe {
@@ -318,13 +327,29 @@ hr {
 .equipes .v-card {
   margin: 1rem;
 }
+
+.textEmployee .v-card .v-img {
+  direction: rtl;
+}
+
+.textEmployee .v-btn {
+  margin: 0.8rem;
+}
+
 /*//////////////////LES COURS////////////////////*/
 .blocCours {
   text-align: center;
   color: white;
   font-size: clamp(1.5rem, 0.7571rem + 1.2143vw, 3rem);
 }
-
+.blocCours .v-btn:hover {
+  background-color: #42a5a1;
+  border: none;
+}
+.equipes .v-btn:hover {
+  background-color: #42a5a1;
+  color: white !important;
+}
 /*/ /////////////////TEMPOIGNAGES////////////////////*/
 
 .clients {

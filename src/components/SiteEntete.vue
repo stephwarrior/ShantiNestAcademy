@@ -201,16 +201,16 @@ header {
 .v-icon {
   color: var(--couleurTertiaire);
 }
+.v-icon:hover {
+  color: #57dfd9;
+  transition: 0.3s ease-in-out;
+}
 
 /*----/////----------ZONE TABLETTE-------////-----------*/
 @media (min-width: 768px) {
   /*//////////////////ICONES////////////////////*/
   .v-icon {
     font-size: 2rem;
-  }
-  .v-icon:hover {
-    color: #57dfd9;
-    transition: 0.3s ease-in-out;
   }
 }
 /*----/////----------ZONE GRAND ECRAN-------////-----------*/
