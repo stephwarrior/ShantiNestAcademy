@@ -25,18 +25,20 @@
     <!----------------- COURS DE YOGA-------------->
     <SousTitres title="Quel cours de Yoga choisir ?" />
     <v-row>
-      <v-col class="blocYogas" v-for="(yoga, index) in coursYoga" :key="index" cols="12" md="6" lg="4">
-        <v-card height="600px">
+      <v-col class="blocYogas" v-for="(yoga, index) in coursYoga" :key="index" cols="12" sm="6" md="4" lg="2">
+        <v-card height="450px" @click="ouvreDialogue(yoga)">
           <v-img :src="yoga.img" :width="auto" cover></v-img>
           <v-card-title>{{ yoga.cours }}</v-card-title>
           <v-card-text>
             {{ yoga.textCourt }}
           </v-card-text>
           <v-card-actions>
-            <v-btn @click="ouvreDialogue(yoga)" color="#937fbc" variant="outlined">En savoir plus</v-btn>
+            <v-btn color="#937fbc" variant="outlined">En savoir plus</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
+
+      <!----------------- MODAL COURS DE YOGA-------------->
       <v-col>
         <v-dialog v-model="dialog" max-width="600px">
           <v-card>
@@ -120,6 +122,18 @@ export default {
 };
 </script>
 <style scoped>
+/*//////////////////Animation////////////////////*/
+
+@keyframes animZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/*//////////////////General////////////////////*/
 main {
   padding: 0;
   height: auto;
@@ -138,6 +152,9 @@ h2 {
   font-family: var(--fontPrincipaleUn);
   font-size: 1.5rem;
   color: #937fbc;
+}
+.v-btn {
+  border-radius: 20px;
 }
 
 /*////////////LE YOGA CEST QUOI//////////////*/
@@ -159,7 +176,12 @@ h2 {
 .blocYogas {
   margin-bottom: 2rem;
 }
-
+.blocYogas .v-card {
+  border-radius: 20px;
+}
+.blocYogas .v-card:hover {
+  animation: animZoom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 /*/ ///////////NUTRITIONS//////////////*/
 
 .listCslNutri {

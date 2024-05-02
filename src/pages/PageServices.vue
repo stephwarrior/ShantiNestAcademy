@@ -1,6 +1,6 @@
 <template>
   <main>
-    <v-parallax class="imgServ" :src="imageAcc" height="400"> </v-parallax>
+    <v-parallax class="imgServ" :src="imageAcc" height="400"> <p class="text-h3 sous-titre">Services</p> </v-parallax>
 
     <v-breadcrumbs :items="items"></v-breadcrumbs>
 
@@ -9,7 +9,7 @@
     <v-container>
       <v-col cols="12" class="blocServ" v-for="(service, index) in services" :key="index">
         <v-img :src="service.img" :style="{ borderRadius: '20px' }" class="grey lighten-2"></v-img>
-        <v-col md="6" lg="8">
+        <v-col md="6" lg="9">
           <h1>{{ service.name }}</h1>
 
           <p>{{ service.descriptionCourt }}</p>
@@ -88,6 +88,7 @@ main {
   }
   .blocServ div {
     margin: 10px 0;
+    padding: auto 60px auto 0;
   }
 }
 </style>

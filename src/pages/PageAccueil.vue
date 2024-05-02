@@ -24,7 +24,7 @@
       <!-----------------------------ZONE A PROPOS----------------------------------->
       <SousTitres title="Qui sommes nous?" />
       <v-row class="aPropos">
-        <v-col cols="12" sm="6" lg="4">
+        <v-col class="testing" cols="12" sm="6" lg="4">
           <v-img :src="imgApropos" class="imgAp grey lighten-2"></v-img>
         </v-col>
         <v-col cols="12" sm="6">
@@ -47,15 +47,15 @@
           <v-col cols="12" sm="auto" md="6">
             <p>{{ textEquipe }}</p>
           </v-col>
-          <v-col cols="12" md="6" lg="4">
-            <v-img :src="imgEquipe" class="imgAp"></v-img>
+          <v-col class="testiing" cols="12" md="6" lg="4">
+            <v-img :src="imgEquipe" class="imgEq"></v-img>
           </v-col>
         </v-row>
         <!--Carroussel pour mobile seulement-->
         <v-carousel class="d-xs-flex d-sm-none" hide-delimiters progress="#42A5A1">
           <v-carousel-item v-for="(employee, index) in lesEmployees" :key="index">
             <v-col cols="auto" height="500px">
-              <v-card class="mx-auto" max-width="340px" height="550px">
+              <v-card class="mx-auto" max-width="340px" height="450px">
                 <v-img :src="employee.img" alt="avatar" height="300px" cover @click="onImageClick(employee)"></v-img>
 
                 <v-card-title>{{ employee.nom }}</v-card-title>
@@ -71,13 +71,13 @@
 
         <!--Bloc introduit les employees de SNA-->
         <v-col class="d-none d-sm-flex" cols="12" sm="4" md="3" v-for="(employee, index) in lesEmployees" :key="index">
-          <v-card class="mx-auto" width="300px" height="380px" elevation="2">
+          <v-card class="zbone mx-auto" width="300px" height="380px" elevation="2" @click="ouvreDialogue(employee)">
             <v-img :src="employee.img" alt="avatar" height="230px" cover @click="onImageClick(employee)"></v-img>
             <v-card-title>{{ employee.nom }}</v-card-title>
             <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
             <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
             <v-card-item>
-              <v-btn color="#42A5A1" variant="outlined" @click="ouvreDialogue(employee)"> Voir plus </v-btn>
+              <v-btn color="#42A5A1" variant="outlined"> Voir plus </v-btn>
             </v-card-item>
           </v-card>
         </v-col>
@@ -114,6 +114,28 @@
       <!---------------------------ZONE AVIS/COMMENTAIRES------------------------------>
       <SousTitres title="Témoignages" />
       <v-row class="temoignage">
+        <v-col
+          class="d-none d-sm-flex"
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
+          v-for="(commentaire, index) in lesCommentaires"
+          :key="index"
+        >
+          <v-card class="carteComm mx-auto" width="400px" height="350px" elevation="10">
+            <div class="clients">
+              <v-avatar prepend>
+                <img :src="commentaire.img" alt="avatar" cover />
+              </v-avatar>
+
+              <v-card-title>{{ commentaire.nom }}</v-card-title>
+            </div>
+            <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly></v-rating>
+            <v-card-subtitle class="text-h6">{{ commentaire.sousTitre }}</v-card-subtitle>
+            <v-card-text>{{ commentaire.comm }}</v-card-text>
+          </v-card>
+        </v-col>
         <!--Carroussel avis clients pour mobile seulement-->
         <v-carousel class="d-xs-flex d-sm-none" hide-delimiters progress="#644a9d" :show-arrows="false">
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
@@ -133,28 +155,6 @@
             </v-col>
           </v-carousel-item>
         </v-carousel>
-        <v-col
-          class="d-none d-sm-flex"
-          cols="12"
-          sm="6"
-          md="4"
-          lg="3"
-          v-for="(commentaire, index) in lesCommentaires"
-          :key="index"
-        >
-          <v-card class="mx-auto" width="400px" height="350px" elevation="10">
-            <div class="clients">
-              <v-avatar prepend>
-                <img :src="commentaire.img" alt="avatar" cover />
-              </v-avatar>
-
-              <v-card-title>{{ commentaire.nom }}</v-card-title>
-            </div>
-            <v-rating v-model="rating" active-color="#644a9d" color="grey" readonly></v-rating>
-            <v-card-subtitle class="text-h6">{{ commentaire.sousTitre }}</v-card-subtitle>
-            <v-card-text>{{ commentaire.comm }}</v-card-text>
-          </v-card>
-        </v-col>
       </v-row>
     </v-container>
   </main>
@@ -225,6 +225,31 @@ export default {
 };
 </script>
 <style scoped>
+/*//////////////////Animation////////////////////*/
+@keyframes slide-in-blurred-top {
+  0% {
+    transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    transform-origin: 50% 0%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
 /*//////////////////GLOBAL////////////////////*/
 main {
   padding: 0;
@@ -245,6 +270,7 @@ main {
 .v-card,
 .v-btn,
 .imgAp,
+.imgEq,
 .blocCours {
   border-radius: 20px;
 }
@@ -259,6 +285,15 @@ main {
 }
 .troisAction p {
   font-family: "Kotta One", sans-serif;
+}
+.troisAction :nth-of-type(1) {
+  animation: slide-in-blurred-top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.troisAction :nth-of-type(2) {
+  animation: slide-in-blurred-top 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.troisAction :nth-of-type(3) {
+  animation: slide-in-blurred-top 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .introTexte {
   color: white;
@@ -303,6 +338,25 @@ hr {
   justify-content: space-around;
   padding: 1rem 2rem;
 }
+.testing,
+.testiing {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+.imgAp,
+.imgEq {
+  width: 100%;
+  transition: 0.5s all ease-in-out;
+}
+
+.imgAp:hover,
+.imgEq:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 .btnVoirPlus {
   margin-top: 20px;
@@ -327,7 +381,10 @@ hr {
 .equipes .v-card {
   margin: 1rem;
 }
-
+.zbone:hover {
+  cursor: pointer;
+  animation: animZoom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 .textEmployee .v-card .v-img {
   direction: rtl;
 }
@@ -346,6 +403,7 @@ hr {
   background-color: #42a5a1;
   border: none;
 }
+
 .equipes .v-btn:hover {
   background-color: #42a5a1;
   color: white !important;
@@ -358,6 +416,9 @@ hr {
   justify-content: flex-start;
   align-items: center;
   padding: 1rem 1rem 0;
+}
+.carteComm:hover {
+  animation: animZoom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .v-card-title {
   font-size: 1.3rem;
