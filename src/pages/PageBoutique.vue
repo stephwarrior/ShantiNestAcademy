@@ -8,9 +8,18 @@
       </div>
       <!--------------------Les Articles (Boucle)------------------------>
       <v-row class="zoneArticles">
-        <v-col class="blocArticles" cols="12" sm="6" md="4" v-for="article in lesArticles" :key="article.id">
+        <v-col class="blocArticles" cols="12" sm="6" md="3" v-for="article in lesArticles" :key="article.id">
           <v-card class="lesArticles">
-            <v-img :src="article.img" alt="pas image"></v-img>
+            <v-img :src="article.img || article.variantes[0].img" alt="pas image">
+              <div v-if="article.variantes" class="variantColors">
+                <div
+                  class="colorSelector"
+                  v-for="variant in article.variantes"
+                  :key="variant.id"
+                  :style="{ backgroundColor: variant.couleur }"
+                  @click="updateImg(article, variant)"
+                ></div></div
+            ></v-img>
             <h3>{{ article.nom }}</h3>
             <p>${{ article.prix }}.00 CAD</p>
 
@@ -56,10 +65,35 @@ export default {
       article.count++;
       console.log(article);
     },
+    updateImg(article, variant) {
+      article.img = variant.img;
+      article.nom = variant.nom;
+    },
   },
 };
 </script>
 <style scoped>
+.variantColors {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.colorSelector {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+  border: 1px solid #ccc; /* Add border to distinguish light colors */
+}
+.colorSelector:hover {
+  opacity: 0.7;
+  scale: 1.05;
+}
+
 main {
   padding: 4rem 0;
   height: auto;
@@ -76,7 +110,6 @@ main {
 /*//////////////////Les articles////////////////////*/
 .zoneArticles {
   display: flex;
-  justify-content: space-around;
 }
 .lesArticles {
   display: flex;
