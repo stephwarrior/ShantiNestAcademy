@@ -57,17 +57,43 @@ export default {
       ],
     };
   },
-  //Permet d'ajouter l'article sélectionné au panier et incrémenter le nombre de fois quil a ete ajoutee
+  //Permet d'ajouter l'article selectionne au panier et incrementer le nombre de fois quil a ete ajoutee
   methods: {
     ...mapActions(["ajouterAuPanier"]),
     ajouterArticle(article) {
-      this.ajouterAuPanier(article);
-      article.count++;
-      console.log(article);
+      // Verifie si l'article a des variantes et si une variante est selectionner
+      if (article.variantes && article.varianteActuelle) {
+        const variante = article.variantes.find((v) => v.id === article.varianteActuelle);
+        if (variante) {
+          this.ajouterAuPanier({
+            ...article,
+            nom: variante.nom,
+            img: variante.img,
+            id: variante.id,
+            prix: variante.prix || article.prix,
+            count: 1,
+          });
+        } else {
+          console.log("Variante introuvable");
+        }
+      } else {
+        // Gerer les articles sans variantes
+        this.ajouterAuPanier({
+          ...article,
+          count: 1,
+        });
+      }
     },
+    //Pour mettre à jour l'image de l'article en fonction de la variante selectionnee
     updateImg(article, variant) {
-      article.img = variant.img;
-      article.nom = variant.nom;
+      if (variant) {
+        article.img = variant.img;
+        article.nom = variant.nom;
+        article.prix = variant.prix;
+        article.varianteActuelle = variant.id;
+      } else {
+        console.log("Aucune variante à mettre à jour pour cet article");
+      }
     },
   },
 };
@@ -87,7 +113,7 @@ export default {
   display: inline-block;
   cursor: pointer;
   margin: 5px;
-  border: 1px solid #ccc; /* Add border to distinguish light colors */
+  border: 1px solid #ccc;
 }
 .colorSelector:hover {
   opacity: 0.7;

@@ -5,6 +5,8 @@
       <div v-if="articlesPanier.length > 0">
         <v-col v-for="(article, index) in articlesPanier" :key="index" cols="12">
           <v-card>
+            <v-btn color="error" variant="outlined" @click="supprimerArticle(article.id)"> X </v-btn>
+
             <v-img :src="article.img" height="150px" contain></v-img>
             <v-card-title>
               <h3>{{ article.nom }}</h3>
@@ -68,8 +70,11 @@ export default {
         article.quantite++;
       }
     },
-    retireArticle(article) {
-      this.$store.dispatch("retireDuPanier", article);
+    retireArticle(articleId) {
+      this.$store.dispatch("retireDuPanier", articleId);
+    },
+    supprimerArticle(articleId) {
+      this.$store.dispatch("supprimerArticle", articleId);
     },
     afficheErreur() {
       this.dialog = true;

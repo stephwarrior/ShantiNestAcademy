@@ -69,101 +69,84 @@
   </main>
 </template>
 <script>
-import SiteLogo from "@/components/SiteLogo.vue";
-import { ref, onMounted } from "vue";
-import { useStore } from "vuex";
-import { computed } from "vue";
+import { mapGetters, mapActions } from "vuex";
 import { auth, signIn, googleAuth, cnxGoogle, verifierCnx, creerCompte, deconnect } from "@/data/init";
 
 export default {
-  data: () => ({
-    SiteLogo,
-    tab: null,
-    items: [
-      {
-        title: "Accueil",
-        desactive: false,
-        href: "/",
-      },
-      {
-        title: "Connexion",
-        desactive: true,
-      },
-    ],
-  }),
-  setup() {
-    const email = ref("");
-    const errMsg = ref("");
-    const password = ref("");
-    const inscriptionMsg = ref("");
-    const showInscription = ref(false);
-    const store = useStore();
-    const user = computed(() => store.state.user);
-
-    /////////Pour la connexion///////////
-    const login = async () => {
-      try {
-        await signIn(auth, email.value, password.value);
-        // router.push({ path: "/" });
-      } catch (error) {
-        errMsg.value = error.message;
-      }
-    };
-    /////////Pour la connexion avec google///////////
-
-    const signInWithGoogle = async () => {
-      try {
-        await cnxGoogle(auth, googleAuth);
-      } catch (error) {
-        errMsg.value = error.message;
-      }
-    };
-    /////////Pour les inscriptions///////////
-
-    const sinscrire = async () => {
-      try {
-        await creerCompte(auth, email.value, password.value);
-        inscriptionMsg.value = "Inscription réussie. Vous pouvez maintenant vous connecter.";
-      } catch (error) {
-        errMsg.value = error.message;
-      }
-    };
-    /////////Pour verifier etat de connexion de lutilisateur///////////
-    onMounted(() => {
-      verifierCnx(auth, (currentUser) => {
-        user.value = currentUser;
-        console.log(user.value);
-      });
-    });
-
+  data() {
     return {
-      user,
-      email,
-      password,
-      errMsg,
-      login,
-      signInWithGoogle,
-      sinscrire,
-      inscriptionMsg,
-      showInscription,
+      email: "",
+      password: "",
+      errMsg: "",
+      inscriptionMsg: "",
+      showInscription: false,
+      items: [
+        {
+          title: "Accueil",
+          desactive: false,
+          href: "/",
+        },
+        {
+          title: "Connexion",
+          desactive: true,
+        },
+      ],
     };
   },
-
-  /////////Pour la déconnexion///////////
+  computed: {
+    ...mapGetters(["user"]),
+  },
   methods: {
-    async logout() {
-      try {
-        await deconnect();
-      } catch (error) {
-        console.error("Erreur de déconnexion:", error.message);
-      }
+    ...mapActions(["loginUser", "logoutUser"]),
+    login() {
+      signIn(auth, this.email, this.password)
+        .then((userCredential) => {
+          this.loginUser(userCredential.user);
+        })
+        .catch((error) => {
+          this.errMsg = error.message;
+        });
+    },
+    signInWithGoogle() {
+      cnxGoogle(auth, googleAuth)
+        .then((userCredential) => {
+          this.loginUser(userCredential.user);
+        })
+        .catch((error) => {
+          this.errMsg = error.message;
+        });
+    },
+    sinscrire() {
+      creerCompte(auth, this.email, this.password)
+        .then(() => {
+          this.inscriptionMsg = "Inscription réussie. Vous pouvez maintenant vous connecter.";
+        })
+        .catch((error) => {
+          this.errMsg = error.message;
+        });
+    },
+    logout() {
+      deconnect(auth)
+        .then(() => {
+          this.logoutUser();
+        })
+        .catch((error) => {
+          console.error("Erreur de déconnexion:", error.message);
+        });
     },
   },
   created() {
-    this.$store.dispatch("checkUser");
+    verifierCnx(auth, (currentUser) => {
+      if (currentUser) {
+        this.loginUser(currentUser);
+      } else {
+        this.logoutUser();
+      }
+    });
   },
 };
 </script>
+
 <style scoped>
 main {
   padding-top: 5rem;

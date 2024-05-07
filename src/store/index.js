@@ -30,6 +30,12 @@ export default createStore({
         }
       }
     },
+    SUPPRIMER_ARTICLE(state, articleId) {
+      const index = state.panier.findIndex((item) => item.id === articleId);
+      if (index !== -1) {
+        state.panier.splice(index, 1);
+      }
+    },
   },
   actions: {
     checkUser({ commit }) {
@@ -37,19 +43,27 @@ export default createStore({
         commit("setUser", user);
       });
     },
+    loginUser({ commit }, userData) {
+      commit("setUser", userData);
+    },
+    logoutUser({ commit }) {
+      commit("setUser", null);
+    },
     ajouterAuPanier({ commit }, article) {
       commit("AJOUTER_AU_PANIER", article);
     },
     retireDuPanier({ commit }, articleId) {
       commit("RETIRER_DU_PANIER", articleId);
     },
+    supprimerArticle({ commit }, articleId) {
+      commit("SUPPRIMER_ARTICLE", articleId);
+    },
   },
   getters: {
-    nombreArticles: (state) => {
-      return state.panier.reduce((total, article) => total + article.quantite, 0);
-    },
-    articlesPanier: (state) => {
-      return state.panier;
+    nombreArticles: (state) => state.panier.reduce((total, article) => total + article.quantite, 0),
+    articlesPanier: (state) => state.panier,
+    user: (state) => {
+      return state.user;
     },
   },
 });
