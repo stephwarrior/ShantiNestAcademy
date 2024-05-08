@@ -14,7 +14,7 @@
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <v-row class="zoneCours justify-center">
       <!-----------------Intro court----------------------->
-      <SousTitres title="Nos cours" />
+      <SousTitres title="Introduction à nos cours" />
       <v-row class="nosCours justify-space-around"
         ><v-col cols="12" md="4">
           <v-img :src="imgCourUn" class="imgAp"></v-img>
@@ -29,6 +29,23 @@
               <v-list-item-content>{{ item }}</v-list-item-content>
             </v-list-item>
           </v-list>
+        </v-col>
+      </v-row>
+      <!--------------------------------------ZONE COURS---------------------------------->
+      <SousTitres title="Nos cours" />
+      <v-row class="lesCours">
+        <v-col class="blocCours" v-for="(cours, index) in lesCours" :key="index" cols="12" sm="4" lg="4">
+          <v-img
+            :src="cours.img"
+            alt="image"
+            height="100%"
+            width="100%"
+            cover
+            class="d-flex align-center justify-center"
+            ><h1>{{ cours.cours }}</h1>
+            <v-btn :to="cours.url" variant="outlined">Voir plus...</v-btn>
+            <div class="overlay"></div>
+          </v-img>
         </v-col>
       </v-row>
 
@@ -165,9 +182,7 @@ p {
   padding: 0 2rem;
   text-align: center;
 }
-.blocCours {
-  height: 500px;
-}
+
 .cours-list {
   display: flex;
   flex-direction: column;
@@ -176,6 +191,30 @@ p {
   background-color: transparent;
   padding: 70px 0;
 }
+
+/*//////////////////LES COURS////////////////////*/
+.blocCours {
+  text-align: center;
+  color: white;
+  font-size: clamp(1.5rem, 0.7571rem + 1.2143vw, 3rem);
+}
+.blocCours .v-img,
+.v-btn {
+  border-radius: 20px;
+}
+.blocCours .v-btn:hover {
+  background-color: #42a5a1;
+  border: none;
+}
+.lesCours {
+  padding: 1rem 2rem;
+}
+
+.equipes .v-btn:hover {
+  background-color: #42a5a1;
+  color: white !important;
+}
+/*//////////////////------TABLETTE------////////////////////*/
 @media (min-width: 768px) {
   .lesEssentiels {
     flex-direction: row;
@@ -183,6 +222,10 @@ p {
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: space-evenly;
+  }
+  .blocCours {
+    font-size: 1.2rem;
+    height: 400px;
   }
   .cours-list {
     height: 254px;
@@ -192,11 +235,26 @@ p {
     align-content: space-evenly;
   }
 }
+/*//////////////////-----------GRAND ECRAN---------////////////////////*/
 
 @media (min-width: 960px) {
   .essentiels {
     display: flex;
     flex-direction: column;
+  }
+  /*//////////////////LES COURS////////////////////*/
+  .blocCours {
+    height: 500px;
+  }
+  .lesCours {
+    padding: 1rem 2rem;
+  }
+}
+
+/*//////////////////-----------GRAND ECRAN plus---------////////////////////*/
+@media (min-width: 1200px) {
+  .blocCours {
+    height: 300px;
   }
 }
 </style>

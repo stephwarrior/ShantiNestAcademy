@@ -82,6 +82,9 @@ main {
 .blocServ > * {
   margin: 10px 0;
 }
+.v-card-actions {
+  justify-content: flex-end;
+}
 @media (min-width: 768px) {
   .blocServ {
     display: flex;

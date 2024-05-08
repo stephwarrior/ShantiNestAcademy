@@ -76,7 +76,6 @@ body {
 }
 main {
   height: auto;
-  padding-top: 3rem;
   color: black;
 }
 .v-container {
