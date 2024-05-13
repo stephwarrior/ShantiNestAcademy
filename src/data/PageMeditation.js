@@ -1,4 +1,4 @@
-export const img01 = require("@/img/PageMeditation/meditation01.jpeg");
+export const img01 = require("@/img/PageMeditation/meditation04.jpeg");
 export const img02 = require("@/img/PageMeditation/meditation02.jpeg");
 export const img03 = require("@/img/PageMeditation/meditation03.jpeg");
 export const img04 = require("@/img/PageMeditation/meditation04.jpeg");

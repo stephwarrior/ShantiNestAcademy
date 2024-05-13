@@ -5,7 +5,7 @@
         <p class="text-h3 sous-titre">1er cours d'essai gratuit</p>
         <p class="text-h5">Découvrez notre offre de cours et trouvez celui qui vous convient</p>
         <RouterLink to="/HoraireTarifs">
-          <v-btn class="mt-5" color="white" dark>Explorer nos cours et leurs tarifs</v-btn></RouterLink
+          <v-btn class="mt-5 btnPrem">Explorer nos cours et leurs tarifs</v-btn></RouterLink
         >
       </div>
       <!--Div pour assombrir mon image -->
@@ -43,7 +43,7 @@
             cover
             class="d-flex align-center justify-center"
             ><h1>{{ cours.cours }}</h1>
-            <v-btn :to="cours.url" variant="outlined">Voir plus...</v-btn>
+            <v-btn :to="cours.url" color="#42A5A1">Voir plus...</v-btn>
             <div class="overlay"></div>
           </v-img>
         </v-col>
@@ -111,7 +111,7 @@ export default {
       },
     ],
     /////////////////LES IMAGES/////////////////////
-    imgCourUn: require("@/img/general/sna06.jpeg"),
+    imgCourUn: require("@/img/general/sna17.jpeg"),
     imgCourDeux: require("@/img/general/sna12.jpeg"),
 
     /////////////////LES COURS/////////////////////
@@ -191,7 +191,14 @@ p {
   background-color: transparent;
   padding: 70px 0;
 }
-
+.btnPrem {
+  color: #42a5a1;
+  border-radius: 20px;
+}
+.btnPrem:hover {
+  background-color: #42a5a1;
+  color: white;
+}
 /*//////////////////LES COURS////////////////////*/
 .blocCours {
   text-align: center;
@@ -203,8 +210,8 @@ p {
   border-radius: 20px;
 }
 .blocCours .v-btn:hover {
-  background-color: #42a5a1;
-  border: none;
+  background-color: white !important;
+  color: #42a5a1 !important;
 }
 .lesCours {
   padding: 1rem 2rem;

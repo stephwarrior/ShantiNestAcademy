@@ -2,16 +2,20 @@ import { createStore } from "vuex";
 import { auth, verifierCnx } from "@/data/init";
 
 export default createStore({
+  //Montre etat initial de lapplication. panier vide et un utilisateur non connecte
   state() {
     return {
       panier: [],
       user: null,
     };
   },
+  //Fonctions utilisees pour modifier letat de lapplication ou elements specifiques
   mutations: {
+    //exemple: modifie utilisateur connecte
     setUser(state, user) {
       state.user = user;
     },
+
     AJOUTER_AU_PANIER(state, article) {
       const existant = state.panier.find((item) => item.id === article.id);
       if (existant) {
@@ -37,6 +41,7 @@ export default createStore({
       }
     },
   },
+  //Fonctions asynchrones utilisees pour faire des operations telles que la verification de la connexion de lutilisateur, la connexion de lutilisateur, la deconnexion de lutilisateur, lajout dun article au panier, le retrait dun article du panier et la suppression dun article du panier.
   actions: {
     checkUser({ commit }) {
       verifierCnx(auth, (user) => {
@@ -59,6 +64,7 @@ export default createStore({
       commit("SUPPRIMER_ARTICLE", articleId);
     },
   },
+  //Fonctions qui permettent dacceder aux  donnees de letat de lapplication de maniere calculee. Utile si jai besoin de transformer ou filtrer les donneesd de letat dune maniere qui nest pas directement stockee dans letat lui meme.
   getters: {
     nombreArticles: (state) => state.panier.reduce((total, article) => total + article.quantite, 0),
     articlesPanier: (state) => state.panier,

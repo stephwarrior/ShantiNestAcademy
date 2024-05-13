@@ -27,8 +27,6 @@
 import SiteEntete from "./components/SiteEntete.vue";
 import SitePiedDePage from "./components/SitePiedDePage.vue";
 import PanierAchat from "./components/PanierAchat.vue";
-//import { useStore } from "vuex";
-//import { onMounted } from "vue";
 
 export default {
   name: "App",

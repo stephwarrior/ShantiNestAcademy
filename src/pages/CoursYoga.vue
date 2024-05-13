@@ -12,8 +12,8 @@
 
     <v-window v-model="window" hide-arrows>
       <v-window-item v-for="(leYoga, index) in descYoga" :key="index"
-        ><v-row class="">
-          <v-col class="">
+        ><v-row>
+          <v-col>
             <p>
               {{ leYoga.text }}
             </p>
@@ -26,7 +26,7 @@
     <SousTitres title="Quel cours de Yoga choisir ?" />
     <v-row>
       <v-col class="blocYogas" v-for="(yoga, index) in coursYoga" :key="index" cols="12" sm="6" md="4" lg="2">
-        <v-card height="450px" @click="ouvreDialogue(yoga)">
+        <v-card @click="ouvreDialogue(yoga)">
           <v-img :src="yoga.img" :width="auto" cover></v-img>
           <v-card-title>{{ yoga.cours }}</v-card-title>
           <v-card-text>
@@ -105,7 +105,6 @@ export default {
     window: 0,
     dialog: false,
     itemSelectionner: null,
-    //pilates: null,
   }), ////---------ZONE FONCTION---------------////
   methods: {
     //les fonctions pour ouvrir les boites modales
@@ -140,6 +139,7 @@ main {
 }
 .v-parallax {
   height: 200px;
+  background-color: #937fbc;
 }
 .v-row {
   padding: 0 1.5rem;
@@ -168,19 +168,21 @@ h2 {
   font-size: 1rem;
 }
 
-.v-btn {
-  background-color: none;
-}
-
 /*/ ///////////COURS DE YOGA//////////////*/
 .blocYogas {
   margin-bottom: 2rem;
 }
 .blocYogas .v-card {
+  height: 550px;
   border-radius: 20px;
 }
 .blocYogas .v-card:hover {
   animation: animZoom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.v-card-text,
+.v-btn {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
 }
 /*/ ///////////NUTRITIONS//////////////*/
 
@@ -197,6 +199,15 @@ h2 {
 @media (min-width: 768px) {
   .v-parallax {
     height: 500px;
+  }
+  .blocYogas .v-card {
+    height: 500px;
+  }
+}
+/*//////////////////------GRAND ECRAN------////////////////////*/
+@media (min-width: 976px) {
+  .blocYogas .v-card {
+    height: 450px;
   }
 }
 </style>

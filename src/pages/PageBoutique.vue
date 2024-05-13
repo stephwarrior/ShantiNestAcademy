@@ -38,12 +38,12 @@ import { mapActions } from "vuex";
 import lesArticles from "@/data/PageBoutique.js";
 
 export default {
-  name: "PageBoutique",
+  //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
-    console.log("erreur", lesArticles);
-
     return {
+      ////////////////////DATA EXTERNE//////////////////
       lesArticles: lesArticles.articles,
+      ////////////////////ROUTE VERS PAGE ACCUEIL//////////////////
       items: [
         {
           title: "Accueil",
@@ -56,9 +56,12 @@ export default {
         },
       ],
     };
+    //////////////////---CONSOLE LOG---/////////////////////
+    //console.log("erreur", lesArticles);
   },
   //Permet d'ajouter l'article selectionne au panier et incrementer le nombre de fois quil a ete ajoutee
   methods: {
+    // Importer laction ajouterAuPanier de mon store Vuex ici.
     ...mapActions(["ajouterAuPanier"]),
     ajouterArticle(article) {
       // Verifie si l'article a des variantes et si une variante est selectionner
@@ -99,6 +102,19 @@ export default {
 };
 </script>
 <style scoped>
+/*//////////////////GLOBAL////////////////////*/
+main {
+  padding: 4rem 0;
+  height: auto;
+}
+.v-container {
+  padding: 0 3rem;
+}
+.nbrItems {
+  padding: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
 .variantColors {
   display: flex;
   padding: 20px;
@@ -120,20 +136,7 @@ export default {
   scale: 1.05;
 }
 
-main {
-  padding: 4rem 0;
-  height: auto;
-}
-.v-container {
-  padding: 0 3rem;
-}
-.nbrItems {
-  padding: 2rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
-/*//////////////////Les articles////////////////////*/
+/*//////////////////LES ARTICLES////////////////////*/
 .zoneArticles {
   display: flex;
 }

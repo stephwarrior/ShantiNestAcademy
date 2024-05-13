@@ -12,12 +12,12 @@ export default {
   lesEmployees: [
     {
       id: 1,
-      img: LydiaDesjardin,
-      nom: "Lydia Desjardin",
-      poste: "Spécialiste de pilates",
-      periode: "8 ans d'expérience",
+      img: leaDufresne,
+      nom: "Léa Dufresne",
+      poste: "Spécialiste de yoga",
+      periode: "21 ans d'expérience",
       description:
-        "Lydia est une passionnée de pilates depuis son plus jeune âge. Elle a commencé à enseigner le pilates à l'âge de 25 ans. Elle a étudié le pilates en France et a obtenu son diplôme de professeur de pilates. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves.",
+        "Léa est une passionnée de yoga depuis son plus jeune âge. Elle a commencé à enseigner le yoga à l'âge de 25 ans. Elle a étudié le yoga en Inde et a obtenu son diplôme de professeur de yoga. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves.",
     },
     {
       id: 2,
@@ -67,12 +67,12 @@ export default {
     },
     {
       id: 7,
-      img: leaDufresne,
-      nom: "Léa Dufresne",
-      poste: "Spécialiste de yoga",
-      periode: "21 ans d'expérience",
+      img: LydiaDesjardin,
+      nom: "Lydia Desjardin",
+      poste: "Spécialiste de pilates",
+      periode: "8 ans d'expérience",
       description:
-        "Léa est une passionnée de yoga depuis son plus jeune âge. Elle a commencé à enseigner le yoga à l'âge de 25 ans. Elle a étudié le yoga en Inde et a obtenu son diplôme de professeur de yoga. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves.",
+        "Lydia est une passionnée de pilates depuis son plus jeune âge. Elle a commencé à enseigner le pilates à l'âge de 25 ans. Elle a étudié le pilates en France et a obtenu son diplôme de professeur de pilates. Elle a enseigné dans plusieurs pays avant de s'installer à Montréal. Elle est une professeure très appréciée par ses élèves.",
     },
     {
       id: 8,

@@ -73,6 +73,7 @@ import { mapGetters, mapActions } from "vuex";
 import { auth, signIn, googleAuth, cnxGoogle, verifierCnx, creerCompte, deconnect } from "@/data/init";
 
 export default {
+  //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
     return {
       email: "",

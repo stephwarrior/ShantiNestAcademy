@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// Importez le fichier JSON
 import PageErreur from "@/data/PageErreur.json";
 export default {
   data: () => ({

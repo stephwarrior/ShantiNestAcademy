@@ -4,9 +4,6 @@ export const img03 = require("@/img/PageYoga/yoga07.jpg");
 export const img04 = require("@/img/PageYoga/yoga04.jpeg");
 export const img05 = require("@/img/PageYoga/yoga08.jpg");
 export const img06 = require("@/img/PageYoga/yoga06.jpeg");
-//export const img07 = require("@/img/PageYoga/yoga07.jpeg");
-//export const img08 = require("@/img/PageYoga/yoga08.jpeg");
-//export const img09 = require("@/img/PageYoga/yoga09.jpeg");
 
 export default {
   items: [

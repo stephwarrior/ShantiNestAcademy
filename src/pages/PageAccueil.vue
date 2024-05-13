@@ -56,7 +56,7 @@
           <v-carousel-item v-for="(employee, index) in lesEmployees" :key="index">
             <v-col cols="auto" height="500px">
               <v-card class="mx-auto" max-width="340px" height="450px">
-                <v-img :src="employee.img" alt="avatar" height="300px" cover @click="onImageClick(employee)"></v-img>
+                <v-img :src="employee.img" alt="avatar" height="300px" cover @click="clickImage(employee)"></v-img>
 
                 <v-card-title>{{ employee.nom }}</v-card-title>
                 <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
@@ -72,7 +72,7 @@
         <!--Bloc introduit les employees de SNA-->
         <v-col class="d-none d-sm-flex" cols="12" sm="4" md="3" v-for="(employee, index) in lesEmployees" :key="index">
           <v-card class="zbone mx-auto" width="300px" height="380px" elevation="2" @click="ouvreDialogue(employee)">
-            <v-img :src="employee.img" alt="avatar" height="230px" cover @click="onImageClick(employee)"></v-img>
+            <v-img :src="employee.img" alt="avatar" height="230px" cover @click="clickImage(employee)"></v-img>
             <v-card-title>{{ employee.nom }}</v-card-title>
             <v-card-subtitle>{{ employee.poste }}</v-card-subtitle>
             <v-card-subtitle>{{ employee.periode }}</v-card-subtitle>
@@ -106,7 +106,7 @@
             cover
             class="d-flex align-center justify-center"
             ><h1>{{ cours.cours }}</h1>
-            <v-btn :to="cours.url" variant="outlined">Voir plus...</v-btn>
+            <v-btn :to="cours.url" color="#42A5A1">Voir plus...</v-btn>
             <div class="overlay"></div>
           </v-img>
         </v-col>
@@ -136,7 +136,7 @@
             <v-card-text>{{ commentaire.comm }}</v-card-text>
           </v-card>
         </v-col>
-        <!--Carroussel avis clients pour mobile seulement-->
+        <!-------Carroussel avis clients pour mobile seulement--------->
         <v-carousel class="d-xs-flex d-sm-none" hide-delimiters progress="#644a9d" :show-arrows="false">
           <v-carousel-item cover v-for="(commentaire, index) in lesCommentaires" :key="index">
             <v-col>
@@ -205,7 +205,7 @@ export default {
     SousTitres,
   },
 
-  ////---------ZONE FONCTION---------------////
+  ////---------------------------ZONE FONCTION-----------------------////
   methods: {
     //les fonctions pour ouvrir les boites modales
     ouvreDialogue(employee) {
@@ -216,16 +216,11 @@ export default {
     dialogIntro() {
       this.dialogInt = true;
     },
-
-    ////Aide pour mon probleme dimage qui ne saffiche pas
-    onImageClick(employee) {
-      console.log(employee.img);
-    },
   },
 };
 </script>
 <style scoped>
-/*//////////////////Animation////////////////////*/
+/*//////////////////ANIMATION////////////////////*/
 @keyframes slide-in-blurred-top {
   0% {
     transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
@@ -274,7 +269,11 @@ main {
 .blocCours {
   border-radius: 20px;
 }
-
+.v-card-text,
+.v-btn {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+}
 /*////////////////// IMAGE INTRO PAGE ACCUEIL////////////////////*/
 .imgIntro {
   padding: 0 20px;
@@ -301,7 +300,6 @@ main {
 .introTexte > * {
   margin: 10px 0;
 }
-
 .sous-titre {
   font-family: "Kotta One", sans-serif;
   font-size: clamp(2.5rem, 0.7571rem + 1.2143vw, 4rem);
@@ -381,6 +379,10 @@ hr {
 .equipes .v-card {
   margin: 1rem;
 }
+.equipes .v-btn:hover {
+  background-color: #42a5a1;
+  color: white !important;
+}
 .zbone:hover {
   cursor: pointer;
   animation: animZoom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -400,14 +402,10 @@ hr {
   font-size: clamp(1.5rem, 0.7571rem + 1.2143vw, 3rem);
 }
 .blocCours .v-btn:hover {
-  background-color: #42a5a1;
-  border: none;
+  background-color: white !important;
+  color: #42a5a1 !important;
 }
 
-.equipes .v-btn:hover {
-  background-color: #42a5a1;
-  color: white !important;
-}
 /*/ /////////////////TEMPOIGNAGES////////////////////*/
 
 .clients {
