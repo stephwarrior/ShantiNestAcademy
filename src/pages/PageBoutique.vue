@@ -13,7 +13,7 @@
             <v-img :src="article.img || article.variantes[0].img" alt="pas image">
               <div v-if="article.variantes" class="variantColors">
                 <div
-                  class="colorSelector"
+                  class="selectCoul"
                   v-for="variant in article.variantes"
                   :key="variant.id"
                   :style="{ backgroundColor: variant.couleur }"
@@ -122,7 +122,7 @@ main {
   align-items: flex-end;
 }
 
-.colorSelector {
+.selectCoul {
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -131,7 +131,7 @@ main {
   margin: 5px;
   border: 1px solid #ccc;
 }
-.colorSelector:hover {
+.selectCoul:hover {
   opacity: 0.7;
   scale: 1.05;
 }
