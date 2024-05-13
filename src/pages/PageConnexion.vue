@@ -57,7 +57,7 @@
             </v-card-item>
           </v-card>
         </v-col>
-
+        <!-----------------------------si utilsateur est connecte cela saffiche----------------------------->
         <v-col cols="12" v-if="user">
           <div class="bienvenue">
             <h1>Namaste, {{ user.email }}</h1>

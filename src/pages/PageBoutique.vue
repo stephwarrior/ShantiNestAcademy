@@ -162,7 +162,7 @@ main {
   font-size: 0.7rem;
 }
 
-/*//////////////////Tablette////////////////////*/
+/*//////////////////Grand ecran////////////////////*/
 @media (min-width: 960px) {
   main {
     padding: 7rem 0;
