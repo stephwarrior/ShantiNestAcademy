@@ -2,7 +2,7 @@
   <main class="erreur404">
     <v-breadcrumbs :items="items"></v-breadcrumbs>
     <v-container>
-      <v-row class="tester">
+      <v-row>
         <v-col sm="5">
           <v-img src="https://p.productioncrate.com/stock-hd/effects/footagecrate-red-error-icon@3X.png"></v-img>
         </v-col>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// Importez le fichier JSON
 import PageErreur from "@/data/PageErreur.json";
 export default {
   data: () => ({
@@ -32,7 +31,7 @@ main {
   height: auto;
 }
 
-.tester {
+.v-container .v-row {
   display: flex;
   flex-direction: column;
   justify-content: center;

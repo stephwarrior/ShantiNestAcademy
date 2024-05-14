@@ -35,7 +35,11 @@
             ></v-col
           >
           <RouterLink to="/connexion"
-            ><v-col> <v-icon class="iconeCnx" icon>mdi-account</v-icon></v-col></RouterLink
+            ><v-col>
+              <v-badge :color="user ? 'green' : ''" :content="user ? 'En ligne' : 'Hors-ligne'" overlap
+                ><v-icon class="iconeCnx" icon>mdi-account</v-icon></v-badge
+              ></v-col
+            ></RouterLink
           >
         </v-col>
       </v-col>
@@ -51,7 +55,9 @@
       <v-badge :content="nombreArticles" color="error"
         ><v-icon @click="montrerPanier" class="iconePanier" icon>mdi-shopping</v-icon></v-badge
       ><RouterLink to="/connexion">
-        <v-badge color="default" dot><v-icon class="iconeCnx" icon>mdi-account</v-icon></v-badge></RouterLink
+        <v-badge :color="user ? 'green' : 'default'" :content="user ? 'En ligne' : 'Hors-ligne'" dot
+          ><v-icon class="iconeCnx" icon>mdi-account</v-icon></v-badge
+        ></RouterLink
       >
       <!--Bouton burger mobile/tablette-->
       <div class="menuBurger">
@@ -78,15 +84,16 @@ import SiteLogo from "./SiteLogo.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  emits: ["afficheLePanier"],
+  components: { SiteLogo },
   props: {
     bgColor: {
       type: String,
-      default: "#FFFFFF", // Default color is white
+      default: "#FFFFFF",
     },
   },
   data: () => ({
     isSubMenuVisible: false,
+    menuMobileActive: false,
 
     liensMenu: [
       { nom: "Accueil", url: "/" },
@@ -104,24 +111,21 @@ export default {
       { nom: "Abonnement", url: "/HoraireTarifs" },
       { nom: "Boutique", url: "/boutique" },
     ],
-    menuMobileActive: false,
   }),
+  computed: {
+    ...mapGetters({
+      user: "user",
+      nombreArticles: "nombreArticles",
+    }),
+  },
   methods: {
     ouvreNav() {
       this.menuMobileActive = !this.menuMobileActive;
-    },
-    onClickOutside() {
-      this.active = false;
     },
     montrerPanier() {
       this.$emit("afficheLePanier");
     },
   },
-  computed: {
-    ...mapGetters(["nombreArticles"]),
-  },
-
-  components: { SiteLogo },
 };
 </script>
 <style scoped>
@@ -201,7 +205,10 @@ header {
 .v-icon {
   color: var(--couleurTertiaire);
 }
-/*//////////////////LIENS MOBILE////////////////////*/
+.v-icon:hover {
+  color: #57dfd9;
+  transition: 0.3s ease-in-out;
+}
 
 /*----/////----------ZONE TABLETTE-------////-----------*/
 @media (min-width: 768px) {
@@ -234,17 +241,22 @@ header {
   /*///////////////////////////////*/
   .menu-item {
     position: relative;
-    border-bottom: 5px solid transparent;
+    border-bottom: 3px solid transparent;
   }
   .menu-item:hover {
-    border-bottom: 3px solid var(--couleurArriereplan);
-    transition: border-bottom 0.3s ease;
+    border-bottom: 3px solid #57dfd9;
+    transition: border-bottom 0.3s ease-in-out;
     cursor: pointer;
+  }
+  .menu-item:hover a {
+    color: #57dfd9;
+    transition: 0.3s ease-in-out;
   }
   .menu-item a {
     font-family: "Kotta One", sans-serif;
     color: var(--couleurTertiaire);
   }
+
   /*/////////////// SOUS-MENU  //////////////////*/
 
   .sous-menu {
@@ -277,4 +289,6 @@ header {
     background-color: white;
   }
 }
+
+/*//////////////////ANIMATION////////////////////*/
 </style>

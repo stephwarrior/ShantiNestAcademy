@@ -2,25 +2,34 @@
   <aside>
     <v-row class="zonePanier">
       <!-------------Articles (boucle)-------------->
-      <v-col v-for="(article, index) in articlesPanier" :key="index" cols="12">
-        <v-card>
-          <v-img :src="article.img" height="150px" contain></v-img>
-          <v-card-title>
-            <h3>{{ article.nom }}</h3>
-          </v-card-title>
-          <v-card-text>
-            <p>{{ article.prix }}$</p>
+      <div v-if="articlesPanier.length > 0">
+        <v-col v-for="(article, index) in articlesPanier" :key="index" cols="12">
+          <v-card>
+            <v-btn color="error" variant="outlined" @click="supprimerArticle(article.id)"> X </v-btn>
 
-            <v-card-actions class="d-flex justify-space-around">
-              <v-btn color="red" @click="retireArticle(article.id)"><v-icon>mdi-minus</v-icon></v-btn>
-              <p>Qts : {{ article.quantite }}</p>
-              <v-btn color="green" @click="ajouterArticle(article.id)"><v-icon>mdi-plus</v-icon></v-btn>
-            </v-card-actions>
+            <v-img :src="article.img" height="150px" contain></v-img>
+            <v-card-title>
+              <h3>{{ article.nom }}</h3>
+            </v-card-title>
+            <v-card-text>
+              <p>{{ article.prix }}$</p>
 
-            <p>Total: {{ article.prix * article.quantite }}$</p>
-          </v-card-text>
-        </v-card>
-      </v-col>
+              <v-card-actions class="d-flex justify-space-around">
+                <v-btn color="red" @click="retireArticle(article.id)"><v-icon>mdi-minus</v-icon></v-btn>
+                <p>Qts : {{ article.quantite }}</p>
+                <v-btn color="green" @click="ajouterArticle(article.id)"><v-icon>mdi-plus</v-icon></v-btn>
+              </v-card-actions>
+
+              <p>Total: {{ article.prix * article.quantite }}$</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </div>
+      <div v-else>
+        <v-col cols="12">
+          <h3>Votre panier est vide</h3>
+        </v-col>
+      </div>
     </v-row>
     <v-col>
       <h1>Subtotal: {{ articlesPanier.reduce((acc, article) => acc + article.prix * article.quantite, 0) }}$</h1>
@@ -61,8 +70,11 @@ export default {
         article.quantite++;
       }
     },
-    retireArticle(article) {
-      this.$store.dispatch("retireDuPanier", article);
+    retireArticle(articleId) {
+      this.$store.dispatch("retireDuPanier", articleId);
+    },
+    supprimerArticle(articleId) {
+      this.$store.dispatch("supprimerArticle", articleId);
     },
     afficheErreur() {
       this.dialog = true;

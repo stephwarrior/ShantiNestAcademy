@@ -8,9 +8,18 @@
       </div>
       <!--------------------Les Articles (Boucle)------------------------>
       <v-row class="zoneArticles">
-        <v-col class="blocArticles" cols="12" sm="6" md="4" v-for="article in lesArticles" :key="article.id">
+        <v-col class="blocArticles" cols="12" sm="6" md="3" v-for="article in lesArticles" :key="article.id">
           <v-card class="lesArticles">
-            <v-img :src="article.img" alt="pas image"></v-img>
+            <v-img :src="article.img || article.variantes[0].img" alt="pas image">
+              <div v-if="article.variantes" class="variantColors">
+                <div
+                  class="selectCoul"
+                  v-for="variant in article.variantes"
+                  :key="variant.id"
+                  :style="{ backgroundColor: variant.couleur }"
+                  @click="updateImg(article, variant)"
+                ></div></div
+            ></v-img>
             <h3>{{ article.nom }}</h3>
             <p>${{ article.prix }}.00 CAD</p>
 
@@ -29,12 +38,12 @@ import { mapActions } from "vuex";
 import lesArticles from "@/data/PageBoutique.js";
 
 export default {
-  name: "PageBoutique",
+  //////////////////---EXPORTATIONS/DATA---/////////////////////
   data() {
-    console.log("erreur", lesArticles);
-
     return {
+      ////////////////////DATA EXTERNE//////////////////
       lesArticles: lesArticles.articles,
+      ////////////////////ROUTE VERS PAGE ACCUEIL//////////////////
       items: [
         {
           title: "Accueil",
@@ -47,19 +56,53 @@ export default {
         },
       ],
     };
+    //////////////////---CONSOLE LOG---/////////////////////
+    //console.log("erreur", lesArticles);
   },
-  //Permet d'ajouter l'article sélectionné au panier et incrémenter le nombre de fois quil a ete ajoutee
+  //Permet d'ajouter l'article selectionne au panier et incrementer le nombre de fois quil a ete ajoutee
   methods: {
+    // Importer laction ajouterAuPanier de mon store Vuex ici.
     ...mapActions(["ajouterAuPanier"]),
     ajouterArticle(article) {
-      this.ajouterAuPanier(article);
-      article.count++;
-      console.log(article);
+      // Verifie si l'article a des variantes et si une variante est selectionner
+      if (article.variantes && article.varianteActuelle) {
+        const variante = article.variantes.find((v) => v.id === article.varianteActuelle);
+        if (variante) {
+          this.ajouterAuPanier({
+            ...article,
+            nom: variante.nom,
+            img: variante.img,
+            id: variante.id,
+            prix: variante.prix || article.prix,
+            count: 1,
+          });
+        } else {
+          console.log("Variante introuvable");
+        }
+      } else {
+        // Gerer les articles sans variantes
+        this.ajouterAuPanier({
+          ...article,
+          count: 1,
+        });
+      }
+    },
+    //Pour mettre à jour l'image de l'article en fonction de la variante selectionnee
+    updateImg(article, variant) {
+      if (variant) {
+        article.img = variant.img;
+        article.nom = variant.nom;
+        article.prix = variant.prix;
+        article.varianteActuelle = variant.id;
+      } else {
+        console.log("Aucune variante à mettre à jour pour cet article");
+      }
     },
   },
 };
 </script>
 <style scoped>
+/*//////////////////GLOBAL////////////////////*/
 main {
   padding: 4rem 0;
   height: auto;
@@ -72,11 +115,30 @@ main {
   display: flex;
   justify-content: flex-end;
 }
+.variantColors {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
-/*//////////////////Les articles////////////////////*/
+.selectCoul {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+  border: 1px solid #ccc;
+}
+.selectCoul:hover {
+  opacity: 0.7;
+  scale: 1.05;
+}
+
+/*//////////////////LES ARTICLES////////////////////*/
 .zoneArticles {
   display: flex;
-  justify-content: space-around;
 }
 .lesArticles {
   display: flex;
@@ -100,7 +162,7 @@ main {
   font-size: 0.7rem;
 }
 
-/*//////////////////Tablette////////////////////*/
+/*//////////////////Grand ecran////////////////////*/
 @media (min-width: 960px) {
   main {
     padding: 7rem 0;
